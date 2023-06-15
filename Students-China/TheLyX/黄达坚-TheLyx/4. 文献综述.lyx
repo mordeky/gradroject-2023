@@ -1,0 +1,808 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass zjut-report
+\options UTF-8,literaturereview, englishversion
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding gbk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+!Mode:: "\SpecialChar TeX
+:UTF-8"
+\end_layout
+
+\begin_layout Plain Layout
+需要用：XeLaTex 进行编译
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告类型
+本科毕业设计文献综述
+\end_layout
+
+\begin_layout 提交日期
+2023年02月
+\end_layout
+
+\begin_layout 题目左侧距离
+15mm
+\end_layout
+
+\begin_layout 题目下划线长度
+90mm
+\end_layout
+
+\begin_layout 封面下划线长度
+17em
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "cover/cover.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract~
+\paragraph_spacing onehalf
+\labelwidthstring Abstract~：
+This article is a literature review on the design and implementation of
+ employee suggestion management system for WeChat applets.
+ According to the practical needs of enterprise management, according to
+ the existing employee suggestion management system based on WeChat applet,
+ the employee management module, suggestion management module and background
+ management module have been upgraded.
+ The system uses WeChat applet and applet cloud service function, which
+ enables employees to get started quickly and quickly.
+ The system is based on WeChat applets.
+ It uses the WXML (WeiXin Markup Language) tag language and WXSS (WeiXin
+ Style Sheets) style language in the applets to design the overall structure
+ layout of the page, uses JavaScript language to write and realize the logical
+ processing of the pages in the applets, uses json files to configure the
+ page information of the applets, and uses the cloud development services
+ provided by the applets to complete file storage, Database storage and
+ other functions.
+\end_layout
+
+\begin_layout Keywords~
+\labelwidthstring Keywords~:
+Employee Suggestion Management System, WeChat applet, JavaScript
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:引言"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mobile Internet technology has completely subverted people's lifestyle.
+ WeChat is the most widely used social tool
+\begin_inset CommandInset citation
+LatexCommand cite
+key "赵文杰2018"
+literal "false"
+
+\end_inset
+
+ in the field of mobile applications, with a large user group。 By the end
+ of 2018, WeChat had more than 1 billion active users and maintained a steady
+ growth trend.
+ WeChat applet is a new software model developed on the basis of WeChat.
+ Users do not need to download it, but only need to scan or search to open
+ the application, so as to prevent the memory of mobile phone from being
+ occupied by too many APP; There is no need to close the unloading
+\begin_inset CommandInset citation
+LatexCommand cite
+key "郭毅棋2017"
+literal "false"
+
+\end_inset
+
+ after use; Simplified operation steps, saved time and memory, and improved
+ user experience .
+ For developers, WeChat applets have the advantages of low development threshold
+, low difficulty and multiple functions.
+ Linking to WeChat official account can better realize
+\begin_inset CommandInset citation
+LatexCommand cite
+key "柏超宇2018"
+literal "false"
+
+\end_inset
+
+ the jump between applet and official account, and meet various use needs。
+ Therefore, WeChat users and enterprises are willing to adopt the WeChat
+ applet model。
+\end_layout
+
+\begin_layout Chapter
+Research Significance
+\end_layout
+
+\begin_layout Standard
+Compared with the traditional mobile app, WeChat applet is more convenient,
+ faster, more portable, no need to install, can be opened at will, does
+ not occupy the memory of the mobile phone, and is more convenient to use.
+ At the same time, the development process of WeChat is simpler and cheaper
+ than iOS applications and Android applications.
+ At the same time, the marketing cost of WeChat is also very low, so enterprises
+ of different industries and sizes will have a good market prospect in the
+ development of WeChat "small programs".
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hao2018"
+literal "true"
+
+\end_inset
+
+At the same time, with the continuous development of technology, the enterprise
+ management system is facing various challenges.
+ In order to meet these challenges, enterprises must develop an effective
+ management system - employee suggestion management system.
+ In recent years, as an emerging software, WeChat applet has the characteristics
+\begin_inset CommandInset citation
+LatexCommand cite
+key "涂相华2018"
+literal "false"
+
+\end_inset
+
+ of convenience, security and reliability, providing more possibilities
+ for the employee suggestion management system.This article will review the
+ literature of WeChat applet of employee suggestion management system, show
+ its advantages and disadvantages, and compare it with other management
+ systems.
+\end_layout
+
+\begin_layout Standard
+First of all, WeChat applet can provide more functions, such as fuzzy query,
+ voice input, intention recognition, etc., to provide users with more convenient
+ query and use.
+ Where, users can enter
+\end_layout
+
+\begin_layout Standard
+By entering keywords, you can quickly obtain effective information
+\begin_inset CommandInset citation
+LatexCommand cite
+key "李旭2018"
+literal "false"
+
+\end_inset
+
+ about employee suggestions, thus improving user experience and efficiency.
+ In addition, it is easier to share information using WeChat applets, which
+ can effectively realize information sharing within enterprises.
+\end_layout
+
+\begin_layout Standard
+Secondly, the WeChat widget can also be used as an event tracking system
+ to help enterprises monitor the implementation of employee recommendations,
+ thus improving the quality of the system.
+ In addition, it can also help enterprises find internal problems in time,
+ thus improving efficiency.
+\end_layout
+
+\begin_layout Standard
+Finally, it is worth mentioning that the personalized functions provided
+ by WeChat applets can improve the availability of enterprise management
+ systems and help enterprises better benefit from customers, partners and
+ other suppliers.
+\end_layout
+
+\begin_layout Standard
+In short, the WeChat widget provides a new possibility for the employee
+ suggestion management system, which can improve the internal communication
+ and management of enterprises, help enterprises find problems in time and
+ improve efficiency.
+ However, WeChat applet also has some limitations.
+ It needs active management and timely
+\begin_inset CommandInset citation
+LatexCommand cite
+key "张瑶2021"
+literal "false"
+
+\end_inset
+
+ security update, as well as effective integration with enterprise management
+ system, to maximize its role.
+\end_layout
+
+\begin_layout Standard
+In the current situation, WeChat applets can be used as a comprehensive
+ tool to provide enterprises with more effective management methods and
+ help improve the overall economic benefits of enterprises.
+ Therefore, enterprises should think about how to use WeChat applet reasonably
+ to provide better support for enterprise management system.
+\end_layout
+
+\begin_layout Chapter
+Research Status and Difficulties at Home and Abroad
+\end_layout
+
+\begin_layout Standard
+In recent years, as a new light and small application, WeChat applet has
+ attracted wide attention in the market, and its specific status has also
+ become a hot topic.
+ During the weak period of the App market, small applications quickly filled
+ the gap of user demand, really connected everything, and pushed the development
+ of light applications to a new stage.
+ At the same time, various industrial sectors around the app have also been
+ built in the process, supporting an ecological network comparable to the
+ App market.
+ 
+\end_layout
+
+\begin_layout Standard
+The development of WeChat applets
+\begin_inset CommandInset citation
+LatexCommand cite
+key "丁益2018"
+literal "false"
+
+\end_inset
+
+ has gained a huge scale in China, and has gradually begun to enter foreign
+ markets, which has brought many developers and businesses considerable
+ economic benefits.
+ What is the status quo of research and development of WeChat applets at
+ home and abroad?
+\end_layout
+
+\begin_layout Standard
+1.
+ Domestic research and development status in China:
+\end_layout
+
+\begin_layout Standard
+WeChat applets have formed an independent development platform in China,
+ which allows developers to develop a series of meaningful applications.
+ Since 2019, the number of WeChat applets developed and operated across
+ the country has increased, especially in the new retail field, which has
+ become a new business model.
+\end_layout
+
+\begin_layout Standard
+2.
+ Current situation of research and development abroad:
+\end_layout
+
+\begin_layout Standard
+In foreign markets, due to the widespread use of WeChat, WeChat applets
+ have also received a lot of attention abroad.
+ At present, countries such as the United Kingdom, Singapore and the United
+ States have included the development of WeChat applets, and WeChat has
+ also announced plans to establish WeChat applets in Hong Kong.
+ However, at present, the development of WeChat applets in foreign countries
+ is still relatively backward, and it still needs more time to promote them
+ in order to truly gain the acceptance of global users.
+\end_layout
+
+\begin_layout Chapter
+System Design
+\end_layout
+
+\begin_layout Section
+Overall System Architecture
+\end_layout
+
+\begin_layout Standard
+According to the actual needs of managing employees, the system has set
+ up the functions of suggestion management, employee management, suggestion
+ approval, task view, etc.
+ Figure 1 shows the functional structure of the system.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/绘图1.jpg
+	width 80line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+Figure 1: System Function Structure Diagram
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+System Function Design
+\end_layout
+
+\begin_layout Standard
+In Figure 1, the main functions of each subsystem are as follows:
+\end_layout
+
+\begin_layout Standard
+(1) Background management module
+\end_layout
+
+\begin_layout Standard
+It is mainly used to facilitate the administrator to effectively manage
+ the suggestions in the background, produce the best suggestion report,
+ notify all employees of information and other functions.
+\end_layout
+
+\begin_layout Standard
+(2) Employee management module
+\end_layout
+
+\begin_layout Standard
+It is mainly convenient for employees to register their accounts, realize
+ the functions of employee sign-in and search for personnel in each department.
+\end_layout
+
+\begin_layout Standard
+(3) Recommendation management module
+\end_layout
+
+\begin_layout Standard
+It is mainly convenient for employees to put forward suggestions, select
+ the person in charge of implementing the suggestions, and timely check
+ the implementation status of the suggestions, whether they are delayed
+ or being implemented; At the same time, it is convenient for the person
+ in charge to comment on the proposal and upload photos to support the implement
+ation of the proposal.
+\end_layout
+
+\begin_layout Chapter
+Research on System Implementation Technology and Methods
+\end_layout
+
+\begin_layout Standard
+The implementation technology of the employee suggestion management system
+ is diverse, so it is also a major link to select a reasonable technology
+ to implement the system.
+ If the selected technology is inappropriate, it will cause some trouble
+ to the implementation of the system, and may also affect the performance
+ of the system.
+ It adopts the design idea of separating the front end from the back end,
+ adopts B/S architecture, and is divided into client end and server end.
+ The front end, that is, the client, is divided into two platforms, WeChat
+ applet and Web client, which can run on any platform after deployment.
+ The back-end, that is, the server side, includes the SSM framework and
+ SQL database.
+ After the https network request sent by the client is received by the server,
+ the server analyzes the request and transmits the corresponding instructions
+ to the database.
+ The database returns the required data to the client according to the instructi
+ons received.
+ As shown in Figure 2.
+ WeChat applet development and web browser both use the design concept of
+ MVVM.
+ The applet framework is composed of the WXML and WXSS languages defined
+ by the applet itself, and the native interface of the WeChat applet (written
+ in JavaScript language).
+ The web side mainly uses Vue framework for development.
+ The server side uses the Linux-based SpringBoot+MySQL technology stack.
+ The following are the simple features of the framework and its role in
+ system development.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/绘图2_文献综述.jpg
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+Figure2: System Architecture Diagram
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+MVVM Framework
+\end_layout
+
+\begin_layout Standard
+WeChat applet development and web browser both use the design concept of
+ MVVM.
+ MVVM (Model View View Model) is an improved version of MVC (Model View
+ Controller).
+ The MVVM function diagram is shown in Figure 3.
+ Model represents the data analysis model, in which you can define the service
+ logic for data analysis.
+ View represents the UI (user interface) module, which can convert the data
+ analysis model
+\begin_inset CommandInset citation
+LatexCommand cite
+key "周晓磊2020"
+literal "false"
+
+\end_inset
+
+ into an interface for display.
+ The main function of ViewModel is to synchronize the process objects of
+ View and Model.
+ Under the MVVM framework, because the View and Model cannot communicate
+ directly with each other, it is necessary to use the ViewModel to achieve
+ communication.
+ Because the communication between the Model and ViewModel and between the
+ View and ViewModel is mutual, the instantaneous change of the View message
+ will be reflected in the Model at the same time, and the change of the
+ Model message will also be reflected in the View at the same time.
+ ViewModel uses the information binding of both sides to link View and Model,
+ and the information synchronization operation between View and Model is
+ independent without human intervention, so developers do not need to consider
+ the operation logic, which greatly simplifies the development process
+\begin_inset CommandInset citation
+LatexCommand cite
+key "赵素萍2022"
+literal "false"
+
+\end_inset
+
+ and reduces the development difficulty.
+ 
+\end_layout
+
+\begin_layout Standard
+In the front-end development of WeChat applet, the view layer completes
+ the rendering of the web architecture, and the service layer completes
+ the logic control, information request, interface scheduling and other
+ work.
+ These functions can be executed in different threads at the same time.
+ The service layer
+\begin_inset CommandInset citation
+LatexCommand cite
+key "申文强"
+literal "false"
+
+\end_inset
+
+ prompts the view layer for information changes.
+ When the view layer triggers page changes, the view layer will transmit
+ the triggered changes to the service layer for business management, while
+ the storage layer will save the offline information of the service layer,
+ thus speeding up
+\begin_inset CommandInset citation
+LatexCommand cite
+key "陈静娴2020"
+literal "false"
+
+\end_inset
+
+ the processing speed.There is a Vue framework with corresponding functions
+ on the Web side, ElementUI provides a rich UI component library, which
+ can easily realize page display.
+ Vue-route is Vue's state routing manager, while Vuex is a state management
+ widely used in development, which can realize the sharing of states among
+ various components.
+ Axios is a lightweight HTTP library based on Promise (a special JavaScript
+ object), which can be used to exchange request data
+\begin_inset CommandInset citation
+LatexCommand cite
+key "张瑶2021"
+literal "false"
+
+\end_inset
+
+ and response data, and is a key tool for interacting with the back-end.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/绘图3_文献综述.jpg
+	width 70line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+Figure 3: MVVM Function Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+WeChat Applet Framework
+\end_layout
+
+\begin_layout Standard
+The WeChat applet framework is divided into two parts: the view layer (View)
+ and the logical layer (App Service).
+ The view layer is written by WXML (WeiXin Markup Language) and WXSS (WeiXin
+ Style Sheets) languages.
+ WXML language is mainly used to build the structure of applet interface
+ components, and WXSS language is mainly used to define the style of interface
+ components, which is responsible for the appearance of the applet.
+ The logic layer, also called AppService, is written by js and is responsible
+ for the behavior of the applet.
+ The logic layer processes the data and sends it to the view layer, while
+ receiving the event feedback from the view layer.
+ The view layer displays the data of the logical layer to the interface,
+ and sends the events of the view layer to the logical layer.
+ Thus, the interaction between the visual layer and the logical layer is
+ realized.
+\end_layout
+
+\begin_layout Section
+Vue Framework
+\end_layout
+
+\begin_layout Standard
+The web side mainly uses Vue framework for development.
+ Vue is a JavaScript framework for building user interfaces.
+ It is based on standard HTML, CSS and JavaScript, and provides a declarative
+ and componentized programming model to help developers develop user interfaces
+ efficiently.
+ Unlike other heavyweight frameworks, Vue adopts the design of bottom-up
+ incremental development, providing MVVM data binding and composable component
+ system, with simple and flexible APIs, through which responsive data binding
+ and composable view components can be realized.
+ Vue is one of the most widely used JavaScript frameworks in the current
+ production environment.
+ It can easily handle most web application scenarios, and hardly needs manual
+ optimization.
+ Vue is fully capable of handling large-scale applications.
+\end_layout
+
+\begin_layout Section
+SpringBoot Framework
+\end_layout
+
+\begin_layout Standard
+The server side uses the SpringBoot+MySQL technology stack.
+ In today's fast-paced and frequent IT environment, developers need various
+ effective technical frameworks to speed up the development process and
+ enable applications to respond to market changes faster.
+ The Spring Boot framework is probably the most effective.
+ It is a container-based streamlined development of the Java Spring framework,
+ allowing developers to quickly build reliable Spring applications.
+ SpringBoot is a new framework provided by the Pivotal team.
+ Its design purpose is to simplify the initial construction and development
+ process of new Spring applications.
+ 
+\end_layout
+
+\begin_layout Standard
+Spring Boot can greatly simplify the development process by arranging a
+ complete set of application components (including Web server, data source,
+ persistence layer, message bus, etc.) into a reliable application server.
+ Spring Boot also provides a lot of convenient features, such as automatic
+ configuration, data source automatic configuration, integration test support,
+ etc., which can save engineers a lot of development time and energy.
+\end_layout
+
+\begin_layout Standard
+Another advantage of Spring Boot is that it can provide rich customizable
+ components.
+ It has a powerful component and function that allows developers to build
+ various applications according to their own needs and requirements.
+ In this way, developers can more flexibly apply technical solutions to
+ different business areas.
+ In addition, Spring Boot can support large applications, and it is based
+ on automatic configuration, easy to run and maintain, without too many
+ manual settings.
+\end_layout
+
+\begin_layout Standard
+Spring Boot is a powerful framework that can provide great convenience for
+ developers, speed up development progress, support flexible application
+ requirements, and support automatic configuration of large applications,
+ making the development process more efficient, and also help developers
+ save a lot of time and energy, so that they can easily complete complex
+ development tasks.
+\end_layout
+
+\begin_layout Standard
+Spring framework is an open source application framework on the Java platform.
+ To facilitate developers to call, it integrates various functions of the
+ Spring family.
+ For example, the Spring framework has the Inversion of Control (IOC) feature.
+ IOC is designed to facilitate project maintenance and testing.
+ The Spring framework
+\begin_inset CommandInset citation
+LatexCommand cite
+key "邓笑"
+literal "false"
+
+\end_inset
+
+ has the Aspect Oriented Programming (AOP) framework, which is based on
+ the proxy mode and can be configured at runtime; AOP framework mainly aims
+ at modularization of cross-concerns between modules.
+ 
+\end_layout
+
+\begin_layout Standard
+MySQL is a relational database management system used to store various relationa
+l data of the system.
+ Relational databases store data in different tables instead of putting
+ all data in a large warehouse, which increases speed and flexibility.
+\end_layout
+
+\begin_layout Chapter
+Summary and Prospect
+\end_layout
+
+\begin_layout Standard
+The development of mobile devices and information technology makes the developme
+nt of WeChat applets more rapid, and also brings more possibilities for
+ the development of applets.
+ The small flaws in WeChat applets will also be solved in the constantly
+ updated software development technology, thus bringing a new future
+\begin_inset CommandInset citation
+LatexCommand cite
+key "蔡文洁2022"
+literal "false"
+
+\end_inset
+
+ for the reform and development of WeChat applets.
+\end_layout
+
+\begin_layout Standard
+"Employee based suggestion management system" is a suggestion management
+ system that integrates employee sign-in, suggestion release, suggestion
+ management, suggestion comment, etc., providing users with a convenient,
+ fast, transparent and efficient suggestion release and implementation environme
+nt.
+ The system will effectively improve the work efficiency of employees, administr
+ators and construction personnel, and bring huge economic benefits.
+\end_layout
+
+\begin_layout 参考文献
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref"
+options "zjutcls/gbt7714-2005"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

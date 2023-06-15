@@ -1,0 +1,945 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass zjut-report
+\options UTF-8, openingreport, englishversion
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding gbk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+!Mode:: "\SpecialChar TeX
+:UTF-8"
+\end_layout
+
+\begin_layout Plain Layout
+需要用：XeLaTex 进行编译
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告类型
+本科毕业设计开题报告
+\end_layout
+
+\begin_layout 提交日期
+2023年02月
+\end_layout
+
+\begin_layout 题目左侧距离
+15mm
+\end_layout
+
+\begin_layout 题目下划线长度
+90mm
+\end_layout
+
+\begin_layout 封面下划线长度
+17em
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "cover/cover.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 英文毕设题目
+
+\end_layout
+
+\begin_layout Chapter
+Background and Significance of the Topic
+\end_layout
+
+\begin_layout Section
+Purpose of Research and Development
+\end_layout
+
+\begin_layout Standard
+Compared with the traditional mobile app, WeChat applet is more convenient,
+ faster, more portable, no need to install, can be opened at will, does
+ not occupy the memory of the mobile phone, and is more convenient to use.
+ At the same time, the development process of WeChat is simpler and cheaper
+ than iOS applications and Android applications.
+ At the same time, the marketing cost of WeChat 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "赵文杰2018"
+literal "false"
+
+\end_inset
+
+is also very low, so enterprises of different industries and sizes will
+ have a good market prospect in the development of WeChat "small programs".
+ In order to improve the management level and efficiency of employees and
+ reduce enterprise expenses, it is urgent to design and develop a set of
+ software system that meets the actual needs of enterprise management.
+ The construction of "employee suggestion management system" 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "蔡文洁2022"
+literal "false"
+
+\end_inset
+
+will effectively promote the management of enterprises.
+\end_layout
+
+\begin_layout Standard
+(1) Improve the quality and efficiency of management.
+\end_layout
+
+\begin_layout Standard
+If there is no employee suggestion management system, it will be difficult
+ for employees to feed back their suggestions to their superiors, and it
+ is difficult for managers to fully understand and grasp the needs of employees
+ and the problems existing in the enterprise.
+ After the establishment of the staff management system, it will be able
+ to provide managers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "邓笑"
+literal "false"
+
+\end_inset
+
+with fast, accurate and comprehensive staff needs and implementation completion.
+\end_layout
+
+\begin_layout Standard
+(2) Provide a window for employees to make suggestions.
+\end_layout
+
+\begin_layout Standard
+There needs to be a window to listen to employees' suggestions.
+ If the employee suggestion management system
+\begin_inset CommandInset citation
+LatexCommand cite
+key "郭毅棋2017"
+literal "false"
+
+\end_inset
+
+ is not built, the employees' demands cannot be explained, which is neither
+ in line with the vested interests of the enterprise nor in line with the
+ needs of the employees, and hinders the enterprise from becoming bigger
+ and stronger.
+ The implementation of employee suggestion management system
+\begin_inset CommandInset citation
+LatexCommand cite
+key "陈静娴2020"
+literal "false"
+
+\end_inset
+
+ will greatly improve the management quality and efficiency of the enterprise.
+\end_layout
+
+\begin_layout Standard
+(3) Transparently and publicly show the completion
+\begin_inset CommandInset citation
+LatexCommand cite
+key "申文强"
+literal "false"
+
+\end_inset
+
+ of the proposal to enterprises
+\end_layout
+
+\begin_layout Standard
+The employee suggestion management system can clearly show the completion
+ of employee suggestions, and can also select the person in charge of the
+ implementation of each suggestion, so as to implement the content of the
+ suggestions, which is conducive
+\begin_inset CommandInset citation
+LatexCommand cite
+key "滕洋2008一种新型管理信息系统的设计与实现"
+literal "false"
+
+\end_inset
+
+ to employees' sense of identity and cohesion with the enterprise.
+\end_layout
+
+\begin_layout Section
+Research and Development Status at Home and Abroad
+\end_layout
+
+\begin_layout Standard
+In recent years, as a new light and small application, WeChat applet has
+ attracted wide attention in the market, and its specific status has also
+ become a hot topic.
+ During the weak period of the App market, small applications quickly filled
+ the gap of user demand, really connected everything, and pushed the development
+ of light applications to a new stage.
+ At the same time, various industrial sectors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "涂相华2018"
+literal "false"
+
+\end_inset
+
+around the app have also been built in the process, supporting an ecological
+ network comparable to the App market.
+ 
+\end_layout
+
+\begin_layout Standard
+The development of WeChat applets has gained a huge scale in China, and
+ has gradually
+\begin_inset CommandInset citation
+LatexCommand cite
+key "何良超0基于微信小程序的技术监督安全培训系统设计与实现"
+literal "false"
+
+\end_inset
+
+ begun to enter foreign markets, which has brought many developers and businesse
+s
+\begin_inset CommandInset citation
+LatexCommand cite
+key "柏超宇2018"
+literal "false"
+
+\end_inset
+
+ considerable economic benefits.
+ What is the status quo of research and development of WeChat applets at
+ home and abroad?
+\end_layout
+
+\begin_layout Standard
+1.
+ Domestic research and development status in China:
+\end_layout
+
+\begin_layout Standard
+WeChat applets have formed an independent development platform in China,
+ which allows developers to develop a series of meaningful applications.
+ Since 2019, the number of WeChat applets developed and operated across
+ the country has increased, especially in the new retail field, which has
+ become a new business model.
+\end_layout
+
+\begin_layout Standard
+2.
+ Current situation of research and development abroad:
+\end_layout
+
+\begin_layout Standard
+In foreign markets, due to the widespread use of WeChat, WeChat applets
+\begin_inset CommandInset citation
+LatexCommand cite
+key "李旭2018"
+literal "false"
+
+\end_inset
+
+ have also received a lot of attention abroad.
+ At present, countries such as the United Kingdom, Singapore and the United
+ States have included the development of WeChat applets, and WeChat has
+ also announced
+\begin_inset CommandInset citation
+LatexCommand cite
+key "何良超0基于微信小程序的技术监督安全培训系统设计与实现"
+literal "false"
+
+\end_inset
+
+ plans to establish WeChat applets in Hong Kong.
+ However, at present, the development of WeChat applets in foreign countries
+ is still relatively backward, and it still needs more time to promote them
+ in order to truly gain the acceptance of global users.
+\end_layout
+
+\begin_layout Chapter
+Basic Content and Objectives of Research and Development, and Main Problems
+ or Technical Keys to be Solved
+\end_layout
+
+\begin_layout Section
+Research Objectives
+\end_layout
+
+\begin_layout Standard
+On the basis of learning from many cases of WeChat applets, this paper puts
+ forward
+\begin_inset CommandInset citation
+LatexCommand cite
+key "张瑶2021"
+literal "false"
+
+\end_inset
+
+ its own design and implementation.
+ In the current situation where WeChat applets are so widely used, it aims
+ to build a WeChat applets to help enterprise employees give feedback to
+ their superiors, and enable them to handle suggestions in a timely manner,
+ so that administrators can easily manage background data.
+ The research goal of this topic is to use WeChat developer tools to implement
+ employee suggestion management system.
+\end_layout
+
+\begin_layout Section
+Basic Content of the Research
+\end_layout
+
+\begin_layout Standard
+Because of the huge structure of the whole system and the heavy workload
+ of development, the basic content of this study is not oriented to the
+ design and implementation of the whole system.
+ On the contrary, the basic content of this study is to upgrade the employee
+ management module, suggestion management module and background management
+ module
+\begin_inset CommandInset citation
+LatexCommand cite
+key "周晓磊2020"
+literal "false"
+
+\end_inset
+
+ in the employee suggestion management system.
+\end_layout
+
+\begin_layout Standard
+The main function of the employee management module is to add the sign-in
+ function and the ability to search for employee names by alphabetic sorting.
+\end_layout
+
+\begin_layout Standard
+The upgrade of the suggestion management module
+\begin_inset CommandInset citation
+LatexCommand cite
+key "刘传文2008Ajax"
+literal "false"
+
+\end_inset
+
+ is aimed at the optimization of the suggestion status, comments and content
+ modules.
+\end_layout
+
+\begin_layout Standard
+The main function of the background management module is to conduct more
+ operations based on the best suggestions.
+\end_layout
+
+\begin_layout Standard
+The specific contents of this study include:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(1) Employee Management Module
+\end_layout
+
+\begin_layout Standard
+The main functions of the employee management module are
+\end_layout
+
+\begin_layout Standard
+1.
+ Add sign-in function and sign-in reminder.
+\end_layout
+
+\begin_layout Standard
+2.
+ The personnel of each department shall add a search bar to sort and search
+ according to pinyin;
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(2) "Suggestions" Status Management
+\end_layout
+
+\begin_layout Standard
+1.
+ The suggestions are divided into the following: submission status, implementati
+on status, completion status to be confirmed, 7 days from the planned implementa
+tion deadline, and extension status.
+\end_layout
+
+\begin_layout Standard
+2.
+ When applying for extension, add the extension expiration date.
+ Then after one week in this state, it will automatically enter the "implementat
+ion" state.
+\end_layout
+
+\begin_layout Standard
+3.
+ Every step of the status change of the work proposal needs to be notified
+ to the relevant personnel;
+\end_layout
+
+\begin_layout Standard
+4.
+ When the proposed status changes, the system will automatically send a
+ reminder to relevant personnel;
+\end_layout
+
+\begin_layout Standard
+5.
+ When the work proposal is pushed to the "stage to be implemented", there
+ must be an implementer;
+\end_layout
+
+\begin_layout Standard
+6.
+ Do not submit suggestions repeatedly within 1 minute.
+\end_layout
+
+\begin_layout Standard
+7.
+ Add the best suggestion type.
+ Once it is classified as the best suggestion in the background, it can
+ be displayed on this page.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(3) "Suggestions" Comment Module
+\end_layout
+
+\begin_layout Standard
+1.
+ The person in charge of each step can send the status back to the previous
+ status and add comments/comments.
+\end_layout
+
+\begin_layout Standard
+2.
+ People in each step of status can see all comments/remarks in this status.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(4) "Suggestions" Content Management
+\end_layout
+
+\begin_layout Standard
+1.
+ When submitting suggestions, employees must upload multiple photos, and
+ the system must allow them to be viewed by sliding left and right;
+\end_layout
+
+\begin_layout Standard
+2.
+ The implementer can upload photos to support the proposed implementation.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(5) Background Management Module
+\end_layout
+
+\begin_layout Standard
+1.
+ Reminder content can be customized in the background;
+\end_layout
+
+\begin_layout Standard
+2.
+ In the report pulled out from the background, it is necessary to include
+ suggestions
+\begin_inset CommandInset citation
+LatexCommand cite
+key "丁益2018"
+literal "false"
+
+\end_inset
+
+ in all statuses (if it is construction return now, it is in the status
+ of pending approval and cannot appear in the report);
+\end_layout
+
+\begin_layout Standard
+3.
+ When a suggestion is selected as the best suggestion, the display of the
+ suggestion needs to be different from other suggestions, or a column of
+ display content is added, and the comments are the best suggestions.
+ (At present, even if washing is the best suggestion, it is no different
+ from other suggestions);
+\end_layout
+
+\begin_layout Standard
+4.
+ When selecting the best suggestion in the background, you need to add (the
+ best suggestion type, year and month options), and you can pull out the
+ best suggestion report separately;
+\end_layout
+
+\begin_layout Standard
+5.
+ Add the information notification function, that is, input the notification
+ content later and send it to all users in groups).
+\end_layout
+
+\begin_layout Standard
+6.
+ The main color of the interface is changed to Cytiva green.
+\end_layout
+
+\begin_layout Section
+Technical Difficulties to be Solved
+\end_layout
+
+\begin_layout Enumerate
+Integrated use of WXML, WXSS and JavaScript languages.
+\end_layout
+
+\begin_layout Chapter
+Research and Development Methods, Technical Routes and Steps
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(1) System Platform: Microsoft Windows 10
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(2) System Architecture: B/S Architecture
+\end_layout
+
+\begin_layout Standard
+Browser/Server Architecture is a common software architecture.
+ It is a change or improvement of the C/S structure with the rise of Internet
+ technology.
+ It uses browsers and servers to build Web applications.
+ Users can connect and browse the content on the server through browsers.
+\end_layout
+
+\begin_layout Standard
+The B/S architecture can be used to implement many common Web applications.
+ It enables communication between servers and applications to provide functions
+ and content provided on servers.
+ Some applications (such as databases and website management programs) are
+ running on the server.
+ The browser is only a window through which users can view the functions
+ and contents provided on the server.
+\end_layout
+
+\begin_layout Standard
+Advantages of B/S architecture:
+\end_layout
+
+\begin_layout Standard
+1.
+ Allows users to use Web applications to browse the content on the network
+ at a faster speed;
+\end_layout
+
+\begin_layout Standard
+2.
+ You can access the server directly through the browser
+\end_layout
+
+\begin_layout Standard
+3.
+ It can save the time and cost of installing, updating and maintaining the
+ program;
+\end_layout
+
+\begin_layout Standard
+4.
+ Make network development easier and deploy Web applications faster and
+ more accurately;
+\end_layout
+
+\begin_layout Standard
+5.
+ Content and applications can be shared between different browsers and operating
+ systems;
+\end_layout
+
+\begin_layout Standard
+6.
+ It can effectively improve network security;
+\end_layout
+
+\begin_layout Standard
+7.
+ It can reduce the delay of accessing the server;
+\end_layout
+
+\begin_layout Standard
+8.
+ It can save cloud computing resources, such as bandwidth and network traffic;
+\end_layout
+
+\begin_layout Standard
+9.
+ It can load websites faster and improve user experience.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(3) Programming Languages: WXML, WXSS, and JavaScript
+\end_layout
+
+\begin_layout Standard
+WXML (WeiXin Markup Language) is a markup language, similar to HTML, used
+ to define
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hao2018"
+literal "false"
+
+\end_inset
+
+ the layout and components of applets.
+ WXML uses labels to represent components and attributes to set the style
+ and behavior of components.
+ For example, you can use the<view>tag to represent a container component,
+ and use the class attribute to specify the style class name of the component.
+\end_layout
+
+\begin_layout Standard
+WXSS (WeiXin Style Sheets) is a style sheet language, similar to CSS, used
+ to add styles to the layout and components of applets.
+ WXSS uses selectors to match components, and uses declarations to set the
+ style properties of components.
+ For example, you can use the.
+ red-text selector to match all components 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Guo2017"
+literal "false"
+
+\end_inset
+
+with red-text class names, and use color: red; Declare to set the text color
+ to red.
+\end_layout
+
+\begin_layout Standard
+JavaScript ("JS" for short) is a lightweight, interpretive or instant-compiled
+ programming language with function priority.
+ Although it is famous as a script language
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Han2017"
+literal "false"
+
+\end_inset
+
+ for developing Web pages, it is also used in many non-browser environments,
+ such as in conjunction with WeChat applet development.
+ JavaScript is a dynamic script language based on prototype programming
+ and multiple paradigms, and supports object-oriented, imperative, declarative
+ and functional programming paradigms.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(4) Architecture Used: MVVM
+\end_layout
+
+\begin_layout Standard
+MVVM (Model View View Model) is an improved version of MVC (Model View Controlle
+r).
+ Model represents the data analysis model, in which you can define the service
+ logic for data analysis, while View represents the UI (user interface)
+ module, which can convert the data analysis model into an interface for
+ display.
+ The main function
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2016"
+literal "false"
+
+\end_inset
+
+ of ViewModel is to synchronize the process objects of View and Model.
+ MVVM is a framework for building complex applications and interfaces in
+ a complex user interface development environment.
+ It combines UI and application logic, making it easier for developers to
+ build reusable high-performance models and interfaces.
+ 
+\end_layout
+
+\begin_layout Standard
+MVVM features:
+\end_layout
+
+\begin_layout Standard
+1.
+ Support MVC mode: 
+\end_layout
+
+\begin_layout Standard
+MVVM supports MVC mode, which separates model, view and controller, thus
+ making UI extensible, maintainable and testable.
+\end_layout
+
+\begin_layout Standard
+2.
+ Easy programming: 
+\end_layout
+
+\begin_layout Standard
+MVVM makes programming easier because it introduces more advanced data binding
+ and instruction technology, and allows the use of third-party frameworks
+ and tools to complete tasks.
+\end_layout
+
+\begin_layout Standard
+3.
+ Modularization: 
+\end_layout
+
+\begin_layout Standard
+MVVM's modular feature enables the view to be divided into multiple modules,
+ so developers can modify and reuse modules more easily, thus reducing developme
+nt time and reconstruction costs.
+\end_layout
+
+\begin_layout Standard
+4.
+ Decoupling: 
+\end_layout
+
+\begin_layout Standard
+MVVM decouples the business logic and UI, making the UI more concise and
+ testable, and can use the same technology on different platforms.
+\end_layout
+
+\begin_layout Standard
+In short, MVVM is a powerful framework.
+ It supports MVC mode, makes development easier, supports modularization
+ and decoupling, and makes the whole application more concise, extensible
+ and reusable.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(5) Server Software: Tomcat
+\end_layout
+
+\begin_layout Standard
+Tomcat server is a free and open source Web application server, belonging
+ to lightweight application server.
+ It is widely used in small and medium-sized systems and where there are
+ not many concurrent users, and is the first choice for developing and debugging
+ JSP programs.
+ Because Tomcat is advanced in technology, stable in performance, and free,
+ it is deeply loved by Java enthusiasts and recognized by some software
+ developers, becoming a popular Web application server.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(6) System Development Tool: WeChat Developer Tool
+\end_layout
+
+\begin_layout Standard
+With the rapid development of mobile internet, WeChat is the most popular
+ application on smart phones.
+ WeChat developer tools are constantly developing and improving, and become
+ an important tool for more and more developers and enterprises to realize
+ rapid application development.
+\end_layout
+
+\begin_layout Standard
+WeChat developer tool is a powerful mobile application development platform
+ launched by WeChat company, mainly for WeChat applet development.
+ It not only includes the development and compilation environment for the
+ front-end development of the applet, but also provides the visual page
+ editing function, as well as the component library
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2017"
+literal "false"
+
+\end_inset
+
+ and API documents and other resources, which can help the developer to
+ quickly complete the development and release of the applet, and can also
+ provide the developer with data analysis, intelligent debugging and other
+ utility tools, which is convenient for the developer to debug and optimize
+ the applet, and also allows the developer to timely feedback problems during
+ the use process, Continuously improve and optimize the product to improve
+ the user experience of the applet.
+ At the same time, the WeChat developer tool can also manage the applet
+ code, support the multi-terminal debugging of the applet, and release the
+ applet with one click, making it easier for developers to develop and launch
+ the applet.
+\end_layout
+
+\begin_layout Standard
+WeChat developer tool is based on nw.js.
+ It uses node.js, chrome and system API to implement the underlying modules,
+ and uses front-end technical frameworks such as React and Redux to build
+ the user interaction layer, so as to realize the use of the same set of
+ code across Mac and Windows platforms.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(7) Database Software: MySQL
+\end_layout
+
+\begin_layout Standard
+MySQL is a relational database management system.
+ The relational database stores data in different tables instead of putting
+ all data in a large warehouse, which increases speed and flexibility.
+\end_layout
+
+\begin_layout Chapter
+Overall Arrangement and Schedule of Research Work
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Paper work arrangement
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/工作报告.jpg
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 参考文献
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref"
+options "zjutcls/gbt7714-2005"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

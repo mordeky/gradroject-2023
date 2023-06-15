@@ -1,0 +1,2390 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass zjut-thesis
+\begin_preamble
+
+\end_preamble
+\options UTF-8,gradthesis,englishversion
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding gbk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+!Mode:: "\SpecialChar TeX
+:UTF-8"
+\end_layout
+
+\begin_layout Plain Layout
+需要用：XeLaTex 进行编译
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 提交日期
+2023年06月
+\end_layout
+
+\begin_layout 题目左侧距离
+5mm
+\end_layout
+
+\begin_layout 题目下划线长度
+120mm
+\end_layout
+
+\begin_layout 封面下划线长度
+17em
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "cover/cover.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+
+\end_layout
+
+\begin_layout Standard
+和传统的手机APP相比，微信小程序具有方便快捷、无须安装等优势.
+ 同时，微信小程序的开发比iOS应用程序和Android应用程序的开发更简单，成本更低.
+ 本文设计并实现了一款基于微信小程序的“员工建议管理系统”，该系统旨在对公司员工的建议进行有效管理和跟踪，涉及到发起建议、审批建议、实施建议等整个建议的各个环节.
+ 主要完成了如下四个功能模块：（1）员工管理模块：主要包括签到和签到提醒功能，以及按照拼音排序和搜索在职员工的功能；（2）员工建议状态管理：建议状态主要包括：提
+交状态、实施状态、待确认完成状态、完成状态、离计划实施期限还有七天、延期状态；申请延期时，增加延期到期日期；工作建议的每一步状态变化都有通知发出给相关人员；当建
+议的状态发生变化时，系统自动发送提醒给相关人员；工作建议推到“待实施阶段”时，必须要有实施人；一分钟之内，不得反复提交建议；系统显示最佳建议列表；（3）建议评论
+模块：建议所处的每一步状态的负责人可以增加评论和备注；该建议相关状态的人都可以看到该状态的所有评论和备注内容.
+ （4）建议内容管理：员工在提交建议时，可以上传多张照片说明建议内容；实施人在建议实施完成时，能够上传照片进行佐证.
+  
+\end_layout
+
+\begin_layout Standard
+本系统主要是使用微信小程序来完成一系列的功能，前端界面的开发主要运用微信小程序框架，使用微信小程序中的WXML语言和WXSS语言来完成前端页面的总体布局，使用J
+avaScript编写实现小程序中页面的逻辑处理，用JSON文件来配置小程序的页面信息；后端开发主要使用FastAdmin框架以及ThinkPHP框架，同时运用
+后台数据库MySQL来存储数据，使得后端能够及时响应前端，也能确保与数据库进行直接的交互.
+ 
+\end_layout
+
+\begin_layout Keywords
+\labelwidthstring 关键字:
+员工建议管理系统，微信小程序，WXML，FastAdmin，ThinkPHP
+\end_layout
+
+\begin_layout Abstract~
+
+\end_layout
+
+\begin_layout Standard
+Compared with traditional mobile apps, WeChat mini programs have advantages
+ such as convenience, speed, and no need to install.
+ Meanwhile, the development of WeChat mini programs is simpler and more
+ cost-effective than the development of iOS and Android applications.
+ This article designs and implements an "Employee Suggestion Management
+ System" based on a WeChat mini program.
+ The system aims to effectively manage and track the suggestions of company
+ employees, involving the entire process of initiating, approving, and implement
+ing suggestions.
+ The following four functional modules have been completed: (1) Employee
+ management module: mainly including check-in and check-in reminder functions,
+ as well as sorting and searching for active employees based on pinyin;
+ (2) Employee suggestion status management: The suggestion status mainly
+ includes: submission status, implementation status, pending confirmation
+ completion status, completion status, seven days before the planned implementat
+ion deadline, and extension status; When applying for an extension, add
+ an extension expiration date; Notification is sent to relevant personnel
+ for every change in the status of work suggestions; When the suggested
+ status changes, the system automatically sends a reminder to relevant personnel
+; When the work proposal is pushed to the "to be implemented stage", there
+ must be an implementer; Do not repeatedly submit suggestions within one
+ minute; The system displays a list of best suggestions; (3) Suggested comments
+ module: It is recommended that the person in charge of each step of the
+ status can add comments and remarks; Anyone with a status related to this
+ suggestion can see all comments and remarks in that status.
+ (4) Suggested content management: Employees can upload multiple photos
+ to explain the suggested content when submitting suggestions; The implementer
+ can upload photos to support the completion of the proposed implementation.
+\end_layout
+
+\begin_layout Standard
+This system mainly uses WeChat mini programs to complete a series of functions.
+ The development of the front-end interface mainly uses the WeChat mini
+ program framework, using the WXML and WXSS languages in WeChat mini programs
+ to complete the overall layout of the front-end page, using JavaScript
+ to write and implement logical processing of the pages in the mini program,
+ and using JSON files to configure the page information of the mini program;
+ The backend development mainly uses the FastAdmin framework and ThinkPHP
+ framework, while also using the backend database MySQL to store data, enabling
+ the backend to respond to the front-end in a timely manner and ensuring
+ direct interaction with the database.
+\end_layout
+
+\begin_layout Keywords~
+\labelwidthstring Keywords~:
+Employee suggestion management system, WeChat mini program, WXML, FastAdmin,
+ ThinkPHP
+\end_layout
+
+\begin_layout 目录
+
+\end_layout
+
+\begin_layout 图目录
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:绪论"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Background and Significance of the Research Project
+\end_layout
+
+\begin_layout Subsection
+Project Background
+\end_layout
+
+\begin_layout Standard
+This topic comes from a project given to me by my supervisor - Upgrading
+ and Optimizing an Employee Based Suggestion Management System.
+ It is a WeChat mini program developed by the company for managing employees.
+ After logging into their account, users can make some suggestions and select
+ the corresponding approval leader and project implementer, and can check
+ whether the suggestions have been completed.
+ Correspondingly, the approver needs to approve the task, and the implementer
+ also needs to complete the suggestion.
+ The approval of the proposal and the completion status of the proposal
+ will be displayed accordingly.
+\end_layout
+
+\begin_layout Subsection
+Research Significance
+\end_layout
+
+\begin_layout Standard
+Mobile internet technology has greatly changed people's way of life.
+ People almost always carry their phones with them when they go out, and
+ WeChat is the most widely used tool
+\begin_inset CommandInset citation
+LatexCommand cite
+key "赵文杰2018"
+literal "false"
+
+\end_inset
+
+ on mobile phones, with a very large user group.
+ Until the end of 2018, WeChat had over 1 billion active users and was still
+ continuously growing.
+ And WeChat mini programs are a new software usage mode formed on the basis
+ of WeChat.
+ Users do not need to download new software and apps, but can open the applicati
+on by scanning the WeChat end of their mobile phone.
+ This can be said to effectively save the phone's memory, and at the same
+ time, users do not need to uninstall the software after use.
+ This is equivalent to implementing plug and play software based on the
+ WeChat framework, simplifying user operation steps, and helping users save
+ memory
+\begin_inset CommandInset citation
+LatexCommand cite
+key "郭毅棋2017"
+literal "false"
+
+\end_inset
+
+ and usage costs on their phones, effectively enhancing the user experience.
+ For developers, the threshold for developing WeChat mini programs
+\begin_inset CommandInset citation
+LatexCommand cite
+key "李旭2018"
+literal "false"
+
+\end_inset
+
+ is low, the difficulty is low, and there are many functions.
+ At the same time, WeChat mini programs also have many interfaces and components
+ to help
+\begin_inset CommandInset citation
+LatexCommand cite
+key "涂相华2018"
+literal "false"
+
+\end_inset
+
+ developers develop software, which is very friendly for developers.
+ Developers can associate with WeChat official account, and then jump between
+\begin_inset CommandInset citation
+LatexCommand cite
+key "柏超宇2018"
+literal "false"
+
+\end_inset
+
+ WeChat applet and WeChat official account, which can effectively meet users'
+ multiple use needs.
+ Therefore, WeChat users and enterprise developers are more willing to adopt
+ the WeChat mini program model for product development.
+\end_layout
+
+\begin_layout Standard
+Compared with traditional mobile apps, WeChat mini programs have the advantages
+ of being more convenient, fast, lightweight, no need to install, easy to
+ use, no need to occupy phone memory, and more convenient to use.
+ Meanwhile, the development process of WeChat mini programs is simpler and
+ cheaper than developing applications on iOS and Android.
+ Moreover, the cost of using WeChat marketing accounts for promoting WeChat
+ mini programs is also very low, which can greatly reduce the budget expenditure
+ for enterprise software development.
+ So, enterprises of different industries and sizes will have good market
+ prospects in using WeChat mini programs.
+ For different types of enterprises, developing WeChat mini programs will
+ lower the learning threshold for software developers, and their learning
+ costs, production costs, marketing costs, and operational costs will be
+ greatly reduced.
+ For small and micro startups, this is both an opportunity and a challenge.
+ This type of enterprise often has limited funds.
+ There is no more money or energy to support the development of large-scale
+ applications, and the emergence of WeChat mini programs can just make up
+ for the disadvantages of these enterprises.
+ This allows the company to quickly meet market demand and develop lightweight
+ WeChat mini programs that attract and meet user needs, laying a solid foundatio
+n for the company's subsequent development.
+ For software developers, due to the large number of users, high demand,
+ and low learning costs, WeChat mini programs represent
+\begin_inset CommandInset citation
+LatexCommand cite
+key "丁益2018"
+literal "false"
+
+\end_inset
+
+ another "golden age" for the developer community.
+ Developers can develop low-cost WeChat mini programs with the least time
+ and fastest speed, while also being loved by users, which is a win-win
+ situation for both parties.
+ Meanwhile, for software developers, this is also an opportunity, as users
+ will be more inclined to use WeChat mini programs that have little difference
+ in experience compared to local app software.
+ This will greatly test the skills and abilities of developers.
+ Software developers must improve the technical content of WeChat mini programs,
+ enhance user interaction interfaces, accelerate system response speed,
+ and develop WeChat mini programs that can meet higher user needs.
+\end_layout
+
+\begin_layout Section
+Current Situation at Home and Abroad
+\end_layout
+
+\begin_layout Standard
+As an emerging lightweight application based on the WeChat platform, WeChat
+ mini programs have attracted widespread attention in the market, and the
+ current status and future development of WeChat mini programs have also
+ become a hot topic.
+ During the weak period of the software application market, WeChat mini
+ programs quickly met the gaps in user demand, gained user love, and successfull
+y pushed the development of light applications into a new stage.
+ In addition, various industrial sectors of WeChat mini programs have gradually
+ been established, successfully supporting an ecological network comparable
+ to the software application market.
+ At that time, WeChat mini programs will become a traffic hub for industries
+ such as retail, e-commerce, and catering, driving a new round of reshuffle
+ among major application platforms.
+ At the same time, today's WeChat mini programs are far from reaching saturation
+ in the huge user market.
+ The demand for WeChat mini programs in several main industries such as
+ retail, life services, gaming and entertainment is still very large.
+ In the near future, I believe there will also be more WeChat mini programs
+ developed and applied in the market.
+ Experts predict that in the coming years, WeChat mini program year may
+ usher in a new round of outbreaks.
+ Research shows that WeChat mini programs have received unanimous praise
+ from users for their lightweight, fast, and user-friendly advantages.
+ A survey shows that the vast majority of users are familiar with WeChat
+ mini programs, and if they encounter good WeChat mini programs, they are
+ also very willing to share them with friends.
+ In fact, the sharing channels of WeChat apps are also gradually expanding:
+ linking to WeChat official account, making WeChat QR code links, pushing
+ WeChat apps, and so on.
+ These convenient promotion functions further improve the WeChat ecosystem.
+ At the same time, the diversified entry points of WeChat mini programs
+ are also very beneficial for the later development of WeChat mini programs,
+ as it can make it more convenient for WeChat mini programs to call API
+ interfaces of some programs, making it convenient for users to develop
+ and use.
+ Although WeChat mini programs can replace some apps, they also have shortcoming
+s.
+ The lack of key features and poor user experience are obstacles to the
+ development of WeChat mini programs.
+ Meanwhile, the development of WeChat mini programs must rely on the WeChat
+ platform, which forces developers to sacrifice some creativity to follow
+ the pace of WeChat development.
+ However, the huge user base that WeChat has is a very obvious advantage,
+ and the user-friendly WeChat mini program can use it to expand its popularity.
+\end_layout
+
+\begin_layout Section
+Main Research Content
+\end_layout
+
+\begin_layout Standard
+This topic comes from a project given to me by my supervisor - Upgrading
+ and Optimizing an Employee Based Suggestion Management System.
+ It is a WeChat mini program developed by the company for managing employees.
+ We need to upgrade and optimize this suggestion management system.
+ Firstly, you need to have a certain understanding of WeChat developer tools
+ and the basic programming language Java.
+ Secondly, you also need to have a certain foundation in the PHP language
+ and be able to use databases.
+ In this project, the backend mainly includes adding check-in and search
+ functions to the backend employee management, as well as adding group messaging
+ functions; In terms of front-end, the main focus is to improve the interactivit
+y of the WeChat mini program interface, such as adding suggested states;
+ When the implementation is completed, it is recommended to upload photos
+ as evidence; Each step of the work proposal's status change requires notificati
+on to relevant personnel, and so on.
+\end_layout
+
+\begin_layout Section
+Main Challenges
+\end_layout
+
+\begin_layout Standard
+In this section, we only introduced the main challenges that may exist in
+ the employee suggestion management system.
+ This does not mean that we must solve all these problems in our own system.
+\end_layout
+
+\begin_layout Standard
+1.
+ How to upload photos to support the completion of the proposed implementation
+ by the implementer.
+\end_layout
+
+\begin_layout Standard
+2.
+ How to add check-in function and how to provide check-in reminders.
+\end_layout
+
+\begin_layout Standard
+3.
+ How to add search columns to members of various departments and be able
+ to search and sort according to pinyin.
+\end_layout
+
+\begin_layout Standard
+4.
+ How to ensure that there must be an implementer when the work proposal
+ is pushed to the implementation stage.
+\end_layout
+
+\begin_layout Standard
+5.
+ When selecting a suggestion as the best suggestion, how to display the
+ best suggestion and how to display the best suggestion report.
+\end_layout
+
+\begin_layout Standard
+6.
+ How to send a group of information to all users.
+\end_layout
+
+\begin_layout Standard
+7.
+ How to solve version incompatibility of the database system.
+\end_layout
+
+\begin_layout Section
+Structure Arrangement of the Paper
+\end_layout
+
+\begin_layout Standard
+The chapters of the paper are arranged as follows:
+\end_layout
+
+\begin_layout Standard
+Chapter 1: Introduction.
+ The introduction section of Chapter 1 mainly introduces the project background,
+ research significance, domestic and international current situation, main
+ research content, and main challenges encountered.
+ Finally, the organizational structure of the entire article is provided.
+\end_layout
+
+\begin_layout Standard
+Chapter 2: Related Work.
+ The relevant work section of Chapter 2 mainly introduces some technical
+ methods, corresponding software, and frameworks required for developing
+ an employee suggestion management system.
+\end_layout
+
+\begin_layout Standard
+Chapter 3: System Design.
+ The third chapter of system design mainly introduces some of the system
+ design, including overall structural design and functional structural design,
+ and describes the general module framework of the system.
+ At the same time, some requirements of the system are analyzed, including
+ functional requirements and non-functional requirement.
+ Next, the context of the entire system was analyzed, listing the relevant
+ external systems and the scope of users involved.
+ Finally, four features of the whole system are designed and described,
+ and Use Case Diagram is used to show the content of each feature.
+\end_layout
+
+\begin_layout Standard
+Chapter 4: System Display.
+ The system display section in Chapter 4 mainly introduces the front-end
+ and back-end interfaces of the employee suggestion management system, and
+ provides a detailed explanation of the corresponding graphics.
+ The front-end is mainly divided into 5 modules: viewing task module, approving
+ task module, proposing suggestions module, personal information module,
+ and browsing module.
+ The backend is mainly divided into 6 modules: permission management module,
+ user management module, department management module, suggestion management
+ module, check-in management module, and message management module.
+ Each interface has good interactivity and is easy to operate.
+\end_layout
+
+\begin_layout Standard
+Chapter 5: Summary and Outlook.
+ Chapter 5 Summary and Outlook mainly summarizes the content of this article
+ and points out areas for further improvement in the employee based suggestion
+ management system.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+This chapter mainly introduces the basic background of project research,
+ some significance of project research, the basic status of WeChat mini
+ program development at home and abroad, the main content that needs to
+ be studied in WeChat mini program development, and some main challenges
+ encountered in the development process.
+ Finally, the organizational structure of the entire article is provided.
+\end_layout
+
+\begin_layout Chapter
+Related Work
+\end_layout
+
+\begin_layout Section
+Project Related Technologies
+\end_layout
+
+\begin_layout Subsection
+Programming Language：WXML 、WXSS 、 JavaScript and PHP
+\end_layout
+
+\begin_layout Standard
+In the front-end development project, I mainly used WXML, WXSS, JavaScript
+ and other languages.
+ In the back-end development project, I mainly used PHP language to implement
+ the project content.
+\end_layout
+
+\begin_layout Standard
+WXML (WeiXin Markup Language) is a markup language, similar to HTML, used
+ to define the layout and components of small programs.
+ WXML uses tags to represent components and attributes to set their style
+ and behavior.
+ For example, a<view>tag can be used to represent a container component,
+ and a class attribute can be used to specify the style class name of the
+ component.
+\end_layout
+
+\begin_layout Standard
+WXSS (WeiXin Style Sheets) is a style sheet language, similar to CSS, used
+ to add styles to the layout and components of applets.
+ WXSS uses selectors to match components and declarations to set the style
+ properties of components.
+ For example, you can use the.
+ red text selector to match all components with red text class names, and
+ use color: red; Declare to set the text color to red.
+\end_layout
+
+\begin_layout Standard
+JavaScript is a very popular scripting language on the Internet, often used
+ in HTML and web pages.
+ It can also be widely used in devices such as servers, personal computers,
+ laptops, tablets, and mobile phones.
+ JavaScript is a programming language with function priority, characterized
+ by lightweight, interpretive, or real-time compilation.
+ Although it is known as a scripting language for developing web browser
+ pages, it has also been used in many other places, such as in non browser
+ environments such as in conjunction with WeChat mini program development.
+ JavaScript is a dynamic scripting language based on prototype programming
+ and multiple paradigms, and JavaScript supports object-oriented development
+ and other patterns.
+\end_layout
+
+\begin_layout Standard
+PHP, also known as the "Hypertext Preprocessor", is a scripting language
+ that executes on the server side.
+ PHP is well suited for web development and can be embedded in HTML.
+ The PHP language has learned and borrowed from the C language, absorbed
+ the characteristics of multiple languages such as Java and Perl, and developed
+ its own unique syntax.
+ It has continuously improved and improved itself based on their strengths,
+ such as object-oriented programming in Java.
+ The main goal of this language was to enable developers to quickly write
+ high-quality web sites.
+ PHP supports both object-oriented
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Han2017"
+literal "true"
+
+\end_inset
+
+ and process oriented development, making it very flexible to use.
+\end_layout
+
+\begin_layout Subsection
+MVVM
+\end_layout
+
+\begin_layout Standard
+MVVM is an improved version of MVC.
+ The full name of MVVM is Model View View Model.
+ Model is a data analysis model, in which users can define some logic for
+ data analysis.
+ The View module represents the user interface module, which can convert
+ the data analysis model to the interface for display.
+ The main function of ViewModel is to synchronize
+\begin_inset CommandInset citation
+LatexCommand cite
+key "周晓磊2020"
+literal "true"
+
+\end_inset
+
+ and coordinate the connections between View and Model.Under the MVVM framework,
+ because there is no direct communication between the View module and the
+ Model module, it is necessary to use the intermediate system ViewModel
+ module to achieve interaction between the two and achieve communication.
+ However, due to the mutual communication between the Model module and the
+ ViewModel module, as well as between the View module and the ViewModel
+ module, the instantaneous changes in the messages of the View module will
+ be immediately reflected in the Model module.
+ Similarly, changes in the content of the Model module will also be immediately
+ reflected in the View module.
+ The information synchronization operation between the View module and the
+ Model module can be achieved independently through the mvvm framework.
+ In an environment without human intervention, developers do not need to
+ consider the issues between operation logic, thus greatly simplifying the
+ development process
+\begin_inset CommandInset citation
+LatexCommand cite
+key "赵素萍2022"
+literal "true"
+
+\end_inset
+
+ and reducing development difficulty for developers.As shown in Figure 2.1.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/mvvm功能图.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+MVVM Functional Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+WeChat Mini Program Framework
+\end_layout
+
+\begin_layout Standard
+In this project, the WeChat mini program framework is used in the front-end,
+ which is the WeChat mini program side.
+\end_layout
+
+\begin_layout Standard
+The framework of WeChat mini programs is divided into two parts: one is
+ the view layer, and the other is the logic layer.
+ The view layer is also known as the view layer, and the logical layer is
+ also known as the App Service layer.
+ The view layer, also known as the View layer, is written in both the WXML
+ and WXSS languages.
+ The WXML language is mainly similar to the HTML structure of web pages
+ and is often used to build component content for WeChat mini program interfaces.
+ The WXSS language is similar to the CSS structure of web pages and is often
+ used to modify the style of interface components, usually used to modify
+ the appearance of mini programs.
+ The logic layer is mainly composed of JavaScript scripts, responsible for
+ the logic and actions of WeChat mini programs.
+ The logical layer will process the data and send it to the view layer through
+ some methods, while also receiving feedback from the view layer.
+ The view layer displays the data sent by the logical layer to the interface,
+ and then sends the events required by the view layer to the logical layer.
+ This enables the interaction
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Guo2017"
+literal "true"
+
+\end_inset
+
+ between the visual layer and the logical layer.
+ As shown in Figure 2.1.
+\end_layout
+
+\begin_layout Standard
+The WeChat mini program mainly includes several app files that describe
+ the overall program and multiple page files that describe each page.
+ The main body of a small program is divided into three files, all of which
+ must be placed in the root directory of the project, namely app.
+ js, app.
+ json, and app.
+ wxss.
+ The app.js file is a mini program logic file that can define global data
+ variables and some function files.
+ It can globally configure WeChat mini programs.
+ The app.js determines multiple issues such as the path of the page file,
+ setting of network timeout time, and setting of multiple tabs; And app.json
+ is the settings file for the mini program, serving the global.
+ app.wxss is the mini program style sheet, also serving the global, and takes
+ effect on all pages.
+ If users do not want the style of the global variable, they can also modify
+ it in the wxss file
+\begin_inset CommandInset citation
+LatexCommand cite
+key "何良超0基于微信小程序的技术监督安全培训系统设计与实现"
+literal "true"
+
+\end_inset
+
+ on their own page, and the wxss style on the page will overwrite the style
+ of the global variable.
+\end_layout
+
+\begin_layout Standard
+A mini program page consists of four files, namely wXML, wxss, js, and JSON
+ files.
+ The wXML file is the page structure layer, which is used for page layout.
+ The wxss file is the page style layer, which can better adjust the page
+ style.
+ The js file is the page logic layer, which is responsible for implementing
+ some logical methods of the page.
+ The JSON file is the page configuration layer, which is mainly used to
+ configure some basic properties of the page, This page is not mandatory.
+ These four files must have the same path and file name, which means they
+ must be in the same directory on the same layer.
+ And each WeChat mini program page can also use a.
+ json file with the same name to configure some properties of this page.
+ The file properties
+\begin_inset CommandInset citation
+LatexCommand cite
+key "陈静娴2020"
+literal "true"
+
+\end_inset
+
+ configured on the page will overwrite the same global configuration file
+ in app.
+ json.
+\end_layout
+
+\begin_layout Subsection
+Vue and ElementUI Component Libraries
+\end_layout
+
+\begin_layout Standard
+In this project, I used the Vue.js framework to implement the front-end interface
+ at the check-in end.
+ In order to quickly develop and improve the elegance of the interface,
+ I used the ElementUI toolkit to assist in development.
+\end_layout
+
+\begin_layout Standard
+Vue is a progressive framework for building user interfaces.
+ The Vue framework differs from other large frameworks in that it can be
+ applied layer by layer from the bottom up during design.
+ Vue's core library only focuses on visual layers, which makes it easy for
+ developers to get started with development and effectively integrate with
+ third-party libraries or existing projects.
+ On the other hand, Vue can also provide support
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2016"
+literal "true"
+
+\end_inset
+
+ for complex single page applications by combining some modern toolchains
+ and supported class libraries.
+\end_layout
+
+\begin_layout Standard
+Element is a desktop component library based on Vue2.0.
+ It was developed by the front-end team of Hunger Mo and has been used and
+ validated in a large number of daily businesses, with good stability and
+ availability.
+ ElementUI can provide beautiful and reliable desktop components that are
+ convenient for users to call.
+ At the same time, it also implements complete design specifications and
+ emphasizes a strong user experience.
+\end_layout
+
+\begin_layout Standard
+The Element adopts a modular design concept, which is very flexible and
+ can be easily integrated into your project.
+ It includes components such as table beasts, dan period, navigation, layout,
+ and more complex components such as prompt boxes, pop-up windows, menus,
+ and pagination.
+\end_layout
+
+\begin_layout Subsection
+Backend Front-end Framework: Fast Admin
+\end_layout
+
+\begin_layout Standard
+In this project, I used the Fast Admin framework for the front-end interface
+ of the backend.
+ You only need to create tables in the database according to certain naming
+ rules, and then use the one click CRUD function to quickly complete the
+ backend add, delete, modify, and query functions.
+\end_layout
+
+\begin_layout Standard
+FastAdmin is an open-source backend framework based on PHP+Bootstrap, using
+ the Apache 2 commercial friendly open source protocol.
+ It is open source and can be used for free commercial use without the need
+ for separate authorization.
+\end_layout
+
+\begin_layout Standard
+And the FastAdmin framework supports one click generation of CRUDs, which
+ can automatically generate controllers, models, views, JS, language packs,
+ menus, recycling bins, and more based on the data table.
+\end_layout
+
+\begin_layout Subsection
+PHP Framework: ThinkPHP
+\end_layout
+
+\begin_layout Standard
+In this project, I used the ThinkPHP framework in the backend to achieve
+ some interaction with the front-end and access to the database based on
+ PHP.
+\end_layout
+
+\begin_layout Standard
+ThinkPHP has excellent performance and rich features.
+ It is a lightweight, object-oriented PHP rapid development framework that
+ can support server environments such as Windows, Linux, and Unix, as well
+ as multiple databases such as MySQL, Sqlite, and PgSQL.
+ It has good usability and interactivity.
+\end_layout
+
+\begin_layout Subsection
+PHPStudy
+\end_layout
+
+\begin_layout Standard
+PhpStudy is a user-friendly PHP debugging environment, which is a program
+ integration package for PHP debugging environment.
+ This package includes many things such as Apache, PHP, MySQL, phpMyAdmin,
+ ZendOptimizer, etc.
+ It can be installed at once and can be used without additional configuration,
+ making it very convenient to use.
+ At the same time, in addition to the PHP debugging environment, the program
+ also includes development tools, development manuals, etc., making it easy
+ for users to view and use.
+ Extremely friendly to both novice and experienced users.
+\end_layout
+
+\begin_layout Subsection
+Front-end Development Software: WeChat Developer Tool
+\end_layout
+
+\begin_layout Standard
+In this project, the WeChat developer tool is used on the front-end, which
+ is the WeChat mini program side.
+ It can help you achieve interface design and some event handling JavaScript
+ scripts on the front-end.
+\end_layout
+
+\begin_layout Standard
+At the development language level, the WeChat developer tool is not significantl
+y different from traditional languages on the internet.
+ The WeChat developer tool uses JavaScript scripts to write logical code,
+ while also using the WXML language to describe the structure of the page,
+ and using the WXSS language to describe the style of nodes.
+ However, this is because the small program differs from traditional web
+ pages in terms of interface rendering and logical operation, So traditional
+ web development and debugging tools cannot be used.
+ Therefore, we usually use WeChat developer tools to improve the code developmen
+t function, compilation and operation function, interface design and logic
+ debugging, real machine preview function, and submission and release version
+ of WeChat mini programs.
+\end_layout
+
+\begin_layout Subsection
+Backend Development Software: PHPStorm
+\end_layout
+
+\begin_layout Standard
+In this project, I used PHPStrom software for backend development.
+\end_layout
+
+\begin_layout Standard
+PhpStorm is a tool developed by JetBrains for PHP integrated development.
+ It can effectively improve user development efficiency, deeply understand
+ user code, provide code completion function, fast navigation function,
+ and error checking function.
+ At the same time, it can also assist users in adjusting their code at any
+ time, providing unit testing or visual debugging functions.
+\end_layout
+
+\begin_layout Subsection
+Database Software: Navicat
+\end_layout
+
+\begin_layout Standard
+In this project, the database software I used was Navicat software.
+\end_layout
+
+\begin_layout Standard
+Navicat software is a database management tool that can create multiple
+ database connections.
+ It supports a variety of different types of databases and allows users
+ to easily manage various types of databases such as MySQL, Oracle, SQLite,
+ MariaDB, PostgreSQL, SQL Server, and MongoDB.
+ It is also compatible with Alibaba Cloud, Tencent Cloud, Huawei Cloud,
+ Microsoft Azure, Amazon Aurora, Amazon Redshift, Amazon RDS, etc Oracle
+ Cloud and MongoDB Atlas are compatible with various cloud databases.
+ In Navicat software, you can create, manage, and maintain databases.
+ The functions of Navicat software can meet the needs of all developers,
+ and it also has good interface interaction ability, making it very simple
+ and easy to operate for database server beginners.
+ Navicat's user interface design is excellent, allowing you to quickly create
+ and access information in a very secure and simple way.
+ At the same time, Navicat provides customers with up to 7 languages to
+ choose from, making it recognized as the world's most popular database
+ front-end user interface tool.
+\end_layout
+
+\begin_layout Subsection
+Database System: MySQL
+\end_layout
+
+\begin_layout Standard
+In this project, the database system used is the MySQL database.
+\end_layout
+
+\begin_layout Standard
+MySQL is a relational database management system, which is developed by
+ the Swedish company MySQL AB and is a product of Oracle.
+\end_layout
+
+\begin_layout Standard
+The MySQL database uses the SQL language, which is a standardized language
+ for accessing databases and is also the most commonly used language by
+ people.
+ Due to its small size, fast speed, and low cost, especially open source,
+ most small and medium-sized websites choose MySQL as their database for
+ development.
+ This also makes MySQL database one of the most popular relational database
+ management systems in the world today.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+This chapter mainly introduces some technical methods involved in developing
+ an employee suggestion management system, the corresponding software used
+ during development, and the basic framework for development.
+\end_layout
+
+\begin_layout Chapter
+System Design and Analysis
+\end_layout
+
+\begin_layout Section
+Research Objectives
+\end_layout
+
+\begin_layout Standard
+Based on learning from many cases of WeChat mini programs, I propose my
+ own design and implementation.
+ In the current situation where WeChat mini programs are widely used, the
+ aim is to build a WeChat mini program to help enterprise employees provide
+ good feedback and suggestions to superiors, and enable superiors to handle
+ suggestions in a timely manner, making it convenient for administrators
+ to manage backend data.
+ The research goal of this project is to use WeChat developer tools to implement
+ an employee suggestion management system.
+ Due to the large structure and functions of the entire employee suggestion
+ management system, the workload during development, and some functions
+ are already quite complete, the basic content of this study is not about
+ the implementation of the entire management system.
+ On the contrary, the basic content of this study is to upgrade and optimize
+ the front-end and back-end modules of the suggestion management system.
+\end_layout
+
+\begin_layout Section
+Overall System Structure Design
+\end_layout
+
+\begin_layout Standard
+Overall, the system can be divided into two modules: a front-end module
+ that only employees can access, namely the WeChat mini program side, and
+ a back-end module that only administrators can log in, namely the web server
+ side.
+ As shown in Figure 3.1.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/系统总体结构设计图.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+System overall structure design diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+System Functional Structure Design
+\end_layout
+
+\begin_layout Subsection
+Front-end Module Design
+\end_layout
+
+\begin_layout Standard
+The functions of the front-end module include the view task module, approval
+ task module, suggestion module, personal information module, and browsing
+ module, as shown in Figure 3.2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/前端功能模块图.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Front end functional module diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Backend Module Design
+\end_layout
+
+\begin_layout Standard
+The backend module mainly includes permission management module, user management
+ module, department management module, suggestion management module, check-in
+ management module, and message management module, as shown in Figure 3.3.
+ The upgrade of the employee based WeChat mini program mainly includes the
+ addition of some content in the check-in management module, some content
+ in the message management module, and the improvement of the user management
+ module.
+ The main function of the check-in management module is to view the check-in
+ status of employees; The main function of the message management module
+ is to edit the content of the group post and then send it to all employees
+ in the group; The main function of the user management module is to manage
+ users.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/后端功能模块图.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Backend functional module diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Requirements Analysis
+\end_layout
+
+\begin_layout Standard
+In order to better apply the system to practical applications, this article
+ also analyzed the project requirements before designing the system, and
+ divided them into functional requirements and non functional requirements.
+\end_layout
+
+\begin_layout Subsection
+Functional Requirements
+\end_layout
+
+\begin_layout Standard
+1.
+ Add check-in function and check-in reminder.
+\end_layout
+
+\begin_layout Standard
+2.
+ Each department's personnel should add a search bar, sort and search according
+ to pinyin.
+\end_layout
+
+\begin_layout Standard
+3.
+ The recommended status is divided into the following states: submission
+ status, implementation status, pending confirmation completion status,
+ 7 days before the planned implementation deadline, and extension status.
+\end_layout
+
+\begin_layout Standard
+4.
+ When applying for an extension, add an extension expiration date.
+ After being in this state for one week, it automatically enters the "Implementa
+tion in Progress" state.
+\end_layout
+
+\begin_layout Standard
+5.
+ Every change in the status of work suggestions needs to be notified to
+ relevant personnel;
+\end_layout
+
+\begin_layout Standard
+6.
+ When the suggested status changes, the system automatically sends a reminder
+ to relevant personnel;
+\end_layout
+
+\begin_layout Standard
+When the work proposal is pushed to the "to be implemented stage", there
+ must be an implementer;
+\end_layout
+
+\begin_layout Standard
+8.
+ Do not submit suggestions repeatedly within 1 minute.
+\end_layout
+
+\begin_layout Standard
+9.
+ Add the best suggestion type, which can be displayed on this page once
+ it is classified as the best suggestion in the background.
+\end_layout
+
+\begin_layout Standard
+10.
+ When submitting suggestions, employees must upload multiple photos, and
+ the system must allow them to be scrolled left and right for viewing;
+\end_layout
+
+\begin_layout Standard
+11.
+ The person in charge of each status step can return the status to the previous
+ status and add comments/comments.
+\end_layout
+
+\begin_layout Standard
+12.
+ People in each step of the status can see all comments/remarks in that
+ status.
+\end_layout
+
+\begin_layout Standard
+13.
+ The implementer can upload photos to support the completion of the proposed
+ implementation.
+\end_layout
+
+\begin_layout Standard
+14.
+ The backend can customize the reminder content;
+\end_layout
+
+\begin_layout Standard
+15.
+ In the report pulled out by the backend, it is necessary to include suggestions
+ for all statuses (if it is currently a construction return and is pending
+ approval, it cannot appear in the report);
+\end_layout
+
+\begin_layout Standard
+16.
+ When selecting a suggestion as the best suggestion, the display of the
+ suggestion should be different from other suggestions, or a column should
+ be added to display the content, with a note indicating the best suggestion.
+ (Currently, even if washing is the best suggestion, there is no difference
+ from other suggestions);
+\end_layout
+
+\begin_layout Standard
+17.
+ When selecting the best suggestion in the background, it is necessary to
+ add (the selection items for the best suggestion type, year, and month),
+ and the best suggestion report can be pulled out separately;
+\end_layout
+
+\begin_layout Standard
+18.
+ Add information notification function, which means that the notification
+ content can be input later and sent to all users in groups.
+\end_layout
+
+\begin_layout Standard
+19.
+ Change the main color tone of the interface to Cytova green.
+\end_layout
+
+\begin_layout Subsection
+Non-functional Requirement
+\end_layout
+
+\begin_layout Standard
+1.
+ The entire system requires simple operation, beautiful interface, and easy
+ for users to use.
+\end_layout
+
+\begin_layout Standard
+2.
+ The process of users submitting suggestions should be very convenient.
+ Users should be able to quickly and accurately submit their suggestions
+ without any computer foundation, and successfully select the approver and
+ implementer they want.
+\end_layout
+
+\begin_layout Standard
+3.
+ The interface should have good interactivity, and each action of the user
+ should have corresponding responses.
+\end_layout
+
+\begin_layout Standard
+4.
+ The system should have good security to ensure that user data is not leaked.
+\end_layout
+
+\begin_layout Section
+Design of Limiting Conditions
+\end_layout
+
+\begin_layout Standard
+1.
+ When the work proposal is pushed to the "to be implemented stage", there
+ must be an implementer
+\end_layout
+
+\begin_layout Standard
+2.
+ Do not repeatedly submit suggestions within 1 minute
+\end_layout
+
+\begin_layout Section
+System Context
+\end_layout
+
+\begin_layout Standard
+In order to better analyze the structure of the entire system, we have drawn
+ a context diagram of the system, as shown in Figure 3.4.
+ This figure includes recommended management systems, users, and servers.
+\end_layout
+
+\begin_layout Subsection
+User
+\end_layout
+
+\begin_layout Standard
+The main users in my system are employees of the company.
+ Employees can be the proposers of suggestions, provide them with pictures
+ to support them, and also view the approval and completion status of the
+ suggestions.
+ At the same time, employees can also be approvers, approving tasks submitted
+ to them by others, and selecting task implementers.
+ At the same time, employees can also be task implementers.
+ If someone posts a task for you to complete, you can complete the task
+ within the specified time and provide feedback on the completion status
+ of the task.
+ At the same time, employees can also view personal information and complete
+ daily check-in and other tasks.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/系统上下文.jpg
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+System Context Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Server
+\end_layout
+
+\begin_layout Standard
+The server is an external system of the employee suggestion management system.
+ The database inside the server provides data support for the mini program,
+ and the backend server also has a series of functions, mainly including
+ permission management, department management, user management, suggestion
+ management, check-in management, message management, and so on.
+ This upgrade and optimization of the employee suggestion management system
+ mainly includes the addition of a message management module, a check-in
+ management module, and an improved user management module.
+ In the message management module, I mainly added the function of sending
+ group messages.
+ Administrators can add group messages and send them to every employee.
+ If they feel that the message is not suitable, they can also withdraw and
+ delete the message.
+ In the check-in management module, I have mainly added a check-in function,
+ where employees can check in on the mini program, and administrators can
+ also view the check-in status of employees on the backend interface.
+ In the user management module, I mainly added the function of user query.
+ Administrators can click the query button to query.
+ To ensure the convenience of the query, I have set up ID query, department
+ query, username query, pinyin query, SSO number query, mobile number query,
+ and audit status query.
+ Each query can be individually queried for matching users, making it easier
+ for administrators to quickly find the employees they are looking for.
+ The review status includes three states: being reviewed, approved, and
+ rejected.
+ This allows administrators to quickly find the personnel they want to review
+ and promptly remedy any audit rejections caused by careless errors.
+\end_layout
+
+\begin_layout Section
+Suggestion Management System
+\end_layout
+
+\begin_layout Standard
+In order to better analyze the structure of the whole system, I drew a Use
+ Case Diagram of the system, as shown in Figure 3.5.
+ The system is based on a backend database and mainly includes several different
+ functional modules, including suggestions, approvals, tasks, and personal
+ information.
+ Next, we use Use Case Diagram to introduce the different functions of each
+ module.
+\end_layout
+
+\begin_layout Subsection
+Suggestion Module
+\end_layout
+
+\begin_layout Standard
+The suggestion module is generally divided into two parts, one is to provide
+ suggestions, and the other is to view records.
+ The suggestion module allows employees to provide suggestions.
+ Employees need to choose the appropriate approval department and approver,
+ and then they can state the detailed content of the suggestions and improvement
+ plans, and upload images to support them.
+ The viewing record module is divided into three parts, namely my suggestions,
+ confirmation of completion, and best suggestions.
+ In my suggestion and confirmation completion module, employees can easily
+ view a series of suggestions they have previously proposed and some completed
+ suggestions.
+ In the Best Suggestions module, employees can view a series of employee
+ best suggestions published by the administrator, and click to view the
+ detailed content of the best suggestions.
+\end_layout
+
+\begin_layout Subsection
+Approval Module
+\end_layout
+
+\begin_layout Standard
+The approval module is generally divided into two parts, namely approval
+ and viewing records.
+ The approval module allows employees to perform approval operations.
+ Once the employee becomes the approver of a task, the content that needs
+ to be approved will appear in this module.
+ The employee needs to choose whether to approve the suggestion, and if
+ it cannot be resolved, it will be transferred to the second level approver.
+ If approved, it is necessary to select the implementer, as well as the
+ start and end time of the implementation, and also provide some approval
+ suggestions.
+ The view record module is divided into two parts, namely the approved module
+ and the confirmed completed module.
+ In the approved module, you can view some of the approved content.
+ In the confirmation completion module, you can learn about the task completion
+ status of the suggested implementer.
+\end_layout
+
+\begin_layout Subsection
+Task Module
+\end_layout
+
+\begin_layout Standard
+The task module allows employees to view tasks.
+ This module can be divided into three parts: to-do tasks, ongoing tasks,
+ and completed tasks.
+ Employees can see the tasks to be completed in the to-do module; Seeing
+ ongoing tasks in the ongoing task module to avoid forgetting; In the completed
+ task module, you can see some tasks that have already been completed.
+\end_layout
+
+\begin_layout Subsection
+Personal Information Module
+\end_layout
+
+\begin_layout Standard
+The personal information module is generally divided into two parts: check-in
+ and viewing information.
+ In the check-in module, employees can perform check-in operations.
+ In the viewing information module, if an employee has not yet signed in
+ today, they will receive a check-in reminder; Employees can also view the
+ approval results and notifications of their proposed suggestions; You can
+ also see messages sent by administrators to all users in groups; You can
+ also view and modify employees' personal details, or switch accounts.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/用例图.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Use Case Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+This chapter mainly introduces some of the overall design of the system,
+ including overall structural design and functional structural design, and
+ then describes the content of the different modules of the system.
+ Then it analyzes some requirements of the suggestion management system,
+ including functional requirements and non-functional requirement.
+ Next, the context of the entire system was analyzed, listing the relevant
+ external systems and the scope of users involved.
+ Finally, four features of the whole system are designed and described,
+ and Use Case Diagram are used to show the basic contents of different features.
+\end_layout
+
+\begin_layout Chapter
+System Demonstration
+\end_layout
+
+\begin_layout Section
+Interface Overview
+\end_layout
+
+\begin_layout Standard
+The implementation technology of the employee suggestion management system
+ is very rich, so choosing the appropriate technology to implement the system
+ is also a very important content.
+ Because if the chosen technology is not appropriate, it will also cause
+ some trouble to the implementation system, and it is more likely to affect
+ the system's performance.
+ This chapter mainly introduces the interface of an employee based suggestion
+ management system.
+ The system consists of two parts: a front-end system implemented by WeChat
+ mini programs, and a web back-end system built using Vue.js and PHP.
+ At the same time, in order to achieve a more elegant and concise interface,
+ we used element UI tools to assist in web development.
+ The front-end interface includes a viewing task module, an approval task
+ module, a suggestion module, and a personal information module; The backend
+ interface mainly includes permission management module, user management
+ module, department management module, suggestion management module, check-in
+ management module, and message management module.
+ All interfaces are highly interactive and elegant.
+ The system is designed to be easy to operate, allowing users to easily
+ operate each functional module without any computer knowledge.
+ The following section will explain several important interfaces from the
+ front and back ends.
+\end_layout
+
+\begin_layout Section
+Front end module
+\end_layout
+
+\begin_layout Standard
+The functions of the front-end module include the view task module, approval
+ task module, suggestion module, personal information module, and browsing
+ module.
+\end_layout
+
+\begin_layout Subsection
+View Task Module
+\end_layout
+
+\begin_layout Standard
+This functional module has three parts, namely to-do tasks, ongoing tasks,
+ and completed tasks.
+ As shown in Figure 4.1.
+ If someone makes a suggestion and you are the person who needs to complete
+ it, then the suggestion will be displayed in your to-do list.
+ The to-do tasks will be listed in chronological order according to the
+ suggested release time.
+ You can see all the to-do tasks you need to complete, and you can click
+ into the to-do tasks to view detailed task items, including who proposed
+ the suggestion, the completion status of the task, and the detailed content
+ of the task.
+ The ongoing tasks and completed tasks are the same.
+ You can click into each section to view the ongoing tasks and some completed
+ tasks.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/任务.jpg
+	width 40text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+View task module diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approval Task Module
+\end_layout
+
+\begin_layout Standard
+This functional module also has three parts, namely pending approval, approved,
+ and confirmed.
+ As shown in Figure 4.2.
+ When a person puts forward a suggestion and selects you as the approver,
+ the task will enter your pending approval task.
+ The tasks to be approved will also be listed in chronological order, where
+ you can see all the approval content you need to complete, and you can
+ click in the "Pending Approval" section to view the detailed approval content.
+ The same goes for approved tasks.
+ When you have approved a task, it will be transferred to the approved content.
+ In the confirmation completion section, when the implementer, who is the
+ person responsible for completing the task, completes the approved task,
+ the task will be transferred to the confirmation completion interface.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/审批.jpg
+	width 40text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Approval Task Module Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Suggestion Module
+\end_layout
+
+\begin_layout Standard
+This module has four parts: New Writing Suggestions, My Suggestions, Confirmed
+ Completion, and Best Suggestions.
+ In the new suggestion section, as shown in Figure 4.3, you can provide suggestio
+ns.
+ Suggestions are divided into three categories: safety, quality, and lean.
+ You can choose the appropriate suggestion classification.
+ Next, you can select the corresponding approval department and approver
+ to approve your suggestion.
+ You can list the detailed content and improvement plan of the suggestion,
+ and upload multiple images to support it.
+ In my suggestions section, you can see all the suggestions you have made
+ in the past.
+ In the confirmation completion section, you can see whether the suggestions
+ you have proposed have been completed.
+ If they have been completed, they will be displayed in the confirmation
+ completion interface.
+ In the Best Suggestions section, you can see a series of best suggestions
+ set by the administrator in the background.
+ This best suggestion is publicly available to everyone, and every employee
+ can see the best suggestions.
+ You can click to enter this section to view the specific content of the
+ best suggestions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/建议.jpg
+	width 40text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Suggestion module diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Personal Information Module
+\end_layout
+
+\begin_layout Standard
+This module has six parts, namely check-in, messages, system messages, to-do
+ events, personal information, and account switching.
+ As shown in Figure 4.4.
+ In the check-in section, you can click on check-in, and the system will
+ display that you have successfully signed in.
+ The backend database will also record your check-in and the time you signed
+ in.
+ In the message section, you can see a series of message notifications sent
+ to you by others.
+ In the system message section, the group message content edited by the
+ administrator in the backend database will be sent to all employees, and
+ this message will be displayed in the system message interface.
+ When you enter the to-do list, if you have not yet signed in today, the
+ system will display that you have not signed in today, reminding you to
+ proceed with the check-in work.
+ If there are no unfinished events, the system will remind you that there
+ are currently no to-do lists.
+ In the personal information interface, you can see your detailed personal
+ information, including name, SSO number, department, and phone number.
+ In the account switching interface, you can perform a series of operations
+ such as logging out, logging in to another account, registering a new account,
+ or clicking on 'forget password' to reset the password.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/个人信息.jpg
+	width 40text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Personal Information Module Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Browsing Module
+\end_layout
+
+\begin_layout Standard
+In the browsing module, which is the homepage section of the WeChat mini
+ program.
+ As shown in Figure 4.5.
+ You can see the latest notifications released by the administrator through
+ the backend, and you can also click in to view the corresponding content.
+ At the same time, you can also see the latest updates of other employees.
+ When an employee's suggestion is approved, the information will be presented
+ in the latest updates.
+ When the status of the task changes, that is, the task changes from not
+ implemented to being implemented or completed, The task will also be displayed
+ again in the latest updates.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/浏览.jpg
+	width 40text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Browse module diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Backend Module
+\end_layout
+
+\begin_layout Standard
+The backend module includes permission management module, user management
+ module, department management module, suggestion management module, check-in
+ management module, and message management module.
+\end_layout
+
+\begin_layout Subsection
+Main Interface
+\end_layout
+
+\begin_layout Standard
+This is the main interface of the backend console.
+ As shown in Figure 4.6.
+ Here you can see the real-time total number of suggestions put forward
+ by employees, as well as the suggestions waiting for approval.
+ At the same time, you can also see the latest suggestions, tasks, and articles
+ below.
+ The upgrade of the employee based WeChat mini program mainly includes the
+ addition of a check-in management module, a message management module,
+ and an improved user management module.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/主界面.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Main Interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sign-in Management Module
+\end_layout
+
+\begin_layout Standard
+The main function of the check-in management module is to view the check-in
+ status of employees.
+ As shown in Figure 4.7.
+ When employees perform check-in operations on the WeChat mini program,
+ the corresponding check-in time and signer will be displayed on the backend
+ and sorted in chronological order.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/签到管理.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sign-in Management Module Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Message Management Module
+\end_layout
+
+\begin_layout Standard
+The main function of the message management module is to edit the content
+ of the group post and then send it to all employees.
+ As shown in Figure 4.8.
+ You can click the modify button on the right to modify the title and content,
+ or delete the information.
+ This information will be sent to all employees in a group and displayed
+ in their system messages.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/消息管理.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Message Management Module Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+User Management Module
+\end_layout
+
+\begin_layout Standard
+The main function of the user management module is to manage users.
+ As shown in Figure 4.9.
+ Administrators can click the leftmost button in the action bar to set it
+ as the approval leader, so that other employees can find this person to
+ approve tasks.
+ Administrators can also click the middle button to modify user data, or
+ click the rightmost button to delete the user.
+ At the same time, the user management module has also added a search bar
+ to facilitate administrators' user query operations.
+ Administrators can query specific users through a series of restrictions
+ such as ID number, department, username, and pinyin, and the queried users
+ will be displayed below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/用户管理.jpg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+User Management Module Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+This chapter mainly introduces the front-end and back-end interfaces of
+ the employee suggestion management system, and provides a detailed explanation
+ of the corresponding graphics.
+ The front-end is mainly divided into 5 modules: viewing task module, approving
+ task module, proposing suggestions module, personal information module,
+ and browsing module.
+ The backend is mainly divided into 6 modules: permission management module,
+ user management module, department management module, suggestion management
+ module, check-in management module, and message management module.
+ The interactivity of each interface is very good, the system responds promptly,
+ and the user operation is also very convenient.
+\end_layout
+
+\begin_layout Chapter
+Summary and Future Work
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:总结与展望"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary of this Project
+\end_layout
+
+\begin_layout Standard
+This article first introduces the background and basic significance of this
+ study, then analyzes the current situation at home and abroad, and then
+ proposes the main content and potential challenges of this study.
+ Afterwards, a brief description was given of some relevant technologies
+ involved in developing an employee suggestion management system.
+ Then it describes the overall structure design and functional structure
+ design of the proposal management system, and analyzes the functional requireme
+nts and non-functional requirement of the system.
+ Finally, the various interfaces of the system were presented, and the roles
+ of each part in the system and the functions that need to be implemented
+ were elaborated in detail.
+\end_layout
+
+\begin_layout Standard
+This employee suggestion management system is developed based on a WeChat
+ mini program, which solves a series of problems such as employees' inconvenienc
+e in providing suggestions and inability to understand the implementation
+ status after suggestions are proposed.
+ The newly added user query function makes it more convenient for administrators
+ to manage users; The group sending function of information also makes it
+ more convenient for administrators to notify employees of the latest notificati
+ons; The newly added check-in function allows employees to clock in promptly
+ every day and makes it easier for administrators to view their check-in
+ status.
+ Further improvements will be made to the mini program based on usage and
+ suggestions in the future.
+\end_layout
+
+\begin_layout Section
+Further Research and Prospects
+\end_layout
+
+\begin_layout Standard
+The employee suggestion management system designed in this article is already
+ usable, but there are still some functional deficiencies that require further
+ research:
+\end_layout
+
+\begin_layout Standard
+1) The check-in function is incomplete, and the interface interactivity
+ of the check-in function is not strong, making it difficult to visually
+ see whether the check-in has been successful today.
+ At the same time, the check-in function also fails to achieve targeted
+ check-in.
+ This convenience needs to be further improved to enhance interface interactivit
+y.
+\end_layout
+
+\begin_layout Standard
+2) The stakeholders of each suggestion (proposal initiator, proposal approver,
+ proposal executor) should be able to see the implementation status of the
+ entire suggestion, represented by a suggestion chain;
+\end_layout
+
+\begin_layout Standard
+3) The stakeholders of each suggestion can communicate with each other and
+ discuss issues that may arise during the implementation process, such as:,
+\end_layout
+
+\begin_layout Standard
+1.
+ How can approvers reject suggestions?
+\end_layout
+
+\begin_layout Standard
+2.
+ If the executor encounters problems during the specific execution process
+ or has doubts about the suggestion itself, how can they consult the initiator
+ of the suggestion?
+\end_layout
+
+\begin_layout Standard
+4) The response speed of the front-end WeChat mini program is not ideal,
+ and sometimes there may be situations where the loading program is too
+ slow.
+ In future research, methods such as subcontracting loading, streamlining
+ code, and reducing request times can be used to continue improving the
+ performance of the small program side.
+\end_layout
+
+\begin_layout 参考文献
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref"
+options "zjutcls/gbt7714-2005"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Acknowledgements
+
+\end_layout
+
+\begin_layout Standard
+Time flies like an arrow, and time flies like a shuttle.
+ I have spent nearly four years of beautiful time at Zhejiang University
+ of Technology.
+ Looking back on my four years of undergraduate studies, I cannot help but
+ feel a thousand emotions in my heart.
+ In these four years, I have grown a lot, thanks to my own efforts, but
+ I cannot do without the help of my teachers, the support of friends, and
+ the companionship of my family.
+\end_layout
+
+\begin_layout Standard
+First of all, I would like to thank my mentor, Teacher Li Xiaoxing.
+ After more than two months of study and under the careful guidance of Teacher
+ Li Xiaoxing, my graduation thesis has finally been completed.
+ He gave me a lot of valuable advice, guiding me in the research and development
+ of a suggestion management system.
+ When I knew nothing about the system and couldn't get started, Teacher
+ Li Xiaoxing patiently taught me and explained in detail the relevant content
+ that the system was supposed to complete; When I didn't know how to improve
+ and optimize the system, I was given many advices for project improvement.
+ The moment I chose this topic until the successful completion of my graduation
+ project, Teacher Li has been fully guiding me and has been very patient
+ with me.
+ Here, I would like to express my heartfelt gratitude to Teacher Li Xiaoxing!
+\end_layout
+
+\begin_layout Standard
+Secondly, I would like to express my special gratitude to the few friends
+ in the dormitory.
+ We have created a good and harmonious dormitory atmosphere with a positive
+ and upward learning attitude.
+ In the past six months, we have always discussed and supplemented each
+ other's strengths and weaknesses when we have problems.
+ It is you who have given me a lot of help and helped me overcome one difficult
+ problem after another.
+\end_layout
+
+\begin_layout Standard
+At the same time, I also want to express my gratitude to all the students
+ who collaborated in software engineering at the 2019 level.
+ Together, we created a positive, helpful, and warm collective, leaving
+ the best memories in my four years of university.
+\end_layout
+
+\begin_layout Standard
+Finally, I would like to thank my parents.
+ They have been unconditionally supporting and trusting me for four years,
+ enabling me to become a better person.
+ Their support and encouragement are also the best driving force for me
+ to move forward.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset CommandInset include
+LatexCommand input
+filename "cover/appendix.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

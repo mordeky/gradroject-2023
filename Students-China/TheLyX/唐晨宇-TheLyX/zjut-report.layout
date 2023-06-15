@@ -1,0 +1,46 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass [zjutcls/zjutclass]{Chinese Report (ZJUT-Report)}
+#  \DeclareCategory{Reports}
+
+Format 66
+
+Input zjut-style.inc
+# Input zjut-thesis.layout
+Input stdfloats.inc  # 使用 stdfloats.inc 是为了避免表、图、算法等浮动项之前出现章节号
+
+
+Style Abstract
+	#CopyStyle	    Chapter*
+	#Category	  	Unnumbered
+	#Category       FrontMatter
+	
+	Margin                Manual # First_Dynamic
+	KeepEmpty		 	  1
+	LatexType             Command # Environment
+	LabelType             Static #Centered
+	LatexName             abstractc
+	LabelString           "摘要："
+	
+	NextNoIndent          0
+	#ParIndent             M #MM
+	ItemSep               0
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0
+	Align                 block
+	
+	Font
+		Size                normal
+	EndFont
+	
+	LabelFont
+	  Series              Bold
+	  Size                large
+	EndFont
+End
+
+Style Abstract~
+	copyStyle	    Abstract
+	LatexName       abstracte
+	LabelString     "Abstract~："
+End

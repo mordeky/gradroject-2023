@@ -1,0 +1,4080 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass zjut-thesis
+\options UTF-8,gradthesis,englishversion
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding gbk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+!Mode:: "\SpecialChar TeX
+:UTF-8"
+\end_layout
+
+\begin_layout Plain Layout
+需要用：XeLaTex 进行编译
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告类型
+本科毕业设计说明书（论文）
+\end_layout
+
+\begin_layout 提交日期
+2023年06月
+\end_layout
+
+\begin_layout 题目左侧距离
+5mm
+\end_layout
+
+\begin_layout 题目下划线长度
+100mm
+\end_layout
+
+\begin_layout 封面下划线长度
+17em
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "cover/cover.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+
+\end_layout
+
+\begin_layout Standard
+随着人脸识别技术的发展，人脸识别系统已广泛应用于道路监控、门禁、社区管理等各种场景。然而，在实验室考勤中使用人脸识别系统仍然非常罕见。主要原因是实验室通常只有较
+少的成员，而购买商业人脸识别系统的费用又比较高。与传统的实验室考勤方式相比，基于人脸识别的实验室考勤方式更加常自然，可以在不需要实验室成员主动配合的情况下进行考
+勤。 
+\end_layout
+
+\begin_layout Standard
+本文基于人脸识别技术设计并实现了一款实验室考勤系统，该系统由实验室成员信息采集、SVM分类器训练、自动考勤和考勤统计等四个模块构成。实验室成员信息采集模块：提供
+了图像界面，供用户输入姓名等个人信息，通过摄像头抓拍人脸图像，并保存到本地的用户目录中；对于新获取的人脸图像，首先基于 MTCNN进行人脸检测，为了提升人脸检测
+的准确度，使用 PIL 库将用户的每张图像转换为 RGB 颜色模式；其次，使用 FaceNet 提取人脸图像的特征，并将特征保存在用户目录中。SVM
+ 分类器训练模块：每增加一个实验室成员，为了获取更高的识别精度，需要重新训练 SVM 分类器，并保存模型。自动考勤模块：主要基于人脸识别进行自动考勤，其过程与信
+息采集模块类似，但由于需要基于 SVM 对特征提取结果进行分类，且需要基于视频进行人脸识别，为了提高识别速度，需要隔几帧进行人脸检测，并对 FaceNet的网络
+层进行随机裁剪。对于考勤统计模块，由“实验室人员”类进行考勤信息的保存，并根据需要输出考勤报表。 
+\end_layout
+
+\begin_layout Standard
+基于 Tkinter 库进行 GUI 设计，提升了系统的易用性；并且系统也支持多人 同时考勤。对考勤系统进行了充分的测试，测试结果表明本系统具有较好的速度
+ 和精度，可用于一般的实验室考勤。
+\end_layout
+
+\begin_layout Keywords
+\labelwidthstring 关键字：
+MTCNN，FaceNet，SVM，人脸识别，考勤系统
+\end_layout
+
+\begin_layout EnglishAbstract
+
+\end_layout
+
+\begin_layout Standard
+With the development of face recognition technology, face recognition systems
+ have been widely used in various scenarios such as road monitoring, access
+ control, and community management.
+ However, the use of facial recognition systems in laboratory attendance
+ is still very rare.
+ The main reason is that LABS usually have fewer members, and the cost of
+ buying a commercial face recognition system is relatively high.
+ Compared with the traditional laboratory attendance method, the laboratory
+ attendance method based on face recognition is more natural, and can be
+ checked without the active cooperation of laboratory members.
+ 
+\end_layout
+
+\begin_layout Standard
+This paper designs and implements a laboratory attendance system based on
+ face recognition technology.
+ The system consists of four modules: information collection of laboratory
+ members, SVM classifier training, automatic attendance and attendance statistic
+s.
+ Laboratory member information collection module: provides an image interface
+ for users to input personal information such as name, capture face images
+ through the camera, and save them to the local user directory; For newly
+ acquired face images, face detection is first carried out based on MTCNN.
+ In order to improve the accuracy of face detection, PIL library is used
+ to convert each image of the user into RGB color mode.
+ Secondly, FaceNet is used to extract the features of face images, and the
+ features are saved in the user directory.
+ SVM classifier training module: For each additional laboratory member,
+ the SVM classifier needs to be retrained and the model saved in order to
+ obtain higher recognition accuracy.
+ Automatic attendance module: The automatic attendance module is mainly
+ based on face recognition, and its process is similar to that of the informatio
+n collection module.
+ However, since SVM is required to classify the feature extraction results
+ and video based face recognition is required, in order to improve the recogniti
+on speed, face detection is required every few frames, and the network layer
+ of FaceNet is randomly clipped.
+ For the attendance statistics module, the "laboratory personnel" class
+ saves the attendance information and outputs the attendance report as needed.
+ 
+\end_layout
+
+\begin_layout Standard
+GUI design based on Tkinter library improves the ease of use of the system.
+ And the system also supports multiple people at the same time attendance.
+ The test results show that the system has better speed and accuracy, and
+ can be used for general laboratory attendance.
+\end_layout
+
+\begin_layout EnglishKeywords
+\labelwidthstring Keywords~:
+MTCNN, FaceNet, SVM, Face recognition, Attendance system
+\end_layout
+
+\begin_layout 目录
+
+\end_layout
+
+\begin_layout 表目录
+
+\end_layout
+
+\begin_layout 图目录
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Background and Significance
+\end_layout
+
+\begin_layout Standard
+Laboratory attendance is a routine work to maintain laboratory discipline.
+ At present, the domestic laboratory attendance mainly uses fingerprint
+ recognition or the attendance app in DingTalk, while the foreign laboratory
+ attendance mainly requires the laboratory members log on a given server
+ every day.
+ These attendance methods all require the 
+\begin_inset Quotes eld
+\end_inset
+
+active participation
+\begin_inset Quotes erd
+\end_inset
+
+ of the person being checked, that is, the active use of a specific software
+ or system for attendance.
+ 
+\end_layout
+
+\begin_layout Standard
+In recent years, with the development of face recognition (FR) technology,
+ FR system has been widely used in various scenarios, such as road monitoring,
+ access control, community management and so on.
+ However, the use of FR systems in laboratory attendance is still very rare.
+ The main reason is that a lab usually has fewer staffs, and the cost of
+ buying commercial FR systems is expensive.
+ Compared with the traditional way of lab attendance, the advantage of FR-based
+ lab attendance is that it can be very natural, that is, people who want
+ to check in do not need to actively cooperate with the attendance system.
+ Therefore, the FR-based attendance system is really necessary.
+\end_layout
+
+\begin_layout Standard
+The traditional laboratory attendance system has the following two disadvantages
+ : 1) Staff need to manually sign in and sign out.
+ 2) Staff need to remember to clock in every day, once forgotten, a day’s
+ work will be wasted.
+ The laboratory attendance system designed by this project is a face recognition
+ system based on deep learning model MTCNN and Facenet.
+ It mainly uses MTCNN model for face detection and image extraction, uses
+ Facenet model for face feature extraction, and completes real-time recognition
+ of face image by building local face feature database.
+ Laboratory staff in and out of the laboratory every day, the system will
+ real-time face recognition and automatic attendance, improve the accuracy
+ and convenience of recognition.
+ 
+\end_layout
+
+\begin_layout Section
+Research Status at Home and Abroad
+\end_layout
+
+\begin_layout Subsection
+Research Status of Face Recognition
+\end_layout
+
+\begin_layout Standard
+Since the 1960s, scholars began to study face recognition.
+ Through decades of development, face recognition has been applied and developed
+ in many fields, and the research at home and abroad is also very active.Some
+ developed countries and some developing countries have set up research
+ institutions and teams for face recognition.
+\end_layout
+
+\begin_layout Standard
+Face recognition research was first carried out in the United States, and
+ its research technology is higher than other countries.
+ In 1993, The U.S.
+ Department of Defense's Advanced Research Projects Agency and the U.S.
+ Army Research Laboratory established Feret(Face Recognition) Technology
+ project team, established the FERET face database, used to evaluate the
+ performance of face recognition algorithms.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "史涛2019"
+literal "false"
+
+\end_inset
+
+.In recent years, Japan has been accelerating the research of intelligent
+ video analysis technology, in 2015, a Japanese company launched a video
+ surveillance face recognition technology scanning speed has been able to
+ reach 36 million images per second.
+ In the same year, the backbone airports in Japan introduced face recognition
+ systems to provide a more convenient way for inbound and outbound tourists
+ to enter and exit the country.
+\end_layout
+
+\begin_layout Standard
+Compared with foreign countries, China's face recognition algorithm research
+ is relatively lagging behind, the earliest began in the 1990s.
+ At the beginning of the transformation from artificial to computer intelligent
+ recognition in China, the biometric technology used is fingerprint recognition.
+ However, with the development of The Times, people's needs have also changed,
+ therefore, more accurate technology is needed to meet the new needs of
+ practical applications, so face recognition came into being.
+ Face recognition was first used in the field of security.
+ In 2001, the public security department began to use face recognition technolog
+y to prevent and combat major criminal crimes, and won the support of the
+ state.
+ Li Ziqing, a doctor of automation from Chinese Academy of Sciences, led
+ a team to develop "Zhongke Oxen", which was applied in the 2008 Beijing
+ Olympic Games and the 2010 World Expo to improve the safety index of the
+ venue and ensure the smooth implementation of activities
+\begin_inset CommandInset citation
+LatexCommand cite
+key "2014"
+literal "false"
+
+\end_inset
+
+.In 2010, the Shanghai World Expo, the technology has been more widely used,
+ while major companies compete to join the camp of this technology, to achieve
+ the large-scale application of face recognition in China.
+\end_layout
+
+\begin_layout Standard
+From 1960s to 1990s, the research on face recognition mainly used the geometric
+ features of facial features for matching.
+ Firstly, the position of facial features was located, and then the relationship
+ between their shape and position was analyzed.
+ Finally, the pattern matching was carried out by measuring Euclidean distance
+ and classifier.
+ This method is easy to lose face information, recognition effect is not
+ ideal, temporarily stay in the theoretical stage, can not be used in the
+ actual scene.
+\end_layout
+
+\begin_layout Standard
+In 1987, Sirovich and Kireby proposed a principal component analysis-based
+ feature face dimensionality reduction method
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Crescenzi2001"
+literal "false"
+
+\end_inset
+
+ for PCA(Principle Componet Analysis) based face representation and recognition.
+ With this approach, Turk and Pentland convert the entire face image into
+ a vector and compute the feature face with a set of samples.
+ PCA is able to obtain data representing a face at an optimal level with
+ the data obtained from the image.
+ Different faces and light levels of the same person are considered as the
+ weakness of PCA.
+\end_layout
+
+\begin_layout Standard
+In 1997, Yale University Belhhumur improved on Fisherfaces and introduced
+ linear discriminant analysis
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ibrahim2019"
+literal "false"
+
+\end_inset
+
+.
+ This method uses supervised training to map faces onto the feature space,
+ so that the feature information of the same person can be as close as possible
+ and the feature information points of different people can be as far away
+ as possible to reduce the impact of facial expression, posture, and lighting.Imp
+rove the identification efficiency.France and Herault Jutten put forward
+ the method of independent component analysis
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Comon1994"
+literal "false"
+
+\end_inset
+
+, will get the face feature vectors independent component of the linear
+ combination, as PCA algorithm.Hong Ziquan proposed a dimensionality reduction
+ method based on singular value decomposition.
+ First, singular value decomposition is used as the feature vector of face
+ image, and finally, high-dimensional information is compressed into a low-dimen
+sional subspace for classification.
+\end_layout
+
+\begin_layout Standard
+F.
+ maria uses the hidden Markov model of five states
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Samaria1995"
+literal "false"
+
+\end_inset
+
+, and uses a group of unobstructible state sequence parameters to represent
+ the relationship between various organs of the face, and puts forward a
+ pseudo-two-dimensional hidden Markov model.Applied to face recognition,
+ this model can well reflect the correlation between organs, is not sensitive
+ to the change of expression, and has good robustness.
+\end_layout
+
+\begin_layout Standard
+Researchers combined with the learning ability and association ability of
+ neural network, neural network applied to face recognition, neural network
+ can learn and extract face features through the learning ability of the
+ data set, do not need researchers to spend time and energy to design face
+ feature extraction algorithm, at the same time, neural network has good
+ classification ability, especially in the field of face recognition.Kohenen
+ proposed that the self-organizing mapping network
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kohonen1989"
+literal "false"
+
+\end_inset
+
+ could reproduce faces well.Lin applies probabilistic neural network to face
+ recognition, repeatedly trains samples, and improves the learning efficiency
+ and convergence speed of neural network through modular structure.Many tradition
+al neural network models have been proposed.
+\end_layout
+
+\begin_layout Standard
+In 2006, Galundor University GeofferyHinton et al.
+ proposed the concept of deep learning and the method of greedy layer by
+ layer pre-training for the single problem of neural network single hidden
+ layer structure.
+ The paper proposed that the multi-hidden layer can better extract features
+ without the need of artificial design algorithm, thus improving the accuracy
+ of classification.Unsupervised learning is used for layer by layer pre-training
+ to solve the problem of too many network parameters.Convolutional neural
+ network is one of the classical algorithms in deep learning at present.
+ Due to its simple structure and few training parameters, it has become
+ a widely used model in deep learning and a mainstream method for face recogniti
+on, playing an extremely important role.
+\end_layout
+
+\begin_layout Standard
+In 2014, Tang Xiaoou team of the Chinese University of Hong Kong
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sun2014a"
+literal "false"
+
+\end_inset
+
+ proposed DeepID algorithm based on convolutional neural network, which
+ fused deep features of different regions of face image, verified faces
+ by using Bayesian method, and tested on open face data set LFW
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Huang2008"
+literal "false"
+
+\end_inset
+
+, achieving 97.45% accuracy.The framework is mainly used for face verification,
+ that is, comparing whether two faces are the same person, and finally,
+ face recognition is carried out through softmax regression.FaceBook proposed
+ DeepFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Taigman2014a"
+literal "false"
+
+\end_inset
+
+ algorithm to triangulate faces, reconstruct faces through key feature informati
+on, and finally, extract and classify features to realize face recognition,
+ achieving a recognition rate of 97.35%.In 2015, FaceNet
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schroff2015a"
+literal "false"
+
+\end_inset
+
+ system developed by Google in the United States introduced the TripletLoss
+ function to map face features to Euclidean space, so that the spatial distance
+ of images matching samples is closer, while that of unmatched samples is
+ farther.The accuracy of LFW data set was 99.63%.In 2016, IacopoMasi proposed
+ an unconstrained face recognition method
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Masi2016"
+literal "false"
+
+\end_inset
+
+to study the recognition problem caused by changes in face posture.
+\end_layout
+
+\begin_layout Standard
+With the development of Convolutional neural network, in recent years, more
+ and more companies at home and abroad, such as Google, Facebook, and SenseTime,
+ have applied face recognition to the security check of public places, the
+ place where the company checks in for attendance and signs in for meetings.
+ However, there are still some problems and challenges in the actual application.
+ Although many methods have achieved high accuracy in LFW data sets, even
+ exceeding the ability of human eye recognition However, these deep models
+ need to be trained through a large number of samples, which is difficult
+ to achieve for universities or small research institutions.
+ Therefore, how to train a relatively simple model with good performance,
+ which can obtain more distinctive facial features and match faces well
+ is an urgent problem that we need to solve.
+\end_layout
+
+\begin_layout Subsection
+Development of Attendance System
+\end_layout
+
+\begin_layout Standard
+The attendance system was first born in the 1970s
+\begin_inset CommandInset citation
+LatexCommand cite
+key "周克辉2019"
+literal "false"
+
+\end_inset
+
+ and has undergone the following evolution:
+\end_layout
+
+\begin_layout Standard
+The first generation of attendance is a paper card system, replacing the
+ traditional manual attendance system.The time is printed on the card through
+ the micro print head to realize attendance.Advantages are simple operation,
+ the machine is not complex;The disadvantage is that it can not effectively
+ identify the identity of the attendance person, it is easy to take the
+ exam on behalf of the situation, and there is a lot of statistical work
+ in the later period, the paper consumption is large.
+\end_layout
+
+\begin_layout Standard
+The second generation of attendance is the bar code attendance system.It
+ is mainly to record the situation of mine workers in the well.
+ The bar code is projected far away from the optics, and the bar code is
+ scanned by the mining lamp irradiated by the camera, so as to realize the
+ attendance check.The advantages are high accuracy, low cost and fast speed,
+ but the disadvantages are that the bar code is easy to be damaged and forged.
+\end_layout
+
+\begin_layout Standard
+The third generation of attendance is magnetic card type attendance system.The
+ attendance test is now widely used in major enterprises and institutions
+ with remarkable results.The advantage is high attendance efficiency, the
+ disadvantage is that the magnetic card is easy to lose, easy to take the
+ test.
+\end_layout
+
+\begin_layout Standard
+The fourth generation of attendance is biological information identification
+ attendance system.First input fingerprint, iris, face information, and then
+ compare the information for recognition.The advantage is that there is no
+ need to carry other proof, identity identification is unique, there will
+ not be a proxy test.The disadvantage is that it is easy to be affected by
+ external factors, the fingerprint needs to be clean and not damaged, the
+ face needs no external occlusion, the stability and accuracy of the verificatio
+n is low, the cost is high.
+\end_layout
+
+\begin_layout Section
+Main Challenges
+\end_layout
+
+\begin_layout Standard
+In this section, we just introduce the main challenges that might exist
+ in a real FR or attendance system.
+ It does not mean that we have to resolve all of them in our own system.
+ 
+\end_layout
+
+\begin_layout Standard
+1.
+ FR Systems.
+ Although open-source and well-trained FR models can be found here and there,
+ they have limitations: the pre-trained FR models are usually trained on
+ face images of different people of different races with different poses
+ in different scenes, and may be very different from the lab situations:
+ the lab staff, the work scenes and the face poses of the staff when they
+ go in and out of the lab, may not be able to achieve good recognition performan
+ce.
+ 
+\end_layout
+
+\begin_layout Standard
+2.
+ How to quickly acquire facial images from new lab members in a convenient
+ and natural way? 
+\end_layout
+
+\begin_layout Standard
+3.
+ How to quickly detect face regions in a series of images in a video? 
+\end_layout
+
+\begin_layout Standard
+4.
+ How to quickly recognize a lab member in a given video? 
+\end_layout
+
+\begin_layout Standard
+5.
+ How to refuse to recognize a person who is not a lab member?
+\end_layout
+
+\begin_layout Standard
+6.
+ How to save and load feature embeddings of all lab members? 
+\end_layout
+
+\begin_layout Standard
+7.
+ How to report the attendance of lab members in a given period? By using
+ different curves? Tables?
+\end_layout
+
+\begin_layout Section
+Main Contents
+\end_layout
+
+\begin_layout Standard
+Therefore, our FR-based attendance system should mainly include the following
+ four modules
+\begin_inset CommandInset citation
+LatexCommand cite
+key "李志华2022"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+1) Face image acquisition module.
+ This module is used to capture face images of the lab staff when they are
+ entering or exiting the laboratory; 
+\end_layout
+
+\begin_layout Standard
+2) Face detection module.
+ This module is used to detect the face area of the captured face images.
+ You can use MTCNN to perform face detection; 
+\end_layout
+
+\begin_layout Standard
+3) Face recognition module.
+ This module is used to perform face recognition of the detected faces.
+ You can use the well-trained FaceNet models to perform face recognition;
+ 
+\end_layout
+
+\begin_layout Standard
+4) Automatic statistics module for daily attendance and weekly attendance.
+ This module is used to produce a report form which shows the detailed lab
+ attendance of all lab staff per week and per month, including each lab
+ staff's average working time in the lab.
+\end_layout
+
+\begin_layout Section
+Thesis Organization
+\end_layout
+
+\begin_layout Standard
+The chapters are arranged as follows:
+\end_layout
+
+\begin_layout Standard
+Chapter 1：describes the research status of the laboratory attendance system
+ at home and abroad, analyzes the background and research significance of
+ this topic, lists the main challenges this project will meet, and gives
+ the research content of this paper and the structure of the paper.
+ 
+\end_layout
+
+\begin_layout Standard
+Chapter 2：expounds the principle of MTCNN model, introduces the structure
+ of FaceNet network model, face recognition algorithm and recognition process
+\end_layout
+
+\begin_layout Standard
+Chapter 3：mainly introduce how we design the system: how we split the system
+ into three or four modules; and the resonability of the system.
+\end_layout
+
+\begin_layout Standard
+Chapter 4：mainly illustrate how we implement the system in detail.
+\end_layout
+
+\begin_layout Standard
+Chapter 5：illustrate how to use the system and the main effects our system
+ can achieve.
+\end_layout
+
+\begin_layout Standard
+Chapter 6：Summary and Prospect.
+ The content of this paper is summarized, and points out the need for further
+ improvement of the attendance system.
+\end_layout
+
+\begin_layout Chapter
+Main Technolgies
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Main Technolgies"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Face Detection via Using MTCNN
+\end_layout
+
+\begin_layout Standard
+Face detection is a problem in computer vision that involves locating one
+ or more faces in a photograph.
+ Locating a face in a photo means finding the coordinates of the face in
+ the image and dividing the range of the face through the boundary box around
+ the face.
+ Human faces are dynamic and their appearance is highly variable, making
+ face detection a difficult problem in computer vision.
+ Face detection, for example, is affected by its orientation or Angle, light
+ level, clothing, accessories, hair color, facial hair, makeup, age, and
+ so on.
+ Face detection is an essential first step in face recognition systems,
+ whose purpose is to locate and extract face regions in the background.
+ There are two main approaches to face recognition: 1) feature-based approaches
+ that use manual filters to search for and detect faces.
+ This can be done using the OpenCV library cascade classifier.
+ 2) An image-based approach to learning how to extract faces from the entire
+ image as a whole.
+ This can be achieved through the MTCNN library using a multi-task cascade
+ CNN.
+ In this chapter, MTCNN face detection is proposed because it is easy to
+ be affected by posture rotation, illumination intensity and partial occlusion
+ in the process of capturing face images.
+ This is a multilevel face detection model, which is cascaded in series.
+ Through screening the face candidate Windows in the image layer by layer,
+ the screening results of the upper layer of convolutional neural network
+ are used as the input of the next layer of convolutional neural network,
+ so as to reduce the influence of attitude rotation, illumination intensity,
+ partial occlusion, etc., on face recognition and improve the accuracy of
+ face recognition.
+ The experimental process of MTCNN face detection model is shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Experimental process of face detection"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/人脸检测实验过程.pdf
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Experimental process of face detection"
+
+\end_inset
+
+Experimental process of face detection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Face Detection Theory
+\end_layout
+
+\begin_layout Standard
+In 2016, Kaipeng Zhang, Zhangpeng Zhang, Zhifeng Li, Yu Qiao proposed face
+ detection MTCNN model
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2016"
+literal "false"
+
+\end_inset
+
+.
+ This model belongs to the multi-task face detection framework, which uses
+ three CNN cascade algorithms to detect faces and face feature points simultaneo
+usly.
+ There are two main reasons to use MTCNN for face detection: 1) its detection
+ accuracy is high; 2) In FaceNet, MTCNN interface based on face detection
+ is provided.
+ MTCNN belongs to the multi-level CNN face detection model, which considers
+ the detection of face frame and facial key points simultaneously.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/MTCNN人脸检测示例.pdf
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+MTCNN Face detection example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+MTCNN takes advantage of the intrinsic correlation between detection and
+ alignment to improve their performance.
+ The framework utilizes a cascading architecture and three stages of a well-desi
+gned deep convolutional network to predict faces and landmark locations
+ in a coarse-to-fine manner.
+ In addition, a new online hard sample mining strategy is proposed, which
+ further improves the performance in practice.
+\end_layout
+
+\begin_layout Subsection
+Face Detection Process
+\end_layout
+
+\begin_layout Standard
+MTCNN face detection flow chart is shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MTCNN face detection process"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/MTCNN 人脸检测流程.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MTCNN face detection process"
+
+\end_inset
+
+MTCNN face detection process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first stage: We exploit a fully convolutional network, called Proposal
+ Network (P-Net), to obtain the candidate facial windows and their bounding
+ box regression vectors.
+ Then candidates are calibrated based on the estimated bounding box regression
+ vectors.
+ After that, we employ non-maximum suppression (NMS) to merge highly overlapped
+ candidates.
+ 
+\end_layout
+
+\begin_layout Standard
+The second stage: All candidates are fed to another CNN, called Refine Network
+ (R-Net), which further rejects a large number of false candidates, performs
+ calibration with bounding box regression, and conducts NMS.
+ 
+\end_layout
+
+\begin_layout Standard
+The third stage: This stage is similar to the second stage, but in this
+ stage we aim to identify face regions with more supervision.
+ In particular, the network will output five facial landmarks’ positions.
+ 
+\end_layout
+
+\begin_layout Standard
+Bounding Box Regression
+\begin_inset CommandInset citation
+LatexCommand cite
+key "余飞甘俊英张雨晨曾军英2018"
+literal "false"
+
+\end_inset
+
+: It mainly trims the candidate box of the generation network.
+ As shown in the figure, the green boundary box is the manual labeling of
+ faces, while the red one is the generation candidate box, that is, the
+ red frame is recognized as a face by the classifier.
+ However, due to its association with the IOU (Intersection over Union)
+ manually labeled being less than 0.5, no face is detected.
+ So we need to do a regression of the boundary box to make it more close
+ to the manual annotation.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/边框回归示例.png
+	lyxscale 10
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bounding Box Regression example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Intersection over Union(IOU): Object detection first to locate the frame
+ of the object, for face detection, not only to locate the frame of the
+ object, but also to identify the object in the frame is the face.
+ For the positioning accuracy of the frame, there is a very important concept.
+ Since the algorithm and manual annotation data cannot reach 100% coincidence,
+ a precision evaluation formula is defined: IOU.
+ It defines the overlap rate between the algorithm and the manual annotation.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/IOU 示例.png
+	lyxscale 10
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+IOU example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $IOU=(A\cap B)/(A\cup B)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Non-maximum suppression (NMS)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ys"
+literal "false"
+
+\end_inset
+
+: Non-maximum suppression is widely used in the field of object detection.
+ Its main principle is to eliminate redundant boxes so as to find the best
+ location for object detection.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/NMS 示例.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:NMS-example"
+
+\end_inset
+
+NMS example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:NMS-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, although the face has been framed in several boxes, it is still necessary
+ to find a box that best represents the face.
+ NMS relies on the classifier to obtain multiple candidate boxes, and the
+ probability values belonging to categories in the candidate boxes are sorted
+ according to the category classification probability obtained by the classifier.
+ The specific algorithm process is as follows: 1) Sort the scores of all
+ boxes and select the highest score and its corresponding box.
+ 2) Walk through the rest of the box, if the overlap area (IOU) with the
+ current highest score box is greater than a certain threshold, we will
+ delete the box.
+ 3) Continue to select the highest score from the unprocessed box and repeat
+ the above process.
+\end_layout
+
+\begin_layout Subsection
+Face Detection Network Structure
+\end_layout
+
+\begin_layout Standard
+In order to give consideration to performance and accuracy, and avoid huge
+ performance consumption brought by traditional ideas such as sliding window
+ and classifier, MTCNN first uses small models to generate candidate boxes
+ of target regions with certain possibilities, and then uses more complex
+ models to carry out fine classification and regional box regression with
+ higher precision, and makes this step perform recursively, thus forming
+ a three-layer network.
+ They are P-Net, R-Net and O-Net respectively to realize fast and efficient
+ face detection.
+ In the input layer, the image pyramid is used for scaling the initial image,
+ and P-Net is used to generate a large number of candidate target frames.
+ Then R-Net is used for the first selection and border regression of these
+ target frames, and most of the negative cases are eliminated.
+ Then the more complex and more accurate network O-Net is used to distinguish
+ the remaining target area box and the area frame regression.
+ 
+\end_layout
+
+\begin_layout Standard
+(1) P-Net
+\end_layout
+
+\begin_layout Standard
+P-Net is called Proposal Network, and its basic structure is a full convolutiona
+l network.
+ For the image pyramid constructed in the previous step, an FCN(Fully Convolutio
+nal Networks) was used for preliminary feature extraction and border calibration
+, and Bounding Box Regression was used to adjust Windows and NMS for filtering
+ most of the Windows.
+ P-Net is a regional suggestion network for the face region.
+ After the features of the network are input into three convolutional layers
+ of the result, a face classifier is used to determine whether the region
+ is a face.
+ At the same time, border regression and a facial key point locator are
+ used to make preliminary proposals for the face region.
+ These areas are entered into R-Net for further processing.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/P-Net.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+P-Net network structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The input to P-Net is a 12
+\begin_inset Formula $\ast$
+\end_inset
+
+12 image.
+ These training samples can be obtained by sliding window or random sampling
+ method.
+ The training samples are divided into three types, namely positive samples,
+ negative samples and intermediate samples.
+ The IOU (Intersection over Union) of candidate areas and ground truth was
+ used to measure the division of these samples, in which positive samples
+ were found to be larger than 0.65, negative samples were found to be smaller
+ than 0.3, and intermediate samples were found to be between 0.4 and 0.65.
+ 
+\end_layout
+
+\begin_layout Standard
+The input data is resize into 12
+\begin_inset Formula $\ast$
+\end_inset
+
+12 size and converted into 12
+\begin_inset Formula $\ast$
+\end_inset
+
+12
+\begin_inset Formula $\ast$
+\end_inset
+
+3 format, and then through 10 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3
+\begin_inset Formula $\ast$
+\end_inset
+
+3 convolution kernel, 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3 Max Pooling (stride=2), 10 5
+\begin_inset Formula $\ast$
+\end_inset
+
+5 feature graphs are generated.
+ After 16 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3
+\begin_inset Formula $\ast$
+\end_inset
+
+10 convolution kernels, 16 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3 feature graphs are generated.
+ After 32 convolution kernels of 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3
+\begin_inset Formula $\ast$
+\end_inset
+
+16, 32 feature graphs of 1x1 are generated.
+ Finally, the 32 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1 feature graphs are divided into three branches: 1) After two 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1
+\begin_inset Formula $\ast$
+\end_inset
+
+32 convolution kernels, two 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1 feature graphs are generated for classification; 2) After four 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1
+\begin_inset Formula $\ast$
+\end_inset
+
+32 convolution kernels, four 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1 feature graphs are generated for regression box judgment; 3) After 10
+ 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1
+\begin_inset Formula $\ast$
+\end_inset
+
+32 convolution kernels, 10 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1 feature graphs are generated for face key point judgment.
+ 
+\end_layout
+
+\begin_layout Standard
+(2) R-Net
+\end_layout
+
+\begin_layout Standard
+R-Net is called Refine Network.
+ The basic structure of R-NET is a convolutional neural network, which adds
+ a fully connected layer compared to the first layer of P-Net, so that the
+ input data is filtered more strictly.
+ After the image passes through P-Net, many prediction Windows will be left.
+ We send all the prediction Windows into R-Net, and this network will filter
+ out a large number of candidate frames with poor effect.
+ Finally, the selected candidate frames are further optimized by Bounding-Box
+ Regression and NMS.
+\end_layout
+
+\begin_layout Standard
+Because the output of P-Net is only the possible face area with a certain
+ degree of confidence, in this network, the input will be refined and selected,
+ and most of the wrong input will be eliminated, and the border regression
+ and face key point locator will be used again for the border regression
+ and key point positioning of the face area, and finally the more trusted
+ face area will be output for O-Net use.
+ In contrast to P-Net, which uses 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1
+\begin_inset Formula $\ast$
+\end_inset
+
+32 features with full convolutional output, R-Net uses a 128 fully connected
+ layer after the last convolutional layer, which retains more image features
+ and has better accuracy performance than P-Net.
+ R-Net model structure is shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:R-Net-network-structure"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/R-Net.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:R-Net-network-structure"
+
+\end_inset
+
+R-Net network structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The input image size of this layer is 24
+\begin_inset Formula $\ast$
+\end_inset
+
+24.
+ The convolution process of the first two layers is similar to that of P-Net
+ and will not be repeated.
+ The third layer of convolution.
+ After 64 2
+\begin_inset Formula $\ast$
+\end_inset
+
+2
+\begin_inset Formula $\ast$
+\end_inset
+
+48 convolution of 48 4
+\begin_inset Formula $\ast$
+\end_inset
+
+4 feature graphs output by the second layer, 64 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3 feature graphs are generated, and these feature graphs are converted into
+ 128 fully connected layers.
+ Next, there are still three branches: 1) The fully connected layer of size
+ 2 is used for classification; 2) Location regression of bounding box with
+ a fully connected layer of size 4; 3) The full-connection layer with the
+ size of 10 was used to detect the key points of face contours.
+ 
+\end_layout
+
+\begin_layout Standard
+(3) O-Net
+\end_layout
+
+\begin_layout Standard
+O-Net is called Output Network, and its basic structure is a complex convolution
+al neural network with one more convolutional layer than R-Net.
+ The difference between O-Net and R-Net is that this layer structure will
+ recognize the facial area with more supervision, and will regression the
+ facial feature points of the person, and finally output five facial feature
+ points.
+\end_layout
+
+\begin_layout Standard
+It is a more complex convolutional network, which has more input features.
+ At the end of the network structure, there is also a larger 256 fully connected
+ layer, which retains more image features.
+ At the same time, face discrimination, face region border regression and
+ face feature positioning are carried out, and the final output is the top-left
+ coordinate and lower-right coordinate of the face region and the five feature
+ points of the face region.
+ O-Net has more input features and more complex network structure, also
+ has better performance, the output of this layer as the final network model
+ output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/O-Net.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+O-Net network structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Input size of 48
+\begin_inset Formula $\ast$
+\end_inset
+
+48
+\begin_inset Formula $\ast$
+\end_inset
+
+3 pictures, through 32 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3
+\begin_inset Formula $\ast$
+\end_inset
+
+3 convolution kernel, 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3 maximum pooling (stride=2), generate 32 23
+\begin_inset Formula $\ast$
+\end_inset
+
+23 feature graphs.
+ By 64 convolution kernels of 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3
+\begin_inset Formula $\ast$
+\end_inset
+
+32, the maximum pooling of 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3 (stride=2), 64 feature graphs of 10
+\begin_inset Formula $\ast$
+\end_inset
+
+10 are generated.
+ By 64 convolution kernels of 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3
+\begin_inset Formula $\ast$
+\end_inset
+
+64, maximum pooling of 2
+\begin_inset Formula $\ast$
+\end_inset
+
+2 (stride=2), 64 feature graphs of 4
+\begin_inset Formula $\ast$
+\end_inset
+
+4 are generated.
+ 128 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3 feature graphs are generated by 128 2
+\begin_inset Formula $\ast$
+\end_inset
+
+2
+\begin_inset Formula $\ast$
+\end_inset
+
+64 convolution kernels.
+ It is converted into a fully connected layer of 256 size, and generates
+ a classification of 2 size, a border regression of 4 size, and a key point
+ of face outline of 10 size.
+ 
+\end_layout
+
+\begin_layout Subsection
+MTCNN Model Reasoning 
+\end_layout
+
+\begin_layout Standard
+The reasoning process of MTCNN is shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:MTCNN-model-reasoning"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ below: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/MTCNN模型推理.pdf
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:MTCNN-model-reasoning"
+
+\end_inset
+
+MTCNN model reasoning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Generate a predictive border from the initial picture and P-Net.
+ Input the initial image and the border generated by P-Net, and get the
+ corrected border through R-Net.
+ Input the initial picture and the frame generated by R-Net.
+ Through O-Net, the corrected frame and the key point of face outline can
+ be obtained.
+ 
+\end_layout
+
+\begin_layout Subsection
+MTCNN Face Detection Algorithm
+\end_layout
+
+\begin_layout Standard
+This algorithm needs to realize three tasks: face detection, border regression
+ and feature point location
+\begin_inset CommandInset citation
+LatexCommand cite
+key "易国欣"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+(1) Face detection
+\end_layout
+
+\begin_layout Standard
+Face detection is a binary classification problem.
+ Cross entropy loss function is used to judge face or non-face
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Spurek2016"
+literal "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $L_{i}^{\det}=-\bigl(y_{i}^{\det}\log(p_{i})+(1-y_{i}^{\det})(1-\log(p_{i})))$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The output is 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+, indicating that the face probability is sample 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+; 
+\begin_inset Formula $y_{i}^{det}\in\{0,1\}$
+\end_inset
+
+ represents real labels (Ground Truth).
+ 
+\end_layout
+
+\begin_layout Standard
+(2) Bounding Box Regression 
+\end_layout
+
+\begin_layout Standard
+For each candidate box, the nearest real box is predicted and the target
+ learning is converted into a regression problem.
+ The Euclidean distance loss function is adopted for face box regression
+\begin_inset CommandInset citation
+LatexCommand cite
+key "马乐2020"
+literal "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $L_{i}^{box}=\parallel\stackrel{\wedge}{y_{i}}^{box}-y_{i}^{box}\parallel_{2}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\overset{\wedge}{y}_{i}^{box}$
+\end_inset
+
+ is the output of network, 
+\begin_inset Formula $y_{i}^{box}$
+\end_inset
+
+ is the real coordinate, 
+\begin_inset Formula $y_{i}^{box}\in R^{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+(3) Feature point positioning
+\end_layout
+
+\begin_layout Standard
+Similar to the border regression problem, Euclidean distance loss function
+ is also used for the registration points of facial features in the regression
+ problem: 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $L_{i}^{landmark}=\lVert\stackrel{\wedge}{y_{i}}^{landmark}-y_{i}^{landmark}\lVert_{2}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\stackrel{\wedge}{\mathcal{Y}}_{i}^{landmark}$
+\end_inset
+
+ is the facial feature coordinates of the output network, 
+\begin_inset Formula $y_{i}^{landmark}$
+\end_inset
+
+ is the real sample of the i-th coordinate.
+ MTCNN detects 5 feature points in the left eye, right eye, left mouth,
+ right mouth and nose, so 
+\begin_inset Formula $y_{i}^{landmark}\in R^{10}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+(4) Multitask training 
+\end_layout
+
+\begin_layout Standard
+Since the task of each CNN is different, different kinds of images should
+ be used for training in the learning process, such as including faces,
+ without faces and partially aligned faces.
+ When there is no face in the image, the loss function of face regression
+ and feature point location is not used, and only the first equation is
+ calculated.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $\min\sum_{i}^{N}=1\sum_{j}\in\{\det,box,landmark\}\alpha_{j}\beta_{i}^{j}L_{i}^{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is the loss of the current task, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ represents sample types.In P-Net and R-Net, det, box, landmark of value
+ take 1, 0.5, 0.5, respectively, in O-Net, det, box, landmark of value respectivel
+y take 1, 0.5, 1, which obviously increase the proportion of landmark, is
+ in order to get more accurate face marked point positioning.
+ 
+\begin_inset Formula $N$
+\end_inset
+
+ is the training sample.
+ 
+\end_layout
+
+\begin_layout Standard
+(5) Difficult sample mining
+\end_layout
+
+\begin_layout Standard
+Different from traditional difficult sample mining, online difficult sample
+ mining is adopted after the original classifier is trained.
+ In each small-batch sample, the loss value of all samples is propagated
+ forward in order, and the first 70% is selected as the difficult sample.
+ In the back propagation, only the gradient of the difficult sample is calculate
+d.
+ This means that samples that have little effect on model enhancement performanc
+e are ignored.
+ In fact, this method performs better than manual selection of difficult
+ samples.
+ 
+\end_layout
+
+\begin_layout Section
+Face Recognition via Using FaceNet
+\end_layout
+
+\begin_layout Subsection
+FaceNet Face Recognition Technology 
+\end_layout
+
+\begin_layout Standard
+With the rapid development of deep learning, researchers have put forward
+ many methods to identify people in tandem, constantly refreshing the algorithm
+ accuracy.
+ Convolutional neural network based face recognition method does not need
+ to extract the image features, only need to input the face picture, and
+ the trained network model can be used to represent the face feature vector,
+ finally achieve the purpose of face recognition.
+ Since the network structure of convolutional neural network is similar
+ to that of human brain, it is better than traditional face recognition
+ methods and has better robustness to interference from external factors,
+ which greatly improves the recognition accuracy.
+ 
+\end_layout
+
+\begin_layout Standard
+The deep learning is used for face verification.
+ The traditional face recognition method based on CNN: feature extraction
+ is carried out through CNN, and SVM is used for classification.
+ In this paper, FaceNet face recognition method is used, which learns to
+ map the image to the European space, and judges the similarity degree of
+ the face by comparing the distance on the European space of the features
+ of two images.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/FaceNet 模型示例.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:FaceNet-model-example"
+
+\end_inset
+
+FaceNet model example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:FaceNet-model-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a simple example.
+ The numbers in the figure represent the Euclidean distance between image
+ features.
+ It can be seen from the figure that the inter-class distance of the image
+ is obviously larger than the intra-class distance, and the threshold value
+ is about 1.1.
+ 
+\end_layout
+
+\begin_layout Standard
+Google engineers Florian Schroff, Dimitri Kalenichenko and James Philbin
+ proposed the face recognition model FaceNet, which does not use the traditional
+ softmax learning classification, but extracts a certain layer for feature
+ learning.
+ That is to learn the coding method of image mapping to European space,
+ and on the basis of face recognition, face verification and face clustering.
+ 
+\end_layout
+
+\begin_layout Standard
+The FaceNet algorithm has the following characteristics: (1) softmax is
+ removed from the last layer, and the model is trained by calculating the
+ distance between tuples.The image obtained by this method is very compact,
+ and 128 bits are sufficient.(2) How to choose the tuple is very important,
+ and the good model of tuple selection can converge quickly.
+\end_layout
+
+\begin_layout Standard
+FaceNet obtained 99.63% recognition rate on LFW data set.A 95.12% recognition
+ result was obtained on the YoutubeFacesDB dataset.On the data set of personal
+ photos, the Embedding clustering test is conducted on a single individual.
+\end_layout
+
+\begin_layout Subsection
+FaceNet Network Structure 
+\end_layout
+
+\begin_layout Standard
+The network structure is as follows: Firstly, face data samples are input,
+ and L2 regularization is used to obtain face feature vectors through deep
+ convolutional neural network.
+ Finally, triples are used to calculate loss functions.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/FaceNet网络结构.png
+	lyxscale 30
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+FaceNet network structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The training process of FaceNet can be roughly divided into the following
+ steps:
+\end_layout
+
+\begin_layout Standard
+1) Data preprocessing: the images in the conventional face recognition data
+ set often contain the entire human head and part of the environmental backgroun
+d, and the face is often tilted (head tilt, side face), before entering
+ such images into the model, it is necessary to cut the "true face" part
+ of the image, remove irrelevant background information, and align the cut
+ face image, and then it can be used for training.
+\end_layout
+
+\begin_layout Standard
+2) Load data sets according to specific rules: The FaceNet system uses a
+ novel method of data import: two matching pictures (two pictures of the
+ same person) and one unmatching picture (one picture of another person)
+ are triples, and the data set is loaded in groups.
+\end_layout
+
+\begin_layout Standard
+3) Use large backbone network to extract face feature information: Select
+ a suitable deep convolutional neural network and modify the output layer
+ to extract face feature.
+ Common deep convolutional neural networks include resnet series, Inception
+ series, etc.
+\end_layout
+
+\begin_layout Standard
+4) L2 norm normalization of face feature information: The output result
+ of the deep convolutional neural network is the feature vector in the 128-dimen
+sional hyperspace, and L2 regularization is required to normalize the points
+ in the 128-dimensional hyperspace onto the 128-dimensional hypersphere.
+\end_layout
+
+\begin_layout Standard
+5) Loss calculation and update gradient: The use of a specific "triadic
+ loss function" enables the model to be optimized quickly beyond the target
+ direction.
+\end_layout
+
+\begin_layout Subsubsection
+Deep Convolutional Neural Networks 
+\end_layout
+
+\begin_layout Standard
+Inception-ResNet-v1 is the backbone network used by FaceNet.
+ Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Inception-ResNet-v1-structure"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the backbone structure of the whole network: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/Inception-ResNet-v1结构.jpg
+	lyxscale 10
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Inception-ResNet-v1-structure"
+
+\end_inset
+
+Inception-ResNet-v1 structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The structure inside is divided into several important parts:
+\end_layout
+
+\begin_layout Standard
+(1) Stem structure: 
+\end_layout
+
+\begin_layout Standard
+In FaceNet, its Input is 160
+\begin_inset Formula $\ast$
+\end_inset
+
+160
+\begin_inset Formula $\ast$
+\end_inset
+
+3, and after input: two convolution, one maximum pooling, two convolution.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/Stem.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Stem structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(2) Inception-resnet-A structure: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/Inception-resnet-A.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Inception-resnet-A structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inception-resnet-A is structured into four branches: 
+\end_layout
+
+\begin_layout Standard
+1) Direct output without processing.
+ 
+\end_layout
+
+\begin_layout Standard
+2) after one convolution of 32 channels of 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1.
+ 
+\end_layout
+
+\begin_layout Standard
+3) After one convolution of 32 channels of 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1 and one convolution of 32 channels of 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3.
+ 
+\end_layout
+
+\begin_layout Standard
+4) After one convolution of 32 channels of 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1 and two convolution of 32 channels of 3
+\begin_inset Formula $\ast$
+\end_inset
+
+3.
+ 
+\end_layout
+
+\begin_layout Standard
+The results of 2)3)4) steps are stacked and convolution is performed once.
+ And add the result of the first step, essentially this is a residual network
+ structure.
+ 
+\end_layout
+
+\begin_layout Standard
+(3) Inception-resnet-B structure: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/Inception-resnet-B.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Inception-resnet-B structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inception-resnet-B is structured into four branches: 
+\end_layout
+
+\begin_layout Standard
+1) Unprocessed direct output.
+ 
+\end_layout
+
+\begin_layout Standard
+2) after a 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1 convolution of 128 channels.
+ 
+\end_layout
+
+\begin_layout Standard
+3) after a 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1 convolution of 128 channels, a 1
+\begin_inset Formula $\ast$
+\end_inset
+
+7 convolution of 128 channels, and a 7
+\begin_inset Formula $\ast$
+\end_inset
+
+1 convolution of 128 channels.
+ 
+\end_layout
+
+\begin_layout Standard
+The results of the 2)3) steps are stacked and convolved once and added with
+ the results of the first step.
+ In essence, this is a residual network structure.
+ 
+\end_layout
+
+\begin_layout Standard
+(4) Inception-resnet-C structure: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/Inception-resnet-C.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Inception-resnet-C structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inception-resnet-C is structured into four branches: 
+\end_layout
+
+\begin_layout Standard
+1) Direct output without processing.
+ 
+\end_layout
+
+\begin_layout Standard
+2) after a convolution of 192 channels of 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1.
+ 
+\end_layout
+
+\begin_layout Standard
+3) after a convolution of 192 channels of 1
+\begin_inset Formula $\ast$
+\end_inset
+
+1, a convolution of 192 channels of 1
+\begin_inset Formula $\ast$
+\end_inset
+
+3 and a convolution of 192 channels of 3
+\begin_inset Formula $\ast$
+\end_inset
+
+1.
+ 
+\end_layout
+
+\begin_layout Standard
+The results of the 2)3) steps are stacked and convolved once and added with
+ the results of the first step.
+ In essence, this is a residual network structure.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Embedding 
+\end_layout
+
+\begin_layout Standard
+It was created because of the high dimension and very sparse Embedding generated
+ by one-hot coding.
+ 
+\end_layout
+
+\begin_layout Standard
+The main purpose of Embedding is to reduce the dimensionality of sparse
+ features
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schroff2015a"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/Embedding降维.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Embedding dimension reduction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the left side of the first matrix is 2
+\begin_inset Formula $\ast$
+\end_inset
+
+6 matrix by one_hot coding, the input node for 3 full connection layer,
+ after get the dimension reduction of matrix.
+ The original 6-dimensional one_hot coding vector is reduced to 3-dimensional
+ vector through the Embedding layer.
+ 
+\end_layout
+
+\begin_layout Standard
+Since the weight of the full connection layer will also be updated during
+ the training of the deep neural network, if the input is one_hot coding
+ of a word set, dimension reduction is carried out.
+ After dimension reduction, the difference between the values of each dimension
+ of the two embedding vectors represents the similarity of the two embedding
+ vectors in the high-dimensional space, and dimension reduction technology
+ can be used to visualize the similarity.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Triplet Loss 
+\end_layout
+
+\begin_layout Standard
+Triplet Loss is A loss function in deep learning, which is used to train
+ samples with small differences, including Anchor example, Positive example
+ and Negative example.
+ Any picture is selected as A, the picture belonging to the same person
+ is P, and the picture belonging to different person is N.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/Triplet Loss.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Triplet Loss Training
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Before the network is learned, the Euclidean distance between A and P may
+ be large, while the Euclidean distance between A and N may be small.
+ In the process of continuous learning, the Euclidean distance between A
+ and P gradually decreases, while the Euclidean distance between A and N
+ gradually increases.
+ The separability of network learning features: the distance between the
+ same kind of features is as small as possible, and the distance between
+ different kinds of features is as large as possible.
+ By learning, the in-class distance is less than the inter-class distance.
+ 
+\end_layout
+
+\begin_layout Subsection
+FaceNet Algorithm 
+\end_layout
+
+\begin_layout Subsubsection
+FaceNet Model Reasoning
+\end_layout
+
+\begin_layout Standard
+FaceNet model reasoning is shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:FaceNet-model-reasoning"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/FaceNet 模型推理.pdf
+	lyxscale 30
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:FaceNet-model-reasoning"
+
+\end_inset
+
+FaceNet model reasoning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1) Face detection and face image extraction by MTCNN.
+ 
+\end_layout
+
+\begin_layout Standard
+2) Input the extracted face image into FaceNet and calculate the feature
+ vector of the Embedding.
+ 
+\end_layout
+
+\begin_layout Standard
+3) Compare Euclidean distance between feature vectors to determine whether
+ it is the same person.
+ For example, if the feature distance is less than 1, it is the same person;
+ if the feature distance is greater than 1, it is different people.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Triplet Loss Algorithm 
+\end_layout
+
+\begin_layout Standard
+Principle of triplet loss function: The objective is that the distance between
+ features should have certain properties
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chen2017a"
+literal "false"
+
+\end_inset
+
+.
+ Three face images were extracted from the training data at a time.
+ The first image was labeled 
+\begin_inset Formula $x_{i}^{a}$
+\end_inset
+
+, the second image was labeled 
+\begin_inset Formula $x_{i}^{p}$
+\end_inset
+
+, and the third image was labeled 
+\begin_inset Formula $x_{i}^{n}$
+\end_inset
+
+.
+ In a triplet, 
+\begin_inset Formula $x_{i}^{a}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{i}^{p}$
+\end_inset
+
+ correspond to the same person, and 
+\begin_inset Formula $x_{i}^{n}$
+\end_inset
+
+ to another person.
+ So the distance of 
+\begin_inset Formula $\|f(x)_{i}^{a}-f(x)_{i}^{p}\|_{2}^{2}$
+\end_inset
+
+ is small in theory, but the distance of 
+\begin_inset Formula $\|f(x)_{i}^{a}-f(x)_{i}^{n}\|_{2}^{2}$
+\end_inset
+
+ is large in theory.
+ Strictly speaking, the triplet loss should satisfy the following formula:
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $\parallel f(x)_{i}{}^{a}-f(x)_{i}{}^{p}\parallel_{2}^{2}+\alpha<\parallel f(x)_{i}{}^{a}-f(x)_{i}{}^{n}\parallel_{2}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The square of the distance between the same faces is smaller 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ than the square of the distance between different faces.
+ Therefore, the loss function is designed as the following formula: 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $\text{L}_{i}=\sum_{i}^{N}[\|f(x_{i}^{a})-f(x_{i}^{p})\|_{2}^{2}-\|f(x_{i}^{a})-f(x_{i}^{n})\|_{2}^{2}+\alpha]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So if the distance between triples satisfies 
+\begin_inset Formula $\parallel f(x)_{i}{}^{a}-f(x)_{i}{}^{p}\parallel_{2}^{2}+\alpha<\parallel f(x)_{i}{}^{a}-f(x)_{i}{}^{n}\parallel_{2}^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $L_{i}=0$
+\end_inset
+
+.
+ If this inequality is not satisfied, it gets the loss of 
+\begin_inset Formula $\left\Vert f(x)_{i}{}^{a}-f(x)_{i}{}^{p}\right\Vert _{2}^{2}+\alpha-\left\Vert f(x)_{i}{}^{a}-f(x)_{i}{}^{n}\right\Vert _{2}^{2}$
+\end_inset
+
+, In addition, fixed 
+\begin_inset Formula $\|f(x)\|_{2}^{2}=1$
+\end_inset
+
+ when training, So that the features don't go away indefinitely.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Center Loss Algorithm
+\end_layout
+
+\begin_layout Standard
+The center loss does not optimize the distance, but keeps the original classific
+ation model unchanged and assigns a category center to each class
+\begin_inset CommandInset citation
+LatexCommand cite
+key "张枫2019"
+literal "false"
+
+\end_inset
+
+.The same type of images are close to the category center, while the category
+ centers of different types of images are far away from each other.Unlike
+ triplet losses, central losses are not specially sampled, and the same
+ effect can be achieved by using fewer images.
+\end_layout
+
+\begin_layout Standard
+Suppose you input a face image 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, corresponding to the category 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+, and assign a category center to each class, called 
+\begin_inset Formula $c_{yi}$
+\end_inset
+
+.Face characteristics
+\begin_inset Formula $f(x)_{i}$
+\end_inset
+
+as close to the center as possible 
+\begin_inset Formula $c_{yi}$
+\end_inset
+
+.Therefore, the loss function is defined as the following formula:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $L_{i}=\frac{1}{2}\left\Vert f(x_{i})-c_{yi}\right\Vert _{2}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The value of each loss function is summed to obtain the loss center of multiple
+ graphs:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $L_{center}=\sum_{i}L_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Theoretically, the average of all picture features for each category 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is its best center.Each gradient descent, the 
+\begin_inset Formula $c_{yi}$
+\end_inset
+
+ of all images should be calculated.
+ The calculation is very complicated.Approximate treatment, therefore, in
+ the beginning, random 
+\begin_inset Formula $c_{yi}$
+\end_inset
+
+ is determined, and then within each batch, using 
+\begin_inset Formula $L_{i}=\frac{1}{2}\left\Vert f(x_{i})-c_{yi}\right\Vert _{2}^{2}$
+\end_inset
+
+ for the current batch of 
+\begin_inset Formula $c_{yi}$
+\end_inset
+
+ gradient calculation, and update 
+\begin_inset Formula $c_{yi}$
+\end_inset
+
+, in addition, also need to join the softmax loss function, the final loss
+ consists of two parts, 
+\begin_inset Formula $L=L_{soft\mathrm{max}}+\alpha L_{center}$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is a super parameter.
+\end_layout
+
+\begin_layout Standard
+In general, 
+\begin_inset Formula $c_{yi}$
+\end_inset
+
+ is initialized randomly at first, batch is trained continuously, in each
+ batch, the total loss 
+\begin_inset Formula $L$
+\end_inset
+
+ is used, not only to update the model parameters, but also to calculate
+ the gradient of 
+\begin_inset Formula $c_{yi}$
+\end_inset
+
+, and constantly update the center location.
+\end_layout
+
+\begin_layout Section
+Chapter Summary 
+\end_layout
+
+\begin_layout Standard
+This chapter first introduces the face detection technology, and introduces
+ the network flow of MTCNN, the network structure of P-Net, O-Net and R-Net
+ convolutional neural networks, face detection, frame regression and feature
+ point location algorithms.
+ Then, the face recognition technology is introduced, and the basic network
+ structure of FaceNet is introduced, including the Inception-Resenet-v1
+ deep convolutional network structure, Triplet Loss algorithm and Center
+ Loss algorithm, which have laid the foundation for the design and implementatio
+n of the system.
+\end_layout
+
+\begin_layout Chapter
+System Design
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:System Design"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Requirement Analysis
+\end_layout
+
+\begin_layout Subsection
+Functional Requirements 
+\end_layout
+
+\begin_layout Standard
+(1) The user can input their name and use the camera to capture images of
+ their faces.
+ 
+\end_layout
+
+\begin_layout Standard
+(2) The user should retrain the image after entering the information.
+ 
+\end_layout
+
+\begin_layout Standard
+(3) The user can check in automatically.
+ 
+\end_layout
+
+\begin_layout Standard
+(4) The user can view attendance statistics.
+\end_layout
+
+\begin_layout Subsection
+Non-functional Requirements 
+\end_layout
+
+\begin_layout Standard
+(1) Low delay 
+\end_layout
+
+\begin_layout Standard
+In the case that the system completes the same operation and runs normally,
+ the low delay of the system will lead to higher availability of the system.
+ Low delay means that the processing capacity of the system is low in unit
+ time, and the stability of the system needs to be ensured in the face of
+ large data requests.
+ Therefore, low delay is an important indicator to examine the stability
+ and availability of the system.
+ 
+\end_layout
+
+\begin_layout Standard
+(2) Accuracy 
+\end_layout
+
+\begin_layout Standard
+System should be able to quickly and accurately recognize the face and match
+ with the face of the system photo library to identify the face.
+ 
+\end_layout
+
+\begin_layout Standard
+(3) Stability 
+\end_layout
+
+\begin_layout Standard
+Stability is the key to ensure the feasibility of the system.
+ When the system design needs to consider abnormal data or operations, make
+ assumptions about possible situations, and deal with abnormal situations,
+ so as to ensure the accuracy of the system.
+ 
+\end_layout
+
+\begin_layout Standard
+(4) Scalability 
+\end_layout
+
+\begin_layout Standard
+Scalability means that in the subsequent development and maintenance of
+ the system, adding or modifying function modules will not greatly affect
+ the overall system.
+ At the early stage of the system design, the module is divided reasonably,
+ and the principle of open and closed ports and interface isolation is followed
+ to reduce the degree of coupling between modules.
+ 
+\end_layout
+
+\begin_layout Section
+Functional Design 
+\end_layout
+
+\begin_layout Standard
+After demand analysis, the laboratory attendance system based on face recognitio
+n mainly includes the following functions: 
+\end_layout
+
+\begin_layout Standard
+(1) Information collection module.
+ It mainly provides the function of collecting student's name and face image.
+ 
+\end_layout
+
+\begin_layout Standard
+(2) Automatic check-in module.
+ Through the system to collect the face information processing, determine
+ the face identity, generate attendance records.
+ 
+\end_layout
+
+\begin_layout Standard
+(3) Automatic statistics module for daily attendance and weekly attendance.
+ This module is used to produce a report form which shows the detailed lab
+ attendance of all lab staff per week and per month, including each lab
+ staff's average working time in the lab.
+\end_layout
+
+\begin_layout Standard
+The functional framework of the system is shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:System-functional-framework"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/系统功能框架图.pdf
+	lyxscale 25
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:System-functional-framework"
+
+\end_inset
+
+System functional framework diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The overall process design of this system is shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:System-flow-design"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ below: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/系统流程设计图.pdf
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:System-flow-design"
+
+\end_inset
+
+System flow design drawing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Resonablity of System Design
+\end_layout
+
+\begin_layout Standard
+The information collection is divided into a separate module, because this
+ module is used to collect the information of new laboratory members, including
+ name and face image, and each member needs to be retrained after joining
+ the data, in order to ensure that it can be identified by the system.
+ And the face detection and face recognition synthesis into an automatic
+ attendance module, because the two are carried out successively, and the
+ order to undertake the relationship, suitable for synthesis into a module.
+ Attendance statistics module is used to generate attendance report, belongs
+ to the output of background information, naturally divided into another
+ module.
+\end_layout
+
+\begin_layout Section
+Chapter Summary 
+\end_layout
+
+\begin_layout Standard
+This chapter is the design of face sign-in system.
+ First of all, the system needs analysis and design, and then the functional
+ structure of the system design, and finally described the rationality of
+ the system design.
+\end_layout
+
+\begin_layout Chapter
+System Implementation
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:System Implementation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Development Environment 
+\end_layout
+
+\begin_layout Standard
+The system is developed in the Windows environment, using Python development
+ language, because Python language is simple and easy to use, contains third-par
+ty libraries, and has great advantages in data processing.
+ The deep learning framework uses Google's TensorFlow framework.
+ Table
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:System-development-running"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ lists the specific environment and version information: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/开发环境.pdf
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:System-development-running"
+
+\end_inset
+
+System development running environment table
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Information Collection Module
+\end_layout
+
+\begin_layout Standard
+First of all, the input name is required, and then the system will internally
+ verify whether repeated collection, after the audit is correct, the camera
+ is used to shoot the face, and save the image, and finally the SVM training
+ and save the SVM model.As shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Information-collection-module"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/采集图像流程图.pdf
+	lyxscale 40
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Information-collection-module"
+
+\end_inset
+
+Information collection module Flow chart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Automatic Check-in Module
+\end_layout
+
+\begin_layout Standard
+(1) Process of obtaining face image 
+\end_layout
+
+\begin_layout Standard
+Face image acquisition process is mainly to achieve image generation, image
+ detection, preprocessing and feature extraction and generate face image
+ library.
+ First, the camera is used to shoot the face, and then the face preprocessing,
+ after training to extract the face features, and finally save the face
+ features.
+ As shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Obtain-face-image"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/获取人脸图像流程图.pdf
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Obtain-face-image"
+
+\end_inset
+
+Obtain face image flow chart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(2) Identification process
+\end_layout
+
+\begin_layout Standard
+The system starts to use the face image library to match the attendance.
+ First of all, the image acquisition of the user's face image, the face
+ image into the trained face database, and the database of the face image
+ information for comparison, to find out the record of the face image.
+ If the face image library can match the face image, face recognition is
+ successful, the system displays the identity information corresponding
+ to the face, while updating the check-in information record; Otherwise,
+ it is considered that the face cannot be found and the face matching fails.
+ The face recognition process of the system is shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Identification-flow-chart"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/身份识别流程图.pdf
+	lyxscale 20
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Identification-flow-chart"
+
+\end_inset
+
+Identification flow chart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Automatic Statistics Module
+\end_layout
+
+\begin_layout Standard
+Automatic statistics module for daily attendance and weekly attendance.
+ Firstly, daily attendance statistics and weekly attendance statistics are
+ selected, then reports are generated, and finally reports are exported.As
+ shown in Figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Attendance-statistics-flow"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/考勤统计流程图.pdf
+	lyxscale 30
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Attendance-statistics-flow"
+
+\end_inset
+
+Attendance statistics flow chart
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Improvement System Efficiency
+\end_layout
+
+\begin_layout Standard
+In the identification of the punch card, it is necessary to detect whether
+ there is a face in the images captured by the camera in each frame, which
+ will lead to a large number of convolutional pyramid calculations, so that
+ the recognition picture is not smooth.
+ Experiments show that the deeper the number of layers, the lower the efficiency
+ and the higher the accuracy.
+ The shallower the number of layers in the convolution calculation, the
+ higher the efficiency and the lower the accuracy.
+ Therefore, as long as the number of layers calculated by convolution is
+ set to a moderate value, good fluency can be achieved while ensuring the
+ accuracy of recognition.
+ After many experiments, the number of convolution layers is finally set
+ as two layers, which can meet the above requirements.
+\end_layout
+
+\begin_layout Section
+Chapter Summary 
+\end_layout
+
+\begin_layout Standard
+This chapter is the realization of face sign-in system.
+ Firstly, the development environment is introduced, and then the realization
+ of each module is described.
+ Finally, how to improve the system performance is expounded.
+\end_layout
+
+\begin_layout Chapter
+System Demonstration
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:System Demonstration"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The system is mainly composed of five modules: information collection, automatic
+ check-in and attendance statistics.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/主页.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Homepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Information Collection
+\end_layout
+
+\begin_layout Standard
+New lab members need to be identified and checked in, and information should
+ be collected beforehand.
+ Click the "Collection" button to enter the collection interface.
+ First, you need to enter your name.
+ If the user collects data repeatedly, the system displays the message "Collecte
+d already, do not need to collect again".
+ If the name is correct, it will enter the image screen, and the user will
+ press "s" to take an image.
+ Press "Esc" to exit the shooting interface and complete the collection.
+ And then the system will train.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/输入姓名.png
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Input name interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/拍照采集.png
+	lyxscale 30
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Photo acquisition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/已采集.png
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Repeated collection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Automatic Check-in 
+\end_layout
+
+\begin_layout Standard
+After the identification attendance system is started, the camera will capture
+ every frame of the picture, and each frame of the face detection judgment,
+ if the face is detected, the frame will be MTCNN extraction face, FaceNet
+ extraction features, and then load the pre-trained SVM model, through calculati
+on and prediction, finally get the recognition results.
+ And displays information about faces.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/签到.png
+	lyxscale 30
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Identify status - Sign in
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/签退.png
+	lyxscale 30
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Identify status - Sign out
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Attendance Statistics 
+\end_layout
+
+\begin_layout Standard
+Click the "attendance statistics" button, the system will pop up the specific
+ attendance information.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 毕业论文figures/毕设图片/考勤统计png.png
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Attendance statistics report
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Chapter Summary 
+\end_layout
+
+\begin_layout Standard
+This chapter is a demonstration of the face check-in system.
+ Three important functional modules of the display system:information collection
+, automatic check-in and attendance statistics.
+\end_layout
+
+\begin_layout Chapter
+Summary and Prospect
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Summary and Prospect"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+Face detection and face recognition have been favored by many researchers
+ because of their intelligence and non-contact factors.
+ But at the same time face recognition also brings a lot of difficulties
+ and challenges: 1) The accuracy of face recognition is easy to be affected
+ by external environmental factors; 2) The change of facial structure affects
+ the recognition.
+ Therefore, this paper mainly aims at the rotation of face posture and the
+ influence of external factors, and adopts the research algorithm based
+ on deep learning and CNN face recognition model to improve the accuracy
+ of face detection and recognition.
+ 
+\end_layout
+
+\begin_layout Standard
+The work of this paper is as follows: 
+\end_layout
+
+\begin_layout Standard
+(1) In the face detection module, a multilevel convolutional neural network
+ model is proposed.
+ Based on the relevant research and analysis of CNN model, MTCNN is used
+ to screen the face candidate box layer by layer, aiming at the infection
+ factors such as attitude rotation and illumination environment, which improves
+ the accuracy of face detection to a certain extent.
+ 
+\end_layout
+
+\begin_layout Standard
+(2) For the face recognition module, the FaceNet deep CNN model is proposed.
+ SVM is used as the classifier, and the 128-dimensional feature vector extracted
+ by facenet is used to train SVM, through which face recognition can be
+ realized.
+\end_layout
+
+\begin_layout Standard
+(3) In the laboratory attendance system, the demand analysis is carried
+ out first, and then the functional structure and attendance process are
+ designed, and finally the development of the laboratory attendance system
+ is completed.
+ 
+\end_layout
+
+\begin_layout Section
+Prospect
+\end_layout
+
+\begin_layout Standard
+With the wide application of machine learning and artificial intelligence,
+ network models and machine learning algorithms are constantly updated,
+ solving many problems under realistic conditions.
+ As an important direction of machine learning, deep learning has achieved
+ good results in the field of face recognition.
+ This paper is mainly based on deep learning and studies the laboratory
+ attendance system based on MTCNN and FaceNet.
+ There are still some aspects to be improved, including the following parts:
+ 
+\end_layout
+
+\begin_layout Standard
+(1) There are many interference factors affecting human image acquisition
+ in the real environment, which reduces the accuracy of face detection and
+ recognition.
+ Optimization algorithm to overcome the influence of interference factors
+ is an important research direction.
+ 
+\end_layout
+
+\begin_layout Standard
+(2) This system does not solve the problem of single training of the network.
+ When new faces come in, the svm classifier needs to be retrained, which
+ is low efficiency.
+ How to solve the problem of network single training is still to be studied.
+\end_layout
+
+\begin_layout Standard
+(3) How to design the system function and database to make the system more
+ concise and perfect, worthy of future practice.
+ 
+\end_layout
+
+\begin_layout 参考文献
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "refs"
+options "zjutcls/gbt7714-2005"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Acknowledgements
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+Through nearly half a year of unremitting efforts, my undergraduate dissertation
+ is basically finished.
+ At the end of this paper, I have many feelings to express.
+ When I came into contact with the graduation project and thesis, I realized
+ the depth of the skills required, which played a warning role for my future
+ postgraduate career.
+ 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+First of all, I would like to thank my tutor Li Xiaoxin.
+ It is Miss Li's encouragement and inculcation that I can successfully complete
+ my undergraduate program.
+ Your rigorous academic style and rich achievements in scientific research
+ have exerted an imperceptibly positive influence on me, constantly motivating
+ me to make greater progress in my studies and scientific research, and
+ to delve deeply into the research field of deep learning.
+ 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+Secondly, I would like to thank my classmates for their positive and forward
+ spirit.
+ 
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing onehalf
+Finally, I would like to thank my parents.
+ The care and help you give me is irreplaceable.
+ You will always be my favorite.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset CommandInset include
+LatexCommand input
+filename "cover/appendix.tex"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

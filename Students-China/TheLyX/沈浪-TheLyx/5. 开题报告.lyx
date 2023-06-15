@@ -1,0 +1,846 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass zjut-report
+\options UTF-8, openingreport, englishversion
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding gbk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+!Mode:: "\SpecialChar TeX
+:UTF-8"
+\end_layout
+
+\begin_layout Plain Layout
+需要用：XeLaTex 进行编译
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告类型
+本科毕业设计开题报告
+\end_layout
+
+\begin_layout 提交日期
+2023年02月
+\end_layout
+
+\begin_layout 题目左侧距离
+6mm
+\end_layout
+
+\begin_layout 题目下划线长度
+90mm
+\end_layout
+
+\begin_layout 封面下划线长度
+17em
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "cover/cover.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 英文毕设题目
+
+\end_layout
+
+\begin_layout Chapter
+Background and Significance of The Topic
+\end_layout
+
+\begin_layout Section
+Purpose of Research and Development
+\end_layout
+
+\begin_layout Standard
+Face recognition using camera equipment to collect face image is a technology
+ for identification according to the facial features of the target to be
+ detected.With the popularization and application of computer network technology,
+ face recognition technology is widely used in gate access control, attendance
+ management, face payment and many other fields.Traditional biometrics, such
+ as fingerprint recognition, voice recognition and iris recognition, are
+ either seriously affected by internal and external factors, so the recognition
+ efficiency is low, or have high requirements for software and hardware
+ facilities, so it is difficult to popularize and apply.Compared with the
+ traditional biometrics technology, face recognition technology can be more
+ intuitive and convenient through video surveillance equipment to check
+ personnel identity information, has the characteristics of simplicity,
+ efficiency, economy and scalability, can be applied to security verification,
+ video surveillance, personnel control and many other aspects.Traditional
+ face recognition methods mainly use manual facial feature detector design,
+ in unconstrained environment, the feature information is easy to be affected
+ by external factors, resulting in reduced robustness of face recognition
+ algorithm.At present, traditional face recognition methods have been gradually
+ replaced by deep learning methods based on convolutional neural networks.
+ The advantage of deep learning methods lies in the use of a large number
+ of data sets for feature training, so as to learn the best features of
+ the deep level of the target to be detected
+\begin_inset CommandInset citation
+LatexCommand cite
+key "李志华2022"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The traditional laboratory attendance system requires laboratory staff to
+ sign in and sign out according to a specific Angle, which has the following
+ two disadvantages :1) once the location of the face is not accurate, the
+ accuracy of the system recognition will be very low.2) Staff need to remember
+ to clock in every day, once forgotten, a day's work will be wasted.The laborator
+y attendance system designed by this project is a face recognition system
+ based on deep learning model MTCNN and Facenet.It mainly uses MTCNN model
+ for face detection and image extraction, uses Facenet model for face feature
+ extraction, and completes real-time recognition of face image by building
+ local face feature database.Laboratory staff in and out of the laboratory
+ every day, the system will real-time face recognition and automatic attendance,
+ improve the accuracy and convenience of recognition.
+\end_layout
+
+\begin_layout Section
+Research and Development Status at Home and Abroad
+\end_layout
+
+\begin_layout Subsection
+Methods of Face Recognition
+\end_layout
+
+\begin_layout Standard
+Since the 1960s, scholars began to study face recognition.
+ Through decades of development, face recognition has been applied and developed
+ in many fields, and the research at home and abroad is also very active.Some
+ developed countries and some developing countries have set up research
+ institutions and teams for face recognition.
+\end_layout
+
+\begin_layout Standard
+Face recognition research was first carried out in the United States, and
+ its research technology is higher than other countries.
+ In 1993, The U.S.
+ Department of Defense's Advanced Research Projects Agency and the U.S.
+ Army Research Laboratory established Feret(Face Recognition) Technology
+ project team, established the FERET face database, used to evaluate the
+ performance of face recognition algorithms.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "史涛2019"
+literal "false"
+
+\end_inset
+
+.In recent years, Japan has been accelerating the research of intelligent
+ video analysis technology, in 2015, a Japanese company launched a video
+ surveillance face recognition technology scanning speed has been able to
+ reach 36 million images per second.
+ In the same year, the backbone airports in Japan introduced face recognition
+ systems to provide a more convenient way for inbound and outbound tourists
+ to enter and exit the country
+\begin_inset CommandInset citation
+LatexCommand cite
+key "刘俊2019"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Compared with foreign countries, China's face recognition algorithm research
+ is relatively lagging behind, the earliest began in the 1990s.
+ At the beginning of the transformation from artificial to computer intelligent
+ recognition in China, the biometric technology used is fingerprint recognition.
+ However, with the development of The Times, people's needs have also changed,
+ therefore, more accurate technology is needed to meet the new needs of
+ practical applications, so face recognition came into being.
+ Face recognition was first used in the field of security.
+ In 2001, the public security department began to use face recognition technolog
+y to prevent and combat major criminal crimes, and won the support of the
+ state.
+ Li Ziqing, a doctor of automation from Chinese Academy of Sciences, led
+ a team to develop "Zhongke Oxen", which was applied in the 2008 Beijing
+ Olympic Games and the 2010 World Expo to improve the safety index of the
+ venue and ensure the smooth implementation of activities
+\begin_inset CommandInset citation
+LatexCommand cite
+key "2014"
+literal "false"
+
+\end_inset
+
+.In 2010, the Shanghai World Expo, the technology has been more widely used,
+ while major companies compete to join the camp of this technology, to achieve
+ the large-scale application of face recognition in China.
+\end_layout
+
+\begin_layout Standard
+From 1960s to 1990s, the research on face recognition mainly used the geometric
+ features of facial features for matching.
+ Firstly, the position of facial features was located, and then the relationship
+ between their shape and position was analyzed.
+ Finally, the pattern matching was carried out by measuring Euclidean distance
+ and classifier.
+ This method is easy to lose face information, recognition effect is not
+ ideal, temporarily stay in the theoretical stage, can not be used in the
+ actual scene.
+\end_layout
+
+\begin_layout Standard
+In 1987, Sirovich and Kireby proposed a principal component analysis-based
+ feature face dimensionality reduction method
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Crescenzi2001"
+literal "false"
+
+\end_inset
+
+ for PCA(Principle Componet Analysis) based face representation and recognition.
+ With this approach, Turk and Pentland convert the entire face image into
+ a vector and compute the feature face with a set of samples.
+ PCA is able to obtain data representing a face at an optimal level with
+ the data obtained from the image.
+ Different faces and light levels of the same person are considered as the
+ weakness of PCA.
+\end_layout
+
+\begin_layout Standard
+In 1997, Yale University Belhhumur improved on Fisherfaces and introduced
+ linear discriminant analysis
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ibrahim2019"
+literal "false"
+
+\end_inset
+
+.
+ This method uses supervised training to map faces onto the feature space,
+ so that the feature information of the same person can be as close as possible
+ and the feature information points of different people can be as far away
+ as possible to reduce the impact of facial expression, posture, and lighting.Imp
+rove the identification efficiency.France and Herault Jutten put forward
+ the method of independent component analysis
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Comon1994"
+literal "false"
+
+\end_inset
+
+, will get the face feature vectors independent component of the linear
+ combination, as PCA algorithm.Hong Ziquan proposed a dimensionality reduction
+ method based on singular value decomposition.
+ First, singular value decomposition is used as the feature vector of face
+ image, and finally, high-dimensional information is compressed into a low-dimen
+sional subspace for classification.
+\end_layout
+
+\begin_layout Standard
+F.
+ maria uses the hidden Markov model of five states
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Samaria1995"
+literal "false"
+
+\end_inset
+
+, and uses a group of unobstructible state sequence parameters to represent
+ the relationship between various organs of the face, and puts forward a
+ pseudo-two-dimensional hidden Markov model.Applied to face recognition,
+ this model can well reflect the correlation between organs, is not sensitive
+ to the change of expression, and has good robustness.
+\end_layout
+
+\begin_layout Standard
+Researchers combined with the learning ability and association ability of
+ neural network, neural network applied to face recognition, neural network
+ can learn and extract face features through the learning ability of the
+ data set, do not need researchers to spend time and energy to design face
+ feature extraction algorithm, at the same time, neural network has good
+ classification ability, especially in the field of face recognition.Kohenen
+ proposed that the self-organizing mapping network
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kohonen1989"
+literal "false"
+
+\end_inset
+
+ could reproduce faces well.Lin applies probabilistic neural network to face
+ recognition, repeatedly trains samples, and improves the learning efficiency
+ and convergence speed of neural network through modular structure.Many tradition
+al neural network models have been proposed.
+\end_layout
+
+\begin_layout Standard
+In 2006, Galundor University GeofferyHinton et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sisodiya"
+literal "false"
+
+\end_inset
+
+ proposed the concept of deep learning and the method of greedy layer by
+ layer pre-training for the single problem of neural network single hidden
+ layer structure.
+ The paper proposed that the multi-hidden layer can better extract features
+ without the need of artificial design algorithm, thus improving the accuracy
+ of classification.Unsupervised learning is used for layer by layer pre-training
+ to solve the problem of too many network parameters.Convolutional neural
+ network is one of the classical algorithms in deep learning at present.
+ Due to its simple structure and few training parameters, it has become
+ a widely used model in deep learning and a mainstream method for face recogniti
+on, playing an extremely important role.
+\end_layout
+
+\begin_layout Standard
+In 2014, Tang Xiaoou team of the Chinese University of Hong Kong
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sun2014a"
+literal "false"
+
+\end_inset
+
+ proposed DeepID algorithm based on convolutional neural network, which
+ fused deep features of different regions of face image, verified faces
+ by using Bayesian method, and tested on open face data set LFW
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Huang2008"
+literal "false"
+
+\end_inset
+
+, achieving 97.45% accuracy.The framework is mainly used for face verification,
+ that is, comparing whether two faces are the same person, and finally,
+ face recognition is carried out through softmax regression.FaceBook proposed
+ DeepFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Taigman2014a"
+literal "false"
+
+\end_inset
+
+ algorithm to triangulate faces, reconstruct faces through key feature informati
+on, and finally, extract and classify features to realize face recognition,
+ achieving a recognition rate of 97.35%.In 2015, FaceNet
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schroff2015a"
+literal "false"
+
+\end_inset
+
+ system developed by Google in the United States introduced the TripletLoss
+ function to map face features to Euclidean space, so that the spatial distance
+ of images matching samples is closer, while that of unmatched samples is
+ farther.The accuracy of LFW data set was 99.63%.In 2016, IacopoMasi proposed
+ an unconstrained face recognition method
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Masi2016"
+literal "false"
+
+\end_inset
+
+to study the recognition problem caused by changes in face posture.
+\end_layout
+
+\begin_layout Standard
+With the development of Convolutional neural network, in recent years, more
+ and more companies at home and abroad, such as Google, Facebook, and SenseTime,
+ have applied face recognition to the security check of public places, the
+ place where the company checks in for attendance and signs in for meetings.
+ However, there are still some problems and challenges in the actual application.
+ Although many methods have achieved high accuracy in LFW data sets, even
+ exceeding the ability of human eye recognition However, these deep models
+ need to be trained through a large number of samples, which is difficult
+ to achieve for universities or small research institutions.
+ Therefore, how to train a relatively simple model with good performance,
+ which can obtain more distinctive facial features and match faces well
+ is an urgent problem that we need to solve.
+\end_layout
+
+\begin_layout Subsection
+Development of Attendance System
+\end_layout
+
+\begin_layout Standard
+The attendance system was first born in the 1970s
+\begin_inset CommandInset citation
+LatexCommand cite
+key "周克辉2019"
+literal "false"
+
+\end_inset
+
+ and has undergone the following evolution:
+\end_layout
+
+\begin_layout Standard
+The first generation of attendance is a paper card system, replacing the
+ traditional manual attendance system.The time is printed on the card through
+ the micro print head to realize attendance.Advantages are simple operation,
+ the machine is not complex;The disadvantage is that it can not effectively
+ identify the identity of the attendance person, it is easy to take the
+ exam on behalf of the situation, and there is a lot of statistical work
+ in the later period, the paper consumption is large.
+\end_layout
+
+\begin_layout Standard
+The second generation of attendance is the bar code attendance system.It
+ is mainly to record the situation of mine workers in the well
+\begin_inset CommandInset citation
+LatexCommand cite
+key "曲爱玲2017"
+literal "false"
+
+\end_inset
+
+.
+ The bar code is projected far away from the optics, and the bar code is
+ scanned by the mining lamp irradiated by the camera, so as to realize the
+ attendance check.The advantages are high accuracy, low cost and fast speed,
+ but the disadvantages are that the bar code is easy to be damaged and forged.
+\end_layout
+
+\begin_layout Standard
+The third generation of attendance is magnetic card type attendance system.The
+ attendance test is now widely used in major enterprises and institutions
+ with remarkable results.The advantage is high attendance efficiency, the
+ disadvantage is that the magnetic card is easy to lose, easy to take the
+ test.
+\end_layout
+
+\begin_layout Standard
+The fourth generation of attendance is biological information identification
+ attendance system.First input fingerprint, iris
+\begin_inset CommandInset citation
+LatexCommand cite
+key "胡韶山"
+literal "false"
+
+\end_inset
+
+, face information, and then compare the information for recognition.The
+ advantage is that there is no need to carry other proof, identity identificatio
+n is unique, there will not be a proxy test.The disadvantage is that it is
+ easy to be affected by external factors, the fingerprint needs to be clean
+ and not damaged, the face needs no external occlusion, the stability and
+ accuracy of the verification is low, the cost is high.
+\end_layout
+
+\begin_layout Chapter
+The Basic Contents and Objectives of Research and Development, The Main
+ Problems to be Solved or The Key Technologies
+\end_layout
+
+\begin_layout Section
+Research Objective
+\end_layout
+
+\begin_layout Standard
+In the comparison of domestic and foreign face recognition technology, in
+ the study of similar system design and implementation abroad, put forward
+ their own design and implementation.The research objective of this topic
+ is to use MTCNN model and FaceNet model to realize the laboratory attendance
+ system based on face recognition, especially the application of some key
+ technologies in face recognition, such as OpenCV, etc.
+\end_layout
+
+\begin_layout Section
+The Basic Content of The Study
+\end_layout
+
+\begin_layout Standard
+The specific contents of the project include:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(1) Face image acquisition module
+\end_layout
+
+\begin_layout Standard
+The module is used to capture facial images of lab workers as they enter
+ or leave the lab.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(2) Face detection module
+\end_layout
+
+\begin_layout Standard
+The module is used to detect the position of the facial region of the captured
+ face image.Face detection can be performed using MTCNN.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(3) Face recognition module
+\end_layout
+
+\begin_layout Standard
+The module is used to recognize the detected face image.
+ The pre-trained network model FaceNet can be used for face recognition.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(4) Complete attendance statistics, including: daily attendance and weekly
+ attendance automatic statistics
+\end_layout
+
+\begin_layout Standard
+The module is used to generate a report detailing the weekly and monthly
+ lab attendance of all lab members, including the average working time of
+ each lab member, etc.
+\end_layout
+
+\begin_layout Section
+Technical Difficulties to be Solved
+\end_layout
+
+\begin_layout Enumerate
+MTCNN was used to extract non-positive faces
+\end_layout
+
+\begin_layout Enumerate
+Train the FaceNet network model
+\end_layout
+
+\begin_layout Chapter
+Research and Development Methods and Technical Routes
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(1) System platform：Microsoft Windows 10
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(2) OpenCV
+\end_layout
+
+\begin_layout Standard
+OpenCV is a classic computer vision library, which supports multi-language,
+ cross-platform, powerful.Opencv-python provides a Python interface for OpenCV,
+ so that users can call C/C++ in Python, under the premise of ensuring legibilit
+y and operation efficiency, to achieve the required functions.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(3) Programming language：Python
+\end_layout
+
+\begin_layout Standard
+Python was designed in the early 1990s by Guido van Rossum of the Dutch
+ Society for Mathematical and Computer Science Research as a replacement
+ for a language called ABC.
+ Features:
+\end_layout
+
+\begin_layout Standard
+First, simplicity: Python is a language that represents the idea of simplicity.Re
+ading a good Python program is like reading English.It allows you to focus
+ on solving problems rather than figuring out the language itself.
+\end_layout
+
+\begin_layout Standard
+Second, easy to learn: Python is extremely easy to learn because Python
+ has extremely simple documentation.
+\end_layout
+
+\begin_layout Standard
+Third, easy to read, easy to maintain: the style is clear and uniform, forced
+ indentation.
+\end_layout
+
+\begin_layout Standard
+Fourth, JAVA is also versatile, fast, portability, object-oriented and other
+ advantages.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(4) Model used：MTCNN + FaceNet
+\end_layout
+
+\begin_layout Standard
+MTCNN(Multi-task convolutional neural Network) is a network proposed in
+ Joint Face Detection and Alignment using Multi-task Cascaded Convolutional
+ Networks
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2016"
+literal "false"
+
+\end_inset
+
+.
+ By using the convolutional neural network (CNN) structure, MTCNN can complete
+ the two tasks of face detection and face alignment simultaneously through
+ multi-task learning, and output the coordinate of the center point, the
+ scale and the position of the feature point of the face.MTCNN adopts image
+ pyramid + 3-stage cascade CNN (P-Net, R-Net, O-Net) for face detection,
+ and its detection framework is shown in Figure 2：
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 文献综述figures/MTCNN流程.pdf
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pipeline of cascaded framework that includes three-stage multi-task deep
+ convolutional networks.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+FaceNet is a unified solution framework proposed by Google on FaceNet: A
+ Unified Embedding for Face Recognition and Clustering to identify
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schroff2015"
+literal "false"
+
+\end_inset
+
+ (who is this), verify (whether it is the same person), and cluster (find
+ the same person in multiple faces).
+ FaceNet believes that all the above problems can be uniformly handled in
+ feature space, and the difficulty lies in how to better map faces to feature
+ space.Its essence is to learn the mapping of face image to 128-dimensional
+ Euclidean space through convolutional neural network.
+ This mapping maps face image to 128-dimensional feature vector, and uses
+ the reciprocal of the distance between feature vectors to represent the
+ similarity between face images.For different images of the same individual,
+ the distance between the feature vectors is small, and for images of different
+ individuals, the distance between the feature vectors is large.Finally,
+ based on the similarity between feature vectors, face image recognition,
+ verification and clustering are solved.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(6) System development tool：Visual Studio Code
+\end_layout
+
+\begin_layout Standard
+Visual Studio Code (" VS Code "for short) was officially announced by Microsoft
+ at the Build Developer Conference on April 30, 2015, as a new version of
+ the software that runs on Mac OS X, Windows, and Linux.A cross-platform
+ source code editor for writing modern Web and cloud applications that runs
+ on the desktop and is available for Windows, macOS, and Linux.It has built-in
+ support for JavaScript, TypeScript, and Node.js, and a wealth of other languages
+ (e.g.
+ C++, C #, Java, Python, PHP, Go) and runtimes (e.g.NET and Unity) expanded
+ ecosystem.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(7) Database software： Oracle 11g
+\end_layout
+
+\begin_layout Standard
+Oracle11g is a powerful database management system launched by Oracle Corporatio
+n, convenient for users to operate the database.
+\end_layout
+
+\begin_layout Chapter
+Overall Arrangement and Schedule of Research Work
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Work arrangement
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename 开题报告figures/研究工作总体安排.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 参考文献
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "refs"
+options "zjutcls/gbt7714-2005"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

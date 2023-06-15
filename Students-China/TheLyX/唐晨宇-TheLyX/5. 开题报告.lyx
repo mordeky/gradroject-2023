@@ -1,0 +1,1262 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass zjut-report
+\options UTF-8, openingreport, englishversion
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding gbk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+!Mode:: "\SpecialChar TeX
+:UTF-8"
+\end_layout
+
+\begin_layout Plain Layout
+需要用：XeLaTex 进行编译
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告类型
+本科毕业设计开题报告
+\end_layout
+
+\begin_layout 提交日期
+2023年03月
+\end_layout
+
+\begin_layout 题目左侧距离
+6mm
+\end_layout
+
+\begin_layout 题目下划线长度
+90mm
+\end_layout
+
+\begin_layout 封面下划线长度
+17em
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "cover/cover.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 英文毕设题目
+
+\end_layout
+
+\begin_layout Chapter
+Background and Significance
+\end_layout
+
+\begin_layout Section
+Purpose and Significance
+\end_layout
+
+\begin_layout Standard
+With the continuous upgrading of modern financial enterprises' digital transform
+ation, the number of users on online platforms has further increased, posing
+ challenges to many of the enterprise's existing basic system architecture,
+ such as the CRM platform, front-end marketing management platform, and
+ information publishing platform
+\begin_inset CommandInset citation
+LatexCommand cite
+key "张倩2021"
+literal "false"
+
+\end_inset
+
+, which is the focus of this paper.
+ In 2016, General Secretary Xi Jinping proposed a series of ``Internet+"
+ plans and called for the establishment of a good network environment at
+ the National Conference on Cybersecurity and Informatization, emphasizing
+ that websites should bear the ``main responsibility" in online information
+ management and enhance the sense of mission and responsibility of internet
+ enterprises to jointly promote the sustainable and healthy development
+ of the internet
+\begin_inset CommandInset citation
+LatexCommand cite
+key "XYQS201802029"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Adhering to the concept of being a responsible enterprise, the author's
+ financial enterprise has proposed the need for content compliance detection
+ to enhance risk management in information publishing through machine auditing.
+ Content compliance detection is mainly manifested in the recognition of
+ prohibited words in practical operation, with the ultimate goal of ensuring
+ that the information published by the enterprise's content publishers on
+ public platforms complies with laws and regulations, while also alerting
+ the publishers to any problems in the content and enabling them to make
+ timely corrections and publish content on schedule.
+\end_layout
+
+\begin_layout Standard
+To accomplish the above tasks, it is necessary to start from a business
+ perspective and analyze the required business processes from the content
+ and platform of publication.
+ In the overall process, the focus in front-end development is on how to
+ speed up detection, display prohibited content in a reasonable manner,
+ and thus improve the user experience.
+ From a technical perspective, processing large files and displaying them
+ in browser have become major challenges in completing the above tasks.
+\end_layout
+
+\begin_layout Standard
+Starting from the enterprise ``compliance content detection", this paper
+ studies the detection and rendering of prohibited words in the browser
+ environment, in order to promote the construction of enterprise content
+ compliance.
+ Today, with the rapid development of the Internet, the number of users
+ of the online platform is also increasing, the risk management needs of
+ enterprises are also constantly improving, and the content compliance testing
+ system has a lot of market space and social demand.
+\end_layout
+
+\begin_layout Standard
+The significance of the project research is to effectively reduce the compliance
+ risk of content published on the platform and prevent the occurrence of
+ illegal events caused by improper content release.
+ The research of forbidden word detection and rendering system is to enable
+ enterprises to strengthen the risk management of enterprise media content
+ in a low-cost way, and is an effective means to reduce the risk of enterprise
+ content release.
+ It is conducive to the sustained and healthy development of the Internet
+ environment.
+ At the same time, we also focus on open source technology, through modular
+ development to inject vitality into the open source community, to provide
+ help for more newcomers.
+\end_layout
+
+\begin_layout Standard
+From the perspective of digital transformation of the financial enterprise,
+ this paper aims to solve a series of problems in the audit process of enterpris
+e content platform, and is also applicable to other content publishing platforms
+, such as government websites, school notice release and so on.
+ Also want to make a modest contribution to the good development of the
+ Internet.
+\end_layout
+
+\begin_layout Section
+Research Background
+\end_layout
+
+\begin_layout Standard
+With the widespread use of the Internet, more and more enterprises have
+ started to undergo digital transformation by establishing their own digital
+ platforms to drive business model transformation and publish information
+ through emerging media platforms.
+ In the financial enterprise, many banks in China have established fintech
+ subsidiaries, while insurance and securities industries have also optimized
+ their businesses through digital technologies, resulting in improvements
+ in risk control and service levels
+\begin_inset CommandInset citation
+LatexCommand cite
+key "谭西梅2022"
+literal "false"
+
+\end_inset
+
+.The successful integration of the internet and the financial enterprise
+ has greatly improved the convenience and inclusiveness of financial services,
+ but it has also brought significant risks.
+ Given the complexity and specialized nature of financial products, ordinary
+ consumers find it difficult to distinguish between genuine and fake products,
+ and tend to rely on various media, especially influential ones, to obtain
+ information
+\begin_inset CommandInset citation
+LatexCommand cite
+key "张继红2019我国互联网金融广告行为的法律规制"
+literal "false"
+
+\end_inset
+
+, but these most authoritative media outlets are often owned by financial
+ enterprise operators.
+\end_layout
+
+\begin_layout Standard
+As socially responsible entities, particularly state-owned enterprises in
+ the financial enterprise, it is crucial to prioritize the truthfulness,
+ reliability, and effectiveness of financial information in media and advertisin
+g campaigns while also emphasizing risk management needs.
+ To enhance compliance in media promotion, enterprises typically introduce
+ review mechanisms and adopt the principle of position isolation and transparenc
+y, whereby content creators and reviewers are mutually independent.
+ However, manual review is plagued by numerous issues, such as high workload,
+ labor costs, and inconsistent standards.
+ To effectively control costs and fulfill regulatory requirements, a growing
+ number of enterprises have chosen to combine machine and manual review.
+\end_layout
+
+\begin_layout Standard
+To ensure the compliance of content published on the platform, the content
+ publisher first undergoes a preliminary check using machine learning algorithms
+ to identify potentially negative keywords.
+ If the content does not match any negative keywords, it will be automatically
+ approved for publication.
+ However, if the machine detects any potentially risky content, a manual
+ review will be initiated.
+ Any content that violates laws and regulations will be removed and blocked
+ from the platform
+\begin_inset CommandInset citation
+LatexCommand cite
+key "朱垚颖2022"
+literal "false"
+
+\end_inset
+
+.The use of such auditing mechanisms is most common in user-generated content
+ (UCG) platforms.
+ For example, Mango TV has developed its own content security technology
+ protection system, primarily targeting illegal and inappropriate content
+ such as political, pornographic, and violent content in text, images, audio,
+ and video formats.
+ This is achieved through a systematic integration of machine auditing,
+ human auditing, user complaints, and results review
+\begin_inset CommandInset citation
+LatexCommand cite
+key "AI赋能"
+literal "false"
+
+\end_inset
+
+, which providing valuable guidance for the establishment of system processes.
+\end_layout
+
+\begin_layout Standard
+The importance of content moderation lies in its ability to help enterprises
+ manage risks, reduce false information, prevent the spread of illegal content,
+ protect the legitimate rights and interests of users, alleviate the pressures
+ faced by risk control departments, and enhance the enterprise's sense of
+ mission and responsibility.
+ However, implementing content moderation is not easy and requires multiple
+ technological approaches, including automated algorithms, deep learning,
+ and natural language processing.
+ Although there are many related research contents available online, there
+ is still a significant gap in the actual project implementation.
+ The fundamental reason is that different content platforms face different
+ types and scales of content, and their specific implementation methods
+ should be tailored to the specific business processes needed.
+\end_layout
+
+\begin_layout Standard
+After considering all of the above, this article mainly analyzes the compliance
+ issues faced by relevant enterprises in their promotion under the digital
+ transformation of the financial enterprise.
+ Based on actual development within the enterprise, the article verifies
+ the feasibility of the project, delivers usable products quickly, and controls
+ development costs.
+ Of course, the business process proposed in this article is equally applicable
+ to other content publishing platforms, such as government websites and
+ school notice boards.
+\end_layout
+
+\begin_layout Section
+Present Situation of Research
+\end_layout
+
+\begin_layout Subsection
+Content Review Platform
+\end_layout
+
+\begin_layout Standard
+Content moderation mechanisms are commonly found on UGC platforms, such
+ as Mango TV, which has its own proprietary content safety technology system.
+ However, not all enterprises develop their own content safety review systems.
+ To reduce review costs, improve review quality and efficiency, many third-party
+ content review agencies have entered the content moderation outsourcing
+ service enterprise, mainly including traditional mainstream media, internet
+ cloud service giants, AI technology enterprises, and specialized content
+ moderation outsourcing enterprises
+\begin_inset CommandInset citation
+LatexCommand cite
+key "&amp2023"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+However, whether it is a self-developed platform or a third-party service,
+ the audit process of ``machine audit + manual audit" can generally be summarize
+d as ``machine marking classification-machine preliminary examination (AI
+ marking)-manual review-manual third trial-manual sampling inspection" and
+ so on
+\begin_inset CommandInset citation
+LatexCommand cite
+key "&amp2023"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Machine marking classification：Make use of the content analysis ability
+ of AI, tag the content, store it in different repositories, and enter the
+ preliminary examination;
+\end_layout
+
+\begin_layout Enumerate
+Machine preliminary examination：AI will match the contents of the library
+ to the relevant check libraries, such as ``sensitive word library" and
+ ``sensitive picture library", and mark the possible problems, so as to
+ provide reference for the follow-up review;
+\end_layout
+
+\begin_layout Enumerate
+Manual review: Judge the tag and classification label of the first trial,
+ and read through the work in a comprehensive way, and give a judgment on
+ whether the content is in compliance.
+\end_layout
+
+\begin_layout Enumerate
+Manual third trial: It is mainly to confirm and deal with the results of
+ the review, and to be responsible for making decisions on the contents
+ of the review;
+\end_layout
+
+\begin_layout Enumerate
+Manual sampling inspection: The content works that have been examined three
+ times need to be sampled manually at last.
+\end_layout
+
+\begin_layout Standard
+In the system designed in this article, the goal is to design a content
+ audit system that meets the requirements of the enterprise, ensuring that
+ content is audited as quickly and efficiently as possible through a fast
+ and effective feedback mechanism.
+ The details of machine content audit are described in more detail in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:内容安全审查技术"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+File Types and Recognition Techniques
+\end_layout
+
+\begin_layout Standard
+In order to deal with the problem of attachments in formal notification,
+ we need file recognition technology to determine the file type, so as to
+ distinguish between different types of documents.
+ At the same time, identifying file types can limit users to upload files
+ that can not be processed by the system, reduce the possibility of system
+ attacks, and improve the security and robustness of the system.
+\end_layout
+
+\begin_layout Standard
+The Windows file manager identifies and determines the file type according
+ to the suffix name of the file, that is, the last ``." and the back part.
+ However, the file name (including the suffix name) is completely transparent
+ to the user and can be modified at will, and it is easy to encounter situations
+ where the file name is tampered with or damaged, the file suffix name is
+ missing or cannot be automatically recognized by the system, so relying
+ on the extension name alone is not reliable
+\begin_inset CommandInset citation
+LatexCommand cite
+key "张润峰2011"
+literal "false"
+
+\end_inset
+
+.
+ In addition to the suffix name, there is another way of file recognition-featur
+e identification, that is, ``Magic Number", which refers to a string of
+ character data stored in the file header to distinguish different file
+ types.
+ File feature identifiers can be identified by a string of hexadecimal strings,
+ but do not have a fixed offset, that is, the number of hexadecimal bits
+ varies from file to file.
+ Except TXT, XML and other text type files do not have magic number, all
+ the basic file types we use have this characteristic identification.
+\end_layout
+
+\begin_layout Standard
+MIME type (Multipurpose Internet Mail Extensions type)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mozillaMIME"
+literal "false"
+
+\end_inset
+
+ is a standardized description of file types, browsers can use MIME types
+ to determine file types, Its default value is ``text/plain".
+ There are usually three ways to detect MIME types
+\begin_inset CommandInset citation
+LatexCommand cite
+key "xuanwoMIME"
+literal "false"
+
+\end_inset
+
+: (1) check the content-type carried in the request
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fielding2014hypertext"
+literal "false"
+
+\end_inset
+
+;(2) read the characteristic identification of the file; (3) judge according
+ to the file name (suffix).
+ In the browser environment, when a user uploads a file on a web page, the
+ browser will use a series of file type identification algorithms, for example,
+ the browser will read the byte stream of the uploaded file and parse the
+ file feature identification information to determine the file type, and
+ deal with it accordingly.
+\end_layout
+
+\begin_layout Standard
+However, there are some problems in MIME type, for example, when the file
+ characteristics of the file can not be accurately identified (the file
+ features are not one-to-one corresponding to the type), the way of directly
+ checking the suffix is adopted, which is an uncontrolled process in the
+ program, so taking over the file identification module is of great significance
+ to improve the security and expansibility of the system.
+ For this reason, we need to further confirm the operation of the MIME type
+ in the environment involved in this article through follow-up practice,
+ and adjust accordingly according to the situation of the experiment.
+ At present, there are indeed some developed MIME type recognition packages,
+ but after research, it is found that it does not support the MS Office
+ format we need
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Park2009"
+literal "false"
+
+\end_inset
+
+, which uses the open file format of Office Open XML (OOXML) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vugt"
+literal "false"
+
+\end_inset
+
+.
+ Its content identification is consistent with the compression type, so
+ additional development is needed to complete this work.
+\end_layout
+
+\begin_layout Subsection
+Content Security Review Technology
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:内容安全审查技术"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the content security review technology at home and abroad, web page informati
+on evaluation mainly applies four filtering technologies, namely, filtering
+ based on Internet content grading platform (PICS), database filtering (IP
+ library, URL library), keyword filtering and intelligent content understanding
+ filtering 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "彭昱忠2009"
+literal "false"
+
+\end_inset
+
+.
+ In this paper, keyword filtering and intelligent content understanding
+ filtering are mainly used for content recognition, which mainly relies
+ on the intelligent recognition technology of natural language processing
+ technology NLP, deep learning and other technologies to achieve filtering
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "王宏宇2018"
+literal "false"
+
+\end_inset
+
+.
+ Through the content analysis and understanding to generate a document model
+ to identify prohibited content.
+\end_layout
+
+\begin_layout Standard
+NLP（Natural Language Processing）
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wikipedia2023"
+literal "false"
+
+\end_inset
+
+ is a branch of artificial intelligence which designed to enable computers
+ to understand, interpret and generate human language.
+ Natural language processing is a cross-discipline of linguistics, computer
+ science and artificial intelligence, which studies the interaction between
+ computer and human language, especially how to program computer to process
+ and analyze a large amount of natural language data.
+ The goal is to generate a model that can ``understand" the content of the
+ document, and this technology can accurately extract the information and
+ opinions contained in the document, and classify and organize the document
+ itself.
+ This means that the computer must be able to recognize the grammatical
+ and semantic structures in the language, analyze the words, phrases and
+ sentences in the text, and correctly understand their meaning.
+ When it comes to content security, NLP technology can be used in the following
+ aspects: (1) Sensitive word filtering: NLP technology can be used to identify
+ and filter sensitive words from text.
+ It can recognize these words through rule-based methods or machine learning
+ algorithms.
+ For example, the content audit system uses NLP technology to detect keywords
+ such as violence, pornography, politics, terrorism and so on; (2) Text
+ classification: NLP technology can be used to classify text into different
+ categories.
+ For example, the content audit system can divide the text into normal,
+ illegal, and questionable categories, so that people can have a clear understan
+ding of the audit objectives and make it easier to review.
+ (3) Semantic analysis: NLP technology can be used to identify entities
+ and concepts in text and understand the relationship between them.
+ Because sometimes simple sensitive words do not violate the rules, only
+ through semantics can we really find out the sensitive parts of the text.
+\end_layout
+
+\begin_layout Standard
+Of course, rebuilding a content security audit model is not the focus of
+ this article, but it is a necessary process to understand NLP.
+ In a non-professional artificial intelligence research and development
+ enterprise, we prefer to purchase related services for development rather
+ than build our own natural language processing model from scratch.
+ So this paper focuses on the applicability of these models in actual projects.
+ Of course, we should also retain the possibility that it can be replaced.
+\end_layout
+
+\begin_layout Standard
+Aliyun content Security Service
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Aliyun,张建军2018"
+literal "false"
+
+\end_inset
+
+ is an AI technology-driven content review service, mainly used for content
+ security on Internet platforms.
+ Content security products provide multimedia content risk detection capabilitie
+s such as pictures, video, voice, text to help users find risky content
+ or elements such as pornography, violence and politics, which can greatly
+ reduce manual audit costs and improve content quality, improve platform
+ order and user experience.
+ Its core technologies include multimodal computing, deep learning, natural
+ language processing, image recognition and other AI technologies, which
+ can achieve efficient and accurate content review.
+ Aliyun content security service provides a variety of API invocation methods,
+ including API and SDK.
+ Users can choose different API invocation methods according to their actual
+ needs.
+ In addition, Aliyun content security service also provides a variety of
+ audit policies and rules, which users can configure and adjust according
+ to their business needs to meet different audit needs.
+ Its main services are: (1) text security detection; (2) picture security
+ detection; (3) video security detection; (4) voice security detection;
+ (5) custom security policy.
+ The service classifies the results of the detected content and returns
+ the sensitive content in the indicated content.
+ Aliyun content security service has been widely used in many industries
+ to help users achieve fast, accurate and intelligent content review, improve
+ the content security level of the platform, reduce the compliance risk
+ of the platform, and protect the rights and interests and security of users.
+ 
+\end_layout
+
+\begin_layout Standard
+Considering the development cost and the perfection of Aliyun service, we
+ consider using Aliyun content security service as an important tool for
+ content audit in this system.
+ However, because it is developed in a browser environment, Aliyun does
+ not provide relevant SDK, so it is necessary to call API according to the
+ corresponding rules.
+\end_layout
+
+\begin_layout Subsection
+Browser Rendering Technology
+\end_layout
+
+\begin_layout Subsubsection
+PDF.js
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:pdf.js"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Usually browsers can open PDF
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bienz1993,Castiglione2010"
+literal "false"
+
+\end_inset
+
+ files without plug-ins, but in the project we need to embed PDF pages to
+ display the recognition results of prohibited words so that content publishers
+ can modify them in a timely manner, so we need to find some pages that
+ can display PDF on the front page.
+ PDF.js is an open source JavaScript library developed by Mozilla for rendering
+ PDF documents on Web, which can be used directly in Web browsers
+\begin_inset CommandInset citation
+LatexCommand cite
+key "pdfjs"
+literal "false"
+
+\end_inset
+
+.
+ PDF.js uses HTML5 Canvas and CSS technology to render PDF documents.
+ When a user requests to view an PDF document, PDF.js downloads and parses
+ the PDF file asynchronously, and then renders it as an image on the HTML5
+ Canvas.
+ In this way, users can view PDF documents directly in a Web browser without
+ using a separate PDF reader.
+ PDF.js provides a viewer.js for simple pdf to browser display, through the
+ nesting of iframe can be collected in the system PDF browsing.
+ PDF.js also has a flexible API that allows developers to customize their
+ functionality as needed.
+ For example, developers can use PDF.js API to extract metadata from PDF
+ documents or to embed PDF documents in Web pages.
+\end_layout
+
+\begin_layout Standard
+In the existing projects of the enterprise, we mainly use pdf.js for pdf
+ browsing, but the file reading mode and how to output after the forbidden
+ words are identified are not given in the viewer.js template, so we need
+ to carry out secondary development to achieve the function of text reading
+ and rendering.
+\end_layout
+
+\begin_layout Chapter
+Contents and Objectives
+\end_layout
+
+\begin_layout Section
+Research Objectives
+\end_layout
+
+\begin_layout Standard
+Based on the business requirements presented by the enterprise, this article
+ compared and analyzed various content security audit systems, and identified
+ a range of possible technologies that can be adopted to meet the needs
+ of the project.
+ In the current environment of continuous digital transformation of modern
+ financial enterprises, it is crucial for internet enterprises to enhance
+ their sense of mission and responsibility, and promote the sustained and
+ healthy development of the internet.
+ Leveraging information technology to improve service quality has become
+ an important means for enterprise development.
+ Internet enterprises have already achieved successful development in this
+ regard, and traditional enterprises should also continue to explore the
+ possibilities of digital transformation in their businesses to improve
+ service quality in the internet era.
+ In order to enhance enterprise compliance and strengthen the application
+ of digital intelligence in business, major platforms have made their own
+ explorations and developed digital departments.
+ The research objective of this project is to use JavaScript-related technologie
+s to implement a system for identifying and rendering prohibited words in
+ the browser environment, especially by applying some cutting-edge technologies
+ and frameworks in JavaScript, such as TypeScript, Node, and Vue.
+\end_layout
+
+\begin_layout Section
+Basic Contents
+\end_layout
+
+\begin_layout Standard
+In a non-artificial intelligence specialized enterprise, we do not need
+ a content recognition model, but rather focus on business implementation.
+ In this study, we mainly focus on the design and implementation of prohibited
+ word recognition in the browser environment.
+ Its main function is to perform real-time prohibited word detection when
+ content publishers post notices on the platform, and to promptly return
+ the detection results, with a clear display of the results.
+ The Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Activity Diagram"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the process flow of the Program.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/ActivityD.pdf
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "Activity Diagram"
+
+\end_inset
+
+Activity diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The specific contents of this study include:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(1) File type identification
+\end_layout
+
+\begin_layout Standard
+The main function of file type identification is to identify the file types
+ uploaded by users to facilitate subsequent processing.
+ The main file types are PDF and MS Office documents.
+ When the authorized content publisher has the need for information release,
+ if the content has the need for file upload, the user will identify the
+ type of the file when uploading the file, and issue a corresponding warning
+ to the non-compliant file type.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(2) Text extraction of files
+\end_layout
+
+\begin_layout Standard
+The text extraction is an operation performed after identifying the file
+ type.
+ To reduce data transmission and solve the issue of size limitation in Aliyun
+ file detection, the system extracts content based on the identified file
+ type.
+ By parsing binary files, the system converts file content into a format
+ suitable for network transmission.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(3) Format conversion of files
+\end_layout
+
+\begin_layout Standard
+In case of problematic files, we need to display them on the web page.
+ Therefore, we may need to convert such files to a format that can be easily
+ displayed on the browser.
+ PDF is a well-suited document format for sharing and exchanging, which
+ maintains consistent display effects across different operating systems
+ and hardware platforms.
+ In practice, if any prohibited content is found, the file should be converted
+ to PDF format and displayed on the browser.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(4) Review of content
+\end_layout
+
+\begin_layout Standard
+The content audit mainly relies on calling the API of Ali Cloud Content
+ Security Service.
+ In this study, there are two research directions: API calls through the
+ server or directly in the browser.
+ In subsequent research, the appropriate direction will be selected for
+ development based on security, efficiency, and other considerations.
+ However, both solutions need to meet the Alibaba Cloud API calling rules
+ and go through a series of content encryption methods to work properly.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(5) The display of forbidden words
+\end_layout
+
+\begin_layout Standard
+If a prohibited word is detected in the published content, we will highlight
+ the violation in the preview interface for text content.
+ For file content, we will use an embedded page to display the content,
+ and use a cross-referencing method to help users quickly locate the position
+ of the prohibited word, making it easy to make modifications in the original
+ file.
+\end_layout
+
+\begin_layout Standard
+In addition to the functional requirements mentioned above, we should also
+ consider the following system characteristics: (1) Scalability: Ensure
+ that the system has good expandability; (2) Security: Ensure that information
+ is not leaked during transmission; (3) Portability: The system can be deployed
+ in existing platforms and can be transferred to different projects; (4)
+ Maintainability: With easily understandable code that can be maintained
+ by other developers; (5) Efficiency: With low time delay; (6) robustness:
+ With good risk resistance when handling files, so that the system will
+ not crash during file processing.
+\end_layout
+
+\begin_layout Section
+Technical Difficulties
+\end_layout
+
+\begin_layout Enumerate
+Implementing file recognition in a controllable manner and reducing data
+ transmission volume by using text transfer instead of file transfer as
+ much as possible to improve the real-time performance of the system;
+\end_layout
+
+\begin_layout Enumerate
+Extract the content of different versions and different types of files to
+ solve the problem of Ali cloud file detection size limit (5M), which means
+ that we need to manipulate the binary files in the browser environment;
+\end_layout
+
+\begin_layout Enumerate
+Study the rules of interaction with Aliyun platform, and create an information
+ transmission module that can be docked with the platform in the browser
+ environment;
+\end_layout
+
+\begin_layout Enumerate
+Study the method of rendering files on the browser side, so that users can
+ intuitively have a certain understanding of the published content.
+ It mainly through the research on the source code of pdf.js, through exploring
+ its working logic to modify the file acquisition and content highlighting
+ code to meet the system requirements;
+\end_layout
+
+\begin_layout Enumerate
+Cross-page object acquisition and operation of Iframe;
+\end_layout
+
+\begin_layout Enumerate
+Carry out multi-terminal adaptation, so that a system can run on multiple
+ platforms, meet the different needs of different services, and improve
+ the availability of the system.
+\end_layout
+
+\begin_layout Section
+Expected Research Objectives
+\end_layout
+
+\begin_layout Standard
+The expected research objectives of this topic are as follows:
+\end_layout
+
+\begin_layout Enumerate
+Complete the implementation of the forbidden word recognition and rendering
+ system in the browser environment.
+ Users only need to input the content and files to be published, and the
+ system can automatically extract the required data and upload it to the
+ cloud service, and feedback the corresponding results in time;
+\end_layout
+
+\begin_layout Enumerate
+The modular design of the system packages and encapsulates its functions,
+ providing the open-source community with the implementation of a series
+ of functions such as file recognition and Alibaba Cloud service requests;
+\end_layout
+
+\begin_layout Enumerate
+Strive for multi-end adaptation, so that the system can meet a variety of
+ needs of content release, improve the user experience;
+\end_layout
+
+\begin_layout Enumerate
+Let the results of the project be applied in the real environment.
+ At present, the related system is piloted in a financial enterprise, so
+ that the smooth industrialization of scientific and technological achievements
+ of research and development is also one of the goals of this task.
+\end_layout
+
+\begin_layout Chapter
+Technical of Research
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(1) System platform: macos Ventura
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(2) System architecture: B/S architecture
+\end_layout
+
+\begin_layout Standard
+The B/S (Browser/Server) architecture is a software application architecture
+ based on Web browsers and servers.
+ In the Web architecture, the user sends a request to the server through
+ the Web browser, and the server responds to the request and returns the
+ web page to the user browser, realizing the interaction and data transmission
+ of the application program.
+ With the rise of Internet technology, it is a kind of structure that changes
+ or improves the structure of C/S.
+ Compared with C/S structure, B/S architecture has the advantages of cross-platf
+orm, portability, easy maintenance and management.
+ In this topic, we mainly carry out the development and testing task through
+ the Chrome browser.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(3) Programing language: TypeScript
+\end_layout
+
+\begin_layout Standard
+JavaScript is a relatively poor language for developing and maintaining
+ large applications, and there are some difficulties in using JavaScript
+ in a complex code base: language abstractions that lack robustness, such
+ as static types, classes, and interfaces, which can hinder programmers'
+ productivity and undermine tool support 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rastogi2015"
+literal "false"
+
+\end_inset
+
+.
+ TypeScript is an extension of JavaScript designed to address this flaw,
+ developed by Microsoft and a superset of JavaScript, so every JavaScript
+ program is a TypeScript program 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bierman2014understanding,Fenton2014"
+literal "false"
+
+\end_inset
+
+.
+ TypeScript adds optional static types and some new features, such as classes,
+ interfaces and so on.
+ So that developers can do type checking and better maintainability when
+ writing code.
+ TypeScript is designed to provide lightweight help to programmers, so the
+ module system and type system are flexible and easy to use.
+ At the same time, it can also adapt to existing JavaScript projects very
+ well, without the need for overall project rewriting 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Fenton2014"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(4) Architecture used: Vue+Node
+\end_layout
+
+\begin_layout Standard
+Vue.js is a popular JavaScript front-end framework for building interactive
+ Web interfaces.
+ By combining templates and data models, adopting two-way data binding,
+ component development, virtual DOM and other ways.
+ Developers can easily create a reusable and maintainable user interface,
+ and carry out good data management and efficient page rendering.
+\end_layout
+
+\begin_layout Standard
+Node.js
+\begin_inset CommandInset citation
+LatexCommand cite
+key "2020"
+literal "false"
+
+\end_inset
+
+ is a JavaScript running environment based on Chrome V8 engine, which has
+ advantages in development efficiency and performance, and is widely used
+ in the field of Web development.
+ Node.js provides some special modules, which make it easy for developers
+ to carry out I/O operation, process management, timer, database access
+ and other operations, making it more convenient and quick to use JavaScript
+ for server-side development.
+ In addition to serving as a server, it is more used to quickly build extensible
+ Web applications.
+ For example, npm (Node Package Manager)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "2022npm"
+literal "false"
+
+\end_inset
+
+ package management system is now the most important tool in front-end work,
+ and it is also the default package management module of Node.js.
+ With the widespread use of Node.js in Web application development, the Node.js
+ community is also very active.
+ Npm provides a large number of third-party modules and tools to help developers
+ develop and deploy applications more quickly.
+ More and more developers download npm packages to the local software environmen
+t, and develop software on this basis
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Goswami2020"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(5) Server software: Nginx
+\end_layout
+
+\begin_layout Standard
+Nginx is a high-performance open source Web server software that can also
+ be used as a reverse proxy, load balancer, HTTP cache, and security controller.
+ It uses event-driven asynchronous architecture, can handle thousands of
+ concurrent connections, and has the advantages of low latency and high
+ throughput.
+ Nginx also has extensibility and a high degree of customization, and can
+ achieve different functions through many third-party modules.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(6)System development tools: Visual Studio Code
+\end_layout
+
+\begin_layout Standard
+Visual Studio Code (VS Code for short) is an open source, cross-platform
+ code editor developed by Microsoft.
+ It supports multiple programming languages and frameworks, and has a rich
+ plug-in ecosystem to help users develop and debug code more efficiently.
+ At present, there are many plug-ins supporting the front-end on VS Code,
+ which can effectively improve the development efficiency, and it is also
+ the preferred code editor for many front-end engineers.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+(7) Research on other cutting-edge related technologies
+\end_layout
+
+\begin_layout Standard
+In addition to the technologies used above, this paper will also explore
+ the deployment of micro services, Docker and other technologies, as well
+ as the availability of Electro technology packaged as desktop technology
+ in Web applications, and explore the application of new technologies in
+ practice.
+\end_layout
+
+\begin_layout Chapter
+Schedule
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Paper work arrangement
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename figures/时间表.pdf
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 参考文献
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "refs"
+options "zjutcls/gbt7714-2005"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

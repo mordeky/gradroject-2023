@@ -1,0 +1,1852 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass zjut-report
+\options UTF-8,translation
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding gbk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+!Mode:: "\SpecialChar TeX
+:UTF-8"
+\end_layout
+
+\begin_layout Plain Layout
+需要用：XeLaTex 进行编译
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告类型
+本科毕业设计外文翻译
+\end_layout
+
+\begin_layout 提交日期
+2023年03月
+\end_layout
+
+\begin_layout 题目左侧距离
+15mm
+\end_layout
+
+\begin_layout 题目下划线长度
+90mm
+\end_layout
+
+\begin_layout 封面下划线长度
+17em
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "cover/cover.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告题目
+Microsoft Office 2007文件中的数据隐藏和检测
+\end_layout
+
+\begin_layout Abstract
+\paragraph_spacing onehalf
+\labelwidthstring 摘要：
+随着越来越多的罪犯试图隐藏有罪的数据或盗取的信息，法证检验师和计算机安全专业人员知道在如何寻找隐藏的信息是很重要的。本文演示了如何隐藏Microsoft
+ Office 2007文件中的数据。Office Open XML(OOXML)格式构成了Microsoft Office 2007的基础，个人可以使用OOX
+ML在Microsoft Office 2007文件中定义自定义部件、关系或是以上这两者以存储和隐藏信息。幸运的是对于数字调查人员来说，这种隐藏的数据可以通过寻
+找未知部分或关系的存在而被检测到。
+\end_layout
+
+\begin_layout Chapter
+引言
+\end_layout
+
+\begin_layout Standard
+对电子文件的调查是计算机取证的一个重要方面，因为这类文件往往包含可用作犯罪证据的重要信息。虽然法证检验师经常可以从电子文档中获取重要信息，但已经出现的数据隐藏工
+具和技术可以完全隐藏或删除这些文件中的一些数据，从而使检查真实的文件内容变得困难。恐怖分子可以在电子文档中隐藏通信、计划和其他数据，被盗数据可以在电子文档的隐藏
+部分存储和传输。即使是被设计用于执行法证检查的应用程序也不会显示隐藏的数据，因此，法证计算机调查人员需要使用特殊技术来检测电子文档文件中的隐藏数据。虽然这项工作
+类似于“隐写分析”，但从检测和恢复文档文件中的隐藏数据的角度来看，应当更确切的将它归类为“文档取证”。
+\end_layout
+
+\begin_layout Standard
+Microsoft(MS) Office文件(例如MS Word、PowerPoint和Excel)是最流行的电子文档类型。大多数新的计算机系统包括MS
+ Office产品，特别是MS Word、PowerPoint和Excel。出于这个原因，法证检查员必须能够检测这些文件中的可疑数据。从数据隐藏的角度来看，重要
+的是不仅要完全隐藏数据，而且要隐藏数据已被隐藏的事实。MS Office文件是隐藏信息的一个很好的选择，因为这种常见文件的存在不太可能引起调查人员的怀疑
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Provos2003"
+literal "false"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+几种在MS Office文件中隐藏数据的方法已经被提出了，但并不是专门针对Office 2007文件
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Castiglione2007"
+literal "false"
+
+\end_inset
+
+。MS Office 2007文件的格式不同于以前版本(如MS Office 1997-2003)使用的格式。MS Word、PowerPoint和Excel
+ 2007文件使用称为Office Open XML(OOXML)的新文件格式。在对MS Office 2007文件格式进行检验和测试的基础上，本文论证了在MS
+ Office 2007文件中隐藏数据实际上是可能的。在MS Office 2007文件中管理数据的关键策略是创建不易察觉的内容。这些不易察觉的数据可以使用“内
+容关系”的概念来创建。如果某人创建的数据与MS Office文件的主要数据内容无关，但只要数据满足正常MS Office文件的最低结构要求，这些数据就不会显示在
+MS Office屏幕上。
+\end_layout
+
+\begin_layout Standard
+本文详细介绍了一种在MS Office 2007文件中隐藏数据的方法，并提供了一种检测此类文件中隐藏数据的算法。一旦法证人员注意到MS Office中有无法立即
+看到的数据，他们就可以使用本文的方法来揭示这些数据。本文中的大多数数据隐藏和检测示例都集中在MS Word 2007文件上，但这些方法也适用于MS
+ PowerPoint和Excel 2007文件。
+\end_layout
+
+\begin_layout Standard
+论文的其余部分结构如下。第二节介绍了前人的研究成果，并说明了本研究的必要性。第3节解释了OOXML格式。第4节重点介绍了一种基于MS Office
+ 2007文件格式OOXML的数据隐藏方法。第5节描述了我们所提供的“Detector”检测工具用来发现隐藏数据的机制。最后，第6节得出结论并描述了仍需完成的工
+作。
+\end_layout
+
+\begin_layout Chapter
+数据隐藏的相关研究
+\end_layout
+
+\begin_layout Standard
+对利用每个电子文档本身的原生文件格式的特征在电子文档中隐藏数据的方法的研究包括MS Office文档。例如，Office 2007之前版本(即1997-2003
+)的MS Office文件(例如MS Word、PowerPoint和Excel)使用Microsoft定义的复合文档文件格式
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rentz2007"
+literal "false"
+
+\end_inset
+
+。Castiglione等人描述了一种使用复合文档文件格式的数据隐藏方法
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Castiglione2007"
+literal "false"
+
+\end_inset
+
+。复合文档文件有助于组织电子文档的内容。它可以将文件数据分成几个流，并将这些流分别存储在文件中。通过这种方式，复合文档文件支持文件内部的完整文件系统，其中流就像
+文件系统中的文件，而存储区域就像子目录
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rentz2007"
+literal "false"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+复合文档文件由扇区和短扇区组成。扇区的大小为512字节，而短扇区的大小为64字节
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rentz2007"
+literal "false"
+
+\end_inset
+
+。由于文件被保存为固定扇区和短扇区单元，因此产生了大量的垃圾空间(已分配扇区中的空闲空间)和许多空扇区(未分配扇区)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Castiglione2007"
+literal "false"
+
+\end_inset
+
+。这些垃圾空间和空扇区可用于隐藏MS Office文件中的数据。隐藏过程包括四个步骤：
+\end_layout
+
+\begin_layout Enumerate
+计算文档的垃圾空间的大小。
+\end_layout
+
+\begin_layout Enumerate
+隐秘消息通过其报头进行压缩和加密。
+\end_layout
+
+\begin_layout Enumerate
+如有必要，将空扇区添加到该过程中。
+\end_layout
+
+\begin_layout Enumerate
+隐秘信息隐藏在垃圾空间和空扇区中。
+\end_layout
+
+\begin_layout Standard
+Castiglione等人从计算机取证和隐写术的角度提出了关于复合文档文件的第一项工作。与MS Office文档文件类似，复合文档文件存储的数据比用户保存的数据
+多得多。从这些数据获得的信息可能与法证调查有关，但需要适当的工具和知识来检索和解释这些信息。
+\end_layout
+
+\begin_layout Standard
+所有包含隐藏信息的空间，以及MS Office结构化存储所浪费的空间，可能被利用于隐写的目的。Castiglione介绍了一个名为“StegOle”的工具，它利
+用这个空间来隐藏MS Office文档文件中的消息。
+\end_layout
+
+\begin_layout Standard
+涉及XML的数据隐藏技术也在过去的工作中发表过。Inoue等人提出了在XML文件中隐藏数据的方法，并指出很少有研究人员研究在电子文档文件中隐藏数据的方法
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Inoue2001"
+literal "false"
+
+\end_inset
+
+。在涉及XML数据交换或XML网页的应用中，隐秘数据可以在不改变原始内容的情况下嵌入到XML模块中。这些方法可以很容易地转换为现有的XML文档文件。Inoue等
+人提出了五种在XML文件中隐藏数据的方法：(1)表示空元素；(2)标签中的空白；(3)使用元素的表面顺序；(4)使用属性的表面顺序；(5)元素包含其他元素。这些
+方法主要涉及更改XML属性的顺序或在XML元素名称和“/”之间创建空格作为一种隐藏数据的机制。这些数据隐藏算法可能有些简单，并且它们的数据隐藏容量非常小，因为该
+算法实际上是用于文本隐藏。但由于在大多数上下文中要隐藏的数据不限于文本数据，因此本工作使用XML架构来隐藏数据，而不是使用Inoue文章中
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Inoue2001"
+literal "false"
+
+\end_inset
+
+中建议的隐藏方法。
+\end_layout
+
+\begin_layout Standard
+XML架构定义数据流中可能存在的信息、可能出现的位置以及应该如何使用。此外，XML架构建立了一个词汇表，用户和应用程序(或另一个用户)可以通过该词汇表交换信息
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Goldfarb2000"
+literal "false"
+
+\end_inset
+
+。换句话说，XML架构反映了应用程序的需求。由于MS Office 2007文件格式使用指定的XML格式，因此MS Office 2007文件遵循XML架构，并
+可以使用指定的OOXML架构在MS Office 2007文件中隐藏数据。为了在MS Office 2007文件中隐藏数据，本研究试图在维护基本元素的同时操作O
+OXML架构的某些方面，以便MS Office 2007文件仍能正常打开。
+\end_layout
+
+\begin_layout Chapter
+Microsoft Office 2007 文件格式
+\end_layout
+
+\begin_layout Standard
+MS Office 2007文件由一系列压缩的组件部分组成，这些部分存储在称为包的容器中，每个解压缩的包符合OOXML文件格式要求。包是一个普通的Zip存档，其
+中包含包的内容类型项、关系项和部件
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECMA2006"
+literal "false"
+
+\end_inset
+
+。对于每个包，都有一个包关系Zip项，其中包含有关包及其部件之间的关系的信息。同样，还有包含有关文档各部分之间关系的信息的部分关系Zip项。简而言之，这些包定义
+了文档的整体结构。
+\end_layout
+
+\begin_layout Section
+OOXML 格式
+\end_layout
+
+\begin_layout Standard
+由于开放打包约定(OPCs)，除了文件的特定内容之外，OOXML文件的格式是可以相互拆分的。OPC是以各种形式(XML、图像、元数据等)存储打包内容的方法之一，
+并用于完整地表示文档文件。最推荐的OPC格式是Zip存档。
+\end_layout
+
+\begin_layout Standard
+如图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Office-Open-XML格式"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+所示，OOXML文件基于以下内容：
+\end_layout
+
+\begin_layout Itemize
+包：Zip文档。
+\end_layout
+
+\begin_layout Itemize
+部件：Zip文档中的文件。
+\end_layout
+
+\begin_layout Itemize
+关系：部件与包之间或部件之间的关系。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-1.png
+	lyxscale 50
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Office-Open-XML格式"
+
+\end_inset
+
+Office Open XML格式
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+包
+\end_layout
+
+\begin_layout Standard
+包是一个Zip容器，其中包含组成文档的组件(也称为部件)，如OPC规范所定义的那样。其中许多元素也存在于MS Office 2007文件中。其中一些在所有MS
+ Office应用程序之间通用，例如，文档属性、图表、样式表、超链接、图表和绘图。某些其他元素特定于每个应用程序，例如Excel中的工作表、PowerPoint
+中的幻灯片和Word中的页眉和页脚。当用户使用MS Office 2003应用程序或以前版本的MS Office应用程序存储文档时，会将单个文件写入磁盘，用户可
+以轻松打开该文件。这个比喻在理解文档在实践中是如何存储、管理和共享方面很重要。由于MS Office 2007系统文件的各个部分包装在Zip容器中，因此文档仍是
+单个文件实例。使用单个包文件来表示单个文档实体，使用户能够获得与与以前版本的MS Office应用程序存储和打开Office 2007文件时相同的体验。也就是说
+，它们可以继续使用单个文件工作
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rice2006"
+literal "false"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Subsection
+部件
+\end_layout
+
+\begin_layout Standard
+MS Office文档的组成部分对应于一个包中的一个文件。例如，如果用户在Excel 2007文件上单击鼠标右键并选择将其解压缩，则他或她会看到几个文件，如“w
+orkbook.xml”文件和几个“sheetn.xml”文件。这些文件中的每一个都是包的一部分
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rice2006"
+literal "false"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+每个部件可以有不同的内容类型。用于描述由MS Office 2007应用程序创建的数据的部件存储为XML文件。这些部件定义了MS Office
+ 2007文件功能或对象，并符合相关的XML架构。所有表示为默认的MS Office 2007文件部件的XML架构都有完整的文档记录，并作为MS
+ Office的一部分提供。
+\end_layout
+
+\begin_layout Subsection
+关系
+\end_layout
+
+\begin_layout Standard
+关系是一种指定特定部件集合如何组合在一起以形成文档的方法。此方法指定源部件和目标资源之间的连接。关系存储在文档包的XML部件中(例如，_rels
+\backslash
+rels)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rice2006"
+literal "false"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+例如，通过关系，用户可以识别幻灯片和该幻灯片上显示的图像之间的连接。关系存储在包中的XML部件或“关系传输部件”中。如果源部件具有多个关系，则所有后续关系都将在
+同一个XML关系部件中列出。
+\end_layout
+
+\begin_layout Standard
+关系文件在MS Office XML格式中起着重要作用。每个文档部分至少有一个关系引用。使用关系可以发现一个部分如何与另一个部分相关，而不需要查看这些部分的内容
+。在部件中，对关系的所有引用都使用关系ID表示，这使得部件之间的所有连接都不受特定内容的架构的影响。关系文件包含基于文档开头部分的关系
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rice2006"
+literal "false"
+
+\end_inset
+
+。关系以以下格式定义：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+renewcommand{
+\backslash
+baselinestretch}{1.0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+<Relationship Id=
+\begin_inset Quotes erd
+\end_inset
+
+ID
+\begin_inset Quotes erd
+\end_inset
+
+ Type=
+\begin_inset Quotes erd
+\end_inset
+
+relationshipType
+\begin_inset Quotes erd
+\end_inset
+
+ Target=
+\begin_inset Quotes erd
+\end_inset
+
+targetPart
+\begin_inset Quotes erd
+\end_inset
+
+ (Targetmode=
+\begin_inset Quotes erd
+\end_inset
+
+Internal/External
+\begin_inset Quotes erd
+\end_inset
+
+)>
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+其中，ID值可以是任何字符串，只要它在“.rels”文件中是唯一的。包需要有效的XML标识符。关系的Type将关系彼此区分开来，并指向定义OOXML格式类型的架构
+。此外，Target指向包含关系目标的路径。Target属性值取决于TargetMode的属性值。TargetMode指示Target是描述包内还是包外的资源。
+有效值为“internal”和“external”。如果TargetMode为“internal”，则TargetMode将是相对于“父级”部件解释的相对引用。
+对于包关系，包实现者根据标识整个包资源的包统一资源标识符(URI)解析目标属性中的相对引用。如果TargetMode为“external”，则TargetMod
+e可以是相对引用或URI。如果目标属性是相对引用，则该引用相对于包的位置进行解析
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECMA2006"
+literal "false"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+OOXML格式的关系可以是显式的，也可以是隐式的。在显式关系的情况下，使用关系标记的ID属性从源部件的XML引用资源。例如，只有当文档部件的XML显式引用了该超
+链接关系元素的ID属性值时，该文档部件才能与该超链接具有关系。由于该机制通常用于多种标记类型，因此可以从OOXML文档中提取显式关系，而无需预先了解标记语义。某
+些关系被定义为显性关系；所有其他关系都是隐性关系
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECMA2006"
+literal "false"
+
+\end_inset
+
+。
+\end_layout
+
+\begin_layout Standard
+为了说明这一点，这里提供了一个OOXML中的关系示例：
+\end_layout
+
+\begin_layout Standard
+假设将特定的图像文件保存为MS Word 2007文件。如果随后重命名该图像并将其放置在Media文件夹中的“Document.xml”文件中，则会生成以下XML
+代码：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+renewcommand{
+\backslash
+baselinestretch}{1.0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+<w:pict> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<v:image data r:Id= "rId4"/> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</w:pict>
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+此XML代码表示该文档文件包含ID为“rId4”的图像。当应用程序遇到此代码时，它会尝试查找ID为“rId4”的目标。在关系文件中，列出了每个目标文件的ID信息
+。在这种情况下，关系文件中会出现以下XML代码：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+renewcommand{
+\backslash
+baselinestretch}{1.0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+<Relationships> 
+\end_layout
+
+\begin_layout Plain Layout
+
+	<Relationship Id=
+\begin_inset Quotes erd
+\end_inset
+
+rId4" Type = "/relationships/image" Target= "media/image1.jpeg"/> 
+\end_layout
+
+\begin_layout Plain Layout
+
+</Relationships>
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+使用此代码，应用程序可以找到目标“rId4”并将图像插入到文档文件中。这是一个显式关系的简单例子。在隐式关系的情况下，会出现更复杂的联系。
+\end_layout
+
+\begin_layout Chapter
+数据隐藏
+\end_layout
+
+\begin_layout Section
+使用OOXML格式的数据隐藏
+\end_layout
+
+\begin_layout Standard
+尽管OPC规范是为表示OOXML文档而设计的，但它也可以支持更多的应用程序。某些OPC功能的使用在OOXML文档中受到限制
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECMA2006"
+literal "false"
+
+\end_inset
+
+。特别是存在的未知部分和未知关系，使隐藏数据成为可能。
+\end_layout
+
+\begin_layout Subsection
+未知部件
+\end_layout
+
+\begin_layout Standard
+除了关系部分，OOXML文档中不是有效关系目标的所有其他部分都被视为未知部分
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECMA2006"
+literal "false"
+
+\end_inset
+
+。在读取文档时会忽略未知部分，并且在创建文档后可以（但没有必要）被丢弃的未知部分。换句话说，这些部件通常存在于任何给定的文件中，但无法被MS Office应用程
+序识别。
+\end_layout
+
+\begin_layout Subsection
+未知的关系
+\end_layout
+
+\begin_layout Standard
+未在ECMA376标准中定义的任何关系都被视为未知关系。未知关系在OOXML文档中是有效的，只要它们符合OPC规范
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECMA2006"
+literal "false"
+
+\end_inset
+
+定义的关系标记指南。包含未知关系的文件正常打开，并且未知关系永远不会消失，即使用户以新名称保存这些文件。
+\end_layout
+
+\begin_layout Subsection
+使用未知部分和未知关系的数据隐藏
+\end_layout
+
+\begin_layout Standard
+本节提供数据隐藏的具体示例。将数据插入载体存档文件是第一步，如图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:数据隐藏示例"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+所示。在解压缩MS Word“.docx”文件后，将三个文件插入到解压缩的文件夹中：“mask.jpg”到主文件夹中，“BYE.mp3”到word文件夹中，以及“sy
+sinders.zip”到媒体文件夹中。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-2.jpg
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:数据隐藏示例"
+
+\end_inset
+
+数据隐藏示例
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:[Content_Types].xml"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+显示了与提取的MS Word文档相关联的“[Content_Types].xml”文件，其中正常包中的所有文件扩展名都以粗体突出显示。由于包中每个部分的每个扩展名
+都必须在“[Content_Types].xml”中及其相关路径中声明，因此要隐藏其扩展名尚未出现在“[Content_Types].xml”中的数据，必须添加一些
+代码。在本例中，隐藏数据的扩展名为“jpg‘”、“mp3”和“zip”，它们不包括在“[Content_TYPE].xml”中。因此，有必要插入定义这些扩展及其关
+联路径的代码，如图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:修改后-[Content_types].xml"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+所示，添加的代码以粗体突出显示。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/trans-3.jpg
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:[Content_Types].xml"
+
+\end_inset
+
+[Content_Types].xml
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+修改“[Content_Types].xml”后，“BYE.mp3”、“mask.jpg”和“sysinders.zip”文件将成为MS Word文档中的未知部分。包含
+这些隐藏文件的文档文件(在本例中为MS Word 2007文件)会正常打开。因此这三个文件是完全隐藏的。此时，如果定义了MS Word 2007文件和隐藏数据之
+间的关系，则发现隐藏数据变得更加困难。换句话说，即使当用户将数据存储在新文件中时，隐藏的数据仍然保留在文件中。消除隐藏数据的一种方法是从“[Content_Ty
+pes].xml”中删除“jpg”、“mp3”和“zip”扩展名，并将文档另存为新文件。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-4.jpg
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:修改后-[Content_types].xml"
+
+\end_inset
+
+修改后 [Content_types].xml
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:关系文件"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+显示了从MS Office文档中提取的具有“.rels”扩展名的正常关系文件。在此关系部件中，ID、Type和Target ID等属性必须是唯一的，并且ID连接文
+档和目标文件。文档部分的XML显式引用ID属性值
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECMA2006"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-5.jpg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:关系文件"
+
+\end_inset
+
+关系文件
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:已修改关系文件"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+示出了涉及隐藏数据的关系。例如，“BYE.mp3”的关系如下：“BYE.mp3”的ID(在“Word”文件夹中)是“rId102”，该ID的类型是“http://s
+chemas.OpenXMLformats.org/officeDocument/2006/Relationship/c”。此时，如果用户将Type更改为OOXML
+规范中规定的类型，则在打开文档文件时会出现一条警告。因此，当设置类型时，用户需要使用OOXML规范中不存在的值(例如，如图6所示的“a”，“b”，“c”)。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-6.jpg
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:已修改关系文件"
+
+\end_inset
+
+已修改关系文件
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+修改“.rels”文件和“[Content_Types].xml”文件后，用户可以正常打开文档，而不会出现任何警告。此外，如果用户使用MS Word
+ 2007应用程序修改文档文件并再次保存，隐藏的数据将保留在文件中。由于MS Office 2007应用程序不检查未知部件和未知关系，因此可以使用它们来隐藏数据
+。
+\end_layout
+
+\begin_layout Standard
+这种数据隐藏方法是OOXML中显式关系的自然结果。文档的主源部分依赖于每个组件的唯一ID值和关系部分中的关联信息来定位内容，如嵌入的文件。此隐藏过程的关键点是，
+为新目标分配新ID会导致该目标被MS Office应用程序忽略。因为新ID在关系部分中没有被引用，所以主源部分不知道新内容，并且隐藏的数据不会显示在屏幕上。然而
+，隐藏的数据不会被MS Office消除，因为这些隐藏的数据有ID。MS Office 2007应用程序确实有一个功能来检测“unnown.xml”，如图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:文档检查器"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+所示。然而，如果有人使用本文描述的方法隐藏数据，该函数不会检测隐藏的数据。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-7.jpg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:文档检查器"
+
+\end_inset
+
+文档检查器
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+使用注释隐藏数据
+\end_layout
+
+\begin_layout Standard
+还可以使用XML注释在MS Office文档中隐藏数据。MS Office 2007应用程序创建的普通文件中的XML部件没有XML注释。这种方法非常简单，但这种
+隐藏方法也适用于隐藏消息。
+\end_layout
+
+\begin_layout Chapter
+隐藏数据的检测
+\end_layout
+
+\begin_layout Standard
+本节提供了使用本文中详细介绍的技术检测已隐藏数据的算法和伪代码。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-8.jpg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:隐藏数据检测算法"
+
+\end_inset
+
+隐藏数据检测算法
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+如上所述，在MS Office 2007文件中使用未知部件和未知关系，可以隐藏文件中的数据。未知部件和未知关系的属性也可用于检测隐藏数据。图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:隐藏数据检测算法"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+示出了检测算法的概要。在下一段中，图10-12中的伪代码提供了对该算法的详细解释。
+\end_layout
+
+\begin_layout Standard
+在加载了包含隐藏数据的文件之后，“Detector”检测程序(使用C#开发)收集了文件中的每个部件和每个关系的信息。有关部件的信息存储在“SetFileInfo
+List”结构中：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+renewcommand{
+\backslash
+baselinestretch}{1.0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}
+\end_layout
+
+\begin_layout Plain Layout
+
+struct FileInfo { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	public bool IsUnknownPart; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	public bool IsUnknownRel; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	public bool HasComment; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	public string DirPath; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	public string FileName; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	public string comment; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+“IsUnnownPart”是一个变量，它指示某个特定部件是否未知。换句话说，这个变量表明每个部分是否被定义了
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ECMA2006"
+literal "false"
+
+\end_inset
+
+。不具有未知关系的部件可以简单地通过“IsUnnownPart”变量的值来检测。“IsUnnownRel”是一个变量，它指示某个特定部件是否为未知关系。如果输入
+部分具有未定义的类型，则此检测算法确定该部分具有未知关系。当输入部分有注释时，“HasComment”为“TRUE”，否则为“FALSE”。“DirPath”是
+输入部件的绝对路径，“filename”是部件的名称。如果检测到注释，则将其存储在“comment”变量中。关系信息被以同样的方式收集和处理。
+\end_layout
+
+\begin_layout Standard
+在完成此数据收集工作后，将执行以下两个步骤：
+\end_layout
+
+\begin_layout Enumerate
+检查每个文件是否是关系文件中陈述的特定关系的目标。如果不是，则由隐藏数据组成。如果这些隐藏数据具有关系文件，则此关系文件中的所有目标都由隐藏数据组成。
+\end_layout
+
+\begin_layout Enumerate
+检查每个文件是否具有OOXML规范中未描述的异常内容类型。如果是，则该文件包含隐藏数据。如果此文件有关系文件，则此关系文件中的所有目标也包含隐藏数据。
+\end_layout
+
+\begin_layout Standard
+现在将描述该算法的伪代码，并详细介绍检测算法。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-9.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:伪代码1"
+
+\end_inset
+
+伪代码1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-10.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:伪代码2"
+
+\end_inset
+
+伪代码2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-11.jpg
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:伪代码3"
+
+\end_inset
+
+伪代码3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-12.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:伪代码4"
+
+\end_inset
+
+伪代码4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:伪代码1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+示出了检测处理的顺序。在加载包文件(例如，MS Word 2007文件)之后，检测程序提取包并收集关于每个部件和关系部件的信息。
+\end_layout
+
+\begin_layout Standard
+图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:伪代码2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+、
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:伪代码3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+、
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:伪代码4"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+示出了如何在文档文件中检测未知部分和未知关系。检测过程分三步执行：
+\end_layout
+
+\begin_layout Standard
+首先，程序检查每个部件以确定它是否是关系部件的目标。如果不是，则该部分是未知部分，也就是说，它是隐藏数据。此外，如果部件在其子文件夹中有关系部件(其中子文件夹的
+名称为“_rels”)，则关系部件和关系部件的所有目标都是隐藏数据。这个过程递归地持续进行。
+\end_layout
+
+\begin_layout Standard
+其次，程序必须检查每个关系部分的类型，以确定它是否在OOXML规范中定义。如果OOXML规范中没有定义关系部分的类型，则该关系部分是未知关系，也就是说，它是隐藏
+数据。例如，在“.docx”文件(MS Word 2007文件)的情况下，关系部分的类型包括：
+\end_layout
+
+\begin_layout Itemize
+http://schemas.OpenXMLformats.org/officeDocument/2006/ relationships/officeDocumen
+t
+\end_layout
+
+\begin_layout Itemize
+http://schemas.OpenXMLformats.org/officeDocument/2006/elationships/extendedpropert
+ies
+\end_layout
+
+\begin_layout Itemize
+http://schemas.OpenXMLformats.org/package/2006/relationships/metadata/coreproperti
+es
+\end_layout
+
+\begin_layout Itemize
+http://schemas.OpenXMLformats.org/package/2006/relationships/digitalsignature/orig
+in
+\end_layout
+
+\begin_layout Itemize
+http://schemas.OpenXMLformats.org/package/2006/relationships/metadata/thumbnail
+\end_layout
+
+\begin_layout Standard
+诸若此类。这些类型在关系部件的OOXML规范中。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-13.jpg
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:检测结果1"
+
+\end_inset
+
+检测结果1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-14.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:检测结果2"
+
+\end_inset
+
+检测结果2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-15.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:检测结果3"
+
+\end_inset
+
+检测结果3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:检测结果1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+、
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:检测结果2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+、
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:检测结果3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+展示了隐藏数据的检测结果。在前文使用的示例中，隐藏的数据是“mask.jpg”、“BYE.mp3”和“sysinders.zip”，这些都在图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:关系文件"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+中进行了表示。隐藏的数据由不同于正常数据的图标表示。该程序已验证“mask.jpg”隐藏在根文件夹中，“BYE.mp3”隐藏在“word”文件夹中，“sysinte
+rnals.zip”隐藏在“”word
+\backslash
+media“”文件夹中。
+\end_layout
+
+\begin_layout Standard
+最后，程序必须检查XML格式的每个部分，以确定它是否有XML注释。通常由MS Office 2007应用程序创建的所有XML格式的部件都没有XML注释。因此，如
+果在MS Office 2007文件中存在XML注释，则可以将其视为用户插入的隐藏数据。图
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:使用“Detector”的最终检测结果"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+显示了该查询的结果，包括XML注释检测算法。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/trans-16.jpg
+	scale 30
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:使用“Detector”的最终检测结果"
+
+\end_inset
+
+使用“Detector”的最终检测结果
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+总结
+\end_layout
+
+\begin_layout Standard
+除了在将MS Office 2007文档从OpenXML格式转换为复合格式(由MS Office 2003版和更早版本使用)时发生数据丢失之外，这里概述的数据隐
+藏方法非常强大，特别是在MS Office 2007应用程序支持的任何功能都无法检测到隐藏数据的情况下。Microsoft Office Isolated
+ Conversion Environment(MOICE)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Microsoft2007"
+literal "false"
+
+\end_inset
+
+使用“Document.xml”以及与“Document.xml”相关的部件和关系从2003年或更早版本的MS Office应用程序中读取数据。因此，当在较旧的应用
+程序中使用MOICE打开MS Office 2007文件时，与“Document.xml”无关的隐藏数据，例如通过此处提供的方法(不会修改“Document.xml
+”)生成的数据，在复合重新格式化或在2007版本的应用程序中查看后消失。换句话说，MOICE不能检查未使用的数据，如未知部件或未知关系，也不能进行任何验证测试。
+相反，它只能转换与“Document.xml”相关的数据。因此，可以得出结论，除了本文描述的检测算法之外，没有其他方法可以检测这里给出的数据隐藏。
+\end_layout
+
+\begin_layout Standard
+考虑到隐写术将信息隐藏在封面数据中或某些隐藏数据正在被传输的事实，如果有可能将数据插入到文件中而不在文件打开时引起通知，则这种隐藏数据的方法对于隐写术至关重要。
+这项研究的结果得出的结论是，在MS Office 2007文件中隐藏数据是可能的，并且刚刚展示了如何检测此类隐藏数据。本文描述了如何创建工具来检测OOXML格式
+中可能隐藏的数据。
+\end_layout
+
+\begin_layout Standard
+从计算机取证的角度来看，确认任何未被特定应用程序检查的数据的存在是非常重要的。在计算机取证调查中，调查人员可能会假设电子文档文件中的所有数据都可以通过他们的应用
+程序进行检查。然而，仅通过相关应用程序调查电子文档文件是不够的，因为大多数应用程序无法检查或检测到的数据仍可能存在于文件中。
+\end_layout
+
+\begin_layout Standard
+在本文中，大部分描述都集中在MS Word 2007文件上。但是，如果MS Office PowerPoint和Excel 2007文件包含任何隐藏数据，也可以
+使用相同的算法检测出这些数据。
+\end_layout
+
+\begin_layout Standard
+在未来，作者将继续寻找在文件中隐藏数据的其他方法，并创建工具来检测文件中的隐藏数据。
+\end_layout
+
+\begin_layout 参考文献
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "trans"
+options "zjutcls/gbt7714-2005"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

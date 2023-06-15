@@ -1,0 +1,381 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass zjut-report
+\options UTF-8,translation
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding gbk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+!Mode:: "\SpecialChar TeX
+:UTF-8"
+\end_layout
+
+\begin_layout Plain Layout
+需要用：XeLaTex 进行编译
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告类型
+本科毕业设计外文翻译
+\end_layout
+
+\begin_layout 提交日期
+2023年02月
+\end_layout
+
+\begin_layout 题目左侧距离
+15mm
+\end_layout
+
+\begin_layout 题目下划线长度
+90mm
+\end_layout
+
+\begin_layout 封面下划线长度
+17em
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "cover/cover.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告题目
+微信小程序开发分析
+\end_layout
+
+\begin_layout Abstract
+\paragraph_spacing onehalf
+\labelwidthstring 摘要：
+2017年，我们称之为“微信迷你计划和第一年”。从那时起，微信迷你程序的发展一直在蓬勃发展。目前，下一代移动互联网行业正朝着“微、轻、小”的方向发展，就像微信迷
+你计划一样，这是一个革命性的轻量级“APP”，不需要下载，用完了，同时具有信息发布、广告和服务功能，本文将分析微信小程序的系统实现和前景，并基于微信“小程序”开
+发研究系统架构、关键技术和市场前景。
+\end_layout
+
+\begin_layout Keywords
+\labelwidthstring 关键字：
+系统架构、关键技术、市场前景
+\end_layout
+
+\begin_layout Chapter
+引言
+\end_layout
+
+\begin_layout Standard
+2017年1月9日，张小龙正式推出了2017年微信公开课Pro上发布的小程序。WeChat Mini program，简称小程序，简称XCX，英文迷你程序，是一
+款无需下载和安装即可使用的APP，用户可以通过扫描二维码或搜索小程序的相应名称，在微信界面中使用相关应用程序的全部功能，并且使用的小程序不会占用手机的内存。完全
+打开应用程序后，对于主体类型为公司、政府、媒体、其他组织或个人的开发者，他们可以申请注册小程序。小程序、订阅号、服务号和企业号是并行系统。微信小程序将“微、轻、
+小”的特点发挥得淋漓尽致。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/绘图2.jpg
+	width 40col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+图1-1：2017年微信用户占比
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+众所周知，近年来，移动互联网平台蓬勃发展，移动用户也在市场上占据主导地位。根据腾讯最新发布的2017年第四季度财报披露，微信的月活跃账户达到9.886亿，比去年同
+期增长11.2%。春节后，月活跃账户超过10亿。社交和其他广告收入增长68%，达到82.4亿元，主要原因是微信公众号和个人微信朋友圈的广告收入增加。2017年微信用
+户比例如图1-1所示。同时，腾讯优化了其微信用户界面，以更好地突出小程序。2017年底推出的迷你游戏赢得了广泛关注，并在用户中迅速流行。这些数据为微信“小程序”
+的发展和应用前景提供了更广阔的空间和平台。因此，本文旨在分析微信小程序开发的系统实现和发展前景，并对微信“小程序”开发的系统架构、关键技术和市场前景进行了研究。
+\end_layout
+
+\begin_layout Chapter
+微信小程序
+\end_layout
+
+\begin_layout Standard
+微信小程序的开发框架基于MINA框架，MINA是一个基于Java技术的网络通信应用框架。该框架采用Java异步输入输出技术，支持P/UDP协议，用户根据实际需求
+选择线程模型，从而实现多线程模型应用，还可以提供Java对象的串行化服务、虚拟机管道的通信服务，MINA可以快速开发高性能和高度可扩展的网络通信应用。其基本架构
+如图2-1所示。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/绘图3.jpg
+	width 80line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+图2-1：MINA微信小程序框架
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+其中，IoService是应用程序的入口，可用于添加多个IoFilter。这些IoFilter符合责任链模式，由IoProcessor线程调用。IoHandle
+r是一个业务处理模块。它不需要关心服务处理类中的实际通信细节。它只需要处理客户端发送的信息。IoFilter用于过滤来自用户请求或发送到客户端的数据。一些常用的
+过滤器是IoFilters，如日志记录、黑名单过滤、压缩过滤和SSL加密。MINA框架的应用过程相对复杂，但在使用中具有良好的灵活性。例如，开发人员可以根据自己
+的需求定制各种编码方法、加密算法和日志记录。这适用于邮件服务器、流媒体服务器和IM。服务器应用场景，如服务器，用户需求被分类得更多。基于这一特点，微信迷你程序使
+用MINA框架进行开发，以满足更多用户的需求，同时也为开发人员提供了极大的便利。
+\end_layout
+
+\begin_layout Standard
+微信小程序的系统主要包括app.json、app.js和app.wxs。其中app.json是整个小程序的全局配置。开发者可以配置小程序由哪些页面组成，配置小程序的背景
+色，配置导航栏样式，配置默认标题。作为小程序核心内容的页面通常由三个文件组成：index.js是逻辑处理代码，主要用于定义页面的数据；index.wxml是布局文件
+，主要用于页面的整体结构设计；Index.wss是一个样式表，用于确定各种组件最终应如何显示。App.js是小程序的脚本代码。开发人员可以监视和处理小程序的生命周期
+函数，声明全局变量，并调用MINA的丰富API，例如本例中的同步存储和本地同步读取。App.wxss是整个小程序的通用样式表。开发者可以直接在页面组件的class
+属性上使用app.wxss中声明的样式规则。微信小程序系统的主要结构如图2-2所示。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figures/绘图4.jpg
+	width 70line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+图2-2：微信小程序系统的主要结构
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+微信小程序开发
+\end_layout
+
+\begin_layout Section
+获取微信小程序的App ID
+\end_layout
+
+\begin_layout Standard
+由于微信的限制，开发者不能直接使用服务号或订阅号的App ID，需要登录微信已经提供的小程序开发账号。然后，您可以在网站的“设置-开发者设置”中查看微信迷你程序
+。如果开发者没有使用注册时注册的管理员微信号，则还需要绑定开发者，即在“用户身份-开发者”模块中，绑定需要体验小程序的微信号。
+\end_layout
+
+\begin_layout Section
+创建微信小程序项目
+\end_layout
+
+\begin_layout Standard
+开发者可以使用开发者工具完成小程序的创建和代码编辑，具体步骤如下：（1）在网页上安装开发者工具，使用微信扫描码打开并登录。（2） 选择创建项目，填写上面获得的应
+用程序ID，设置本地项目名称，但这是小程序的名称，并选择计算机的本地文件夹作为存储代码的目录。（3） 在创建过程中，如果选定的本地文件夹是空文件夹，开发人员工具
+将提示是否需要创建快速启动项目。选择“是”后，开发人员工具将生成一个简单的演示。（4） 项目成功创建后，开发人员可以单击项目，进入并查看完整的开发工具界面，单击
+左侧导航，在“编辑”中可以查看和编辑我们的代码，在“调试”中可以测试代码并在微信客户端上模拟小程序的效果。在“项目”中，您可以将其发送到手机以预览实际效果。
+\end_layout
+
+\begin_layout Section
+编写程序代码
+\end_layout
+
+\begin_layout Standard
+单击开发工具左侧导航中的“编辑”。开发人员可以看到这个项目。它已经初始化，包含一些简单的代码文件。键是app.js、app.json和app.wxss。其中，.js后缀
+是脚本文件，主要是小程序的逻辑函数，.json后缀是配置文件，包括配置行栏、底部菜单等。.wxss后缀是样式表文件。
+\end_layout
+
+\begin_layout Section
+创建页面
+\end_layout
+
+\begin_layout Standard
+该页面是微信小程序开发的核心内容，通常包括索引页面和日志页面、IE、欢迎页面和小程序启动日志显示页面，所有这些页面都位于页面目录中。微信小计划中每个页面的“路径
++页面名称”需要写在app.json的页面中，页面中的第一个页面是小程序的主页。每个小程序页面由四个不同的后缀文件组成，这些文件在相同的路径下具有相同的名称，例如
+：index.js、index.wxml、index.wxss、index.json。.js文件是脚本文件，.json文件是配置文件，.wxss文件是样式文件，.wxml文件是
+页面结构文件。在日志的页面结构中，logs页面使用＜block/＞控制标记来组织代码，使用wx:for项来绑定＜block>上的日志数据，并循环日志数据以扩展节
+点。
+\end_layout
+
+\begin_layout Chapter
+微信小程序开发的市场前景
+\end_layout
+
+\begin_layout Standard
+微信的开发过程比iOS应用程序和Android应用程序更简单，成本更低。同时，微信号的营销成本也很低，那么，不同行业、不同规模的企业在微信“小程序”的发展中，都
+会有很好的市场前景。以下内容将针对不同类型的企业、开发者和用户的需求以及微信“小程序”开发的市场前景。进行分析。微信小程序将降低开发者的入门门槛，其学习成本、生
+产成本、推广成本和运营成本都将降低。对于小微创业公司来说，这既是机遇也是挑战。这些类型的企业往往数量很少，资金有限。没有更多的资源来支持应用程序的开发，小程序的
+出现可以弥补这些企业的劣势，使公司能够快速响应市场需求，快速开发吸引用户需求的轻量级应用程序，从而获得公司后续开发的“第一桶金”，此类企业还必须遵循小规模程序的
+步伐。必须进行一些战略变革。内部合作和分工是公司需要考虑的问题。
+\end_layout
+
+\begin_layout Standard
+对于开发者来说，微信小程序代表了开发者社区的又一个“黄金时代”，为微信提供了广泛的用户基础和业务开发平台。开发者能够以最小的时间和速度开发成本更低的应用程序。同
+时，对开发者来说，这又是一轮“擦除时间”，因为用户将更倾向于使用与本地应用体验没有差距的微信小程序。这将极大地考验开发人员的技能和素质。开发者必须通过提高从原生
+应用程序到小程序的技术含量，开发出满足用户更高需求的微信小程序。
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Guo2017,Han2017,Jia2017,Liu2016,Liu2017,Wang2016,Zhang2017"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+总结
+\end_layout
+
+\begin_layout Standard
+与传统的移动客户端应用程序相比，微信小程序具有更简单的系统架构；开发技术与移动客户端应用程序非常相似，使用了更简单的页面代码；同时，微信提供了必要的开发工具，帮
+助开发人员快速开始微信小程序的开发。从目前微信小软件开发的特点来看，微信“小程序”比系统的移动客户端应用程序成本更低，开发速度更快，并且符合下一代移动互联网行业
+的“微型、小型和轻型”趋势，并具有更广阔的市场前景。
+\end_layout
+
+\begin_layout Chapter
+致谢
+\end_layout
+
+\begin_layout Standard
+本研究得到了国家科技支撑计划项目（NO.2015BAD29B01）的支持。*中央高校基本科研业务费（319201701 55）资助的这项研究。
+\end_layout
+
+\begin_layout 参考文献
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref"
+options "zjutcls/gbt7714-2005"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

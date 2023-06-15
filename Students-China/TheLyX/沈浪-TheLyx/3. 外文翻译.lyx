@@ -1,0 +1,1520 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass zjut-report
+\options UTF-8,translation
+\use_default_options true
+\begin_modules
+customHeadersFooters
+\end_modules
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding gbk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf4
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+!Mode:: "\SpecialChar TeX
+:UTF-8"
+\end_layout
+
+\begin_layout Plain Layout
+需要用：XeLaTex 进行编译
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告类型
+本科毕业设计外文翻译
+\end_layout
+
+\begin_layout 提交日期
+2023年02月
+\end_layout
+
+\begin_layout 题目左侧距离
+15mm
+\end_layout
+
+\begin_layout 题目下划线长度
+90mm
+\end_layout
+
+\begin_layout 封面下划线长度
+17em
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "cover/cover.tex"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout 报告题目
+MagFace:人脸识别和质量评估的通用表示
+\end_layout
+
+\begin_layout Abstract
+\paragraph_spacing onehalf
+\labelwidthstring 摘要：
+人脸识别系统的性能随着人脸的可变性的增加而降低。之前的工作通过在预处理中监测人脸质量或随着人脸特征预测数据的不确定性来缓解这个问题。本文提出了MagFace，这
+是一类学习通用特征嵌入的损失，其大小可以衡量给定人脸的质量。在新的损失下，可以证明，主题越容易被识别，特征嵌入的大小就增加的越多。此外，MagFace引入了一种
+自适应机制，通过将简单的样本拉到类中心，同时将困难的样本推到类中心，来学习结构良好的类内特征分布。此外，MagFace引入了一种自适应机制，通过将简单的样本拉到
+类中心，同时将困难的样本推离类中心，来学习结构良好的类内特征分布。这可以防止模型在有噪声的低质量样本上过度拟合，并提高野外的人脸识别能力。在人脸识别、质量评估和
+聚类方面进行的大量实验表明，该算法优于现有技术。该代码可在
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/IrvingMeng/MagFace"
+literal "false"
+
+\end_inset
+
+上获取。
+\end_layout
+
+\begin_layout Keywords
+\labelwidthstring 关键字：
+计算机科学-计算机视觉和模式识别
+\end_layout
+
+\begin_layout Chapter
+引言
+\end_layout
+
+\begin_layout Standard
+在野外识别人脸是困难的，主要是由于在无约束环境中获得的人脸图像表现出很大的可变性。这种可变性与图像采集条件(如照明、背景、模糊度和低分辨率)、面部因素(如姿势、
+遮挡和表情)或部署的人脸识别系统
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Terhrst2020"
+literal "false"
+
+\end_inset
+
+的偏差有关。为了应对这些挑战，在无约束环境下(如监控视频)，大多数相关的人脸分析系统包括三个阶段:1)人脸采集，从一组原始图像或从视频流中捕获最适合识别的人脸图
+像;2)特征提取，从每张人脸图像中提取判别表征;3)面部应用，将参考图像与给定的图库或聚类人脸匹配为同一人的组。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/1.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+MagFace通过将更容易的样本拉到类中心并将其推离原点o来学习(a)随机人脸(b)通用嵌入。正如我们的实验所示并得到数学证明的支持，归一化前的幅度l随着特征到
+其类中心的余弦距离的增加而增加，因此揭示了每个人脸的质量l越大，样本被识别的可能性越大。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+为了在第一阶段获得最优参考图像，通常对每个检测到的人脸采用人脸质量评估技术
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BestRowden2018"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schlett2020"
+literal "false"
+
+\end_inset
+
+。虽然理想的质量分数应该是人脸识别性能的指示，但早期的大部分工作
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jtc/Sc2008"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "StructureLds"
+literal "false"
+
+\end_inset
+
+是基于亮度、失真和姿态角等人类可理解的因素来估计质量的，这可能不会直接有利于第二阶段的人脸特征学习。或者，基于学习的方法
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BestRowden2018"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HernandezOrtega2019a"
+literal "false"
+
+\end_inset
+
+用人工或人工标记的质量值训练质量评估模型。这些方法容易出错，因为缺乏对质量的明确定义，人们可能不知道整个系统的最佳特性。
+\end_layout
+
+\begin_layout Standard
+为了在第二阶段获得较高的端到端应用性能，过去几年出现了各种度量学习
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schroff2015a"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sohn2016"
+literal "false"
+
+\end_inset
+
+或分类损失
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yuan2017"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ranjan2017"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2017"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Guo2016"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2018b"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deng2018a"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chang2020"
+literal "false"
+
+\end_inset
+
+。这些作品学习将每个人脸图像表示为嵌入潜在空间的确定性点，而不考虑人脸固有的方差。然而在现实中，像图1a这样的低质量或大姿态的图像普遍存在，其面部特征模糊或缺失
+考虑到这些挑战，嵌入点的巨大变化是不可避免的，从而导致错误识别。例如，先前最先进的
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shi2019"
+literal "false"
+
+\end_inset
+
+在IJB-C上报告的性能远低于LFW。最近，信心感知方法
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Shi2019"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chang2020"
+literal "false"
+
+\end_inset
+
+提出将每张人脸图像表示为潜在空间中的高斯分布，其中分布的平均值估计最有可能的特征值，而方差显示特征值的不确定性。尽管性能有所提高，但这些方法试图将人脸特征学习与
+数据噪声建模分离。因此，在架构中引入额外的网络块来计算每个图像的不确定性级别。这增加了训练过程的复杂性，并增加了推理的计算负担。此外，不确定度测量不能直接用于比
+较人脸特征的常规度量。
+\end_layout
+
+\begin_layout Standard
+本文提出MagFace来学习一种通用的、具有质量意识的人脸表示方法。MagFace的设计遵循两个原则:1)给定同一主体不同质量等级的人脸图像(如图1a所示)，它
+寻求学习类内分布，其中高质量的图像保持在类中心附近，而低质量的图像分布在边界附近。2)在计算人脸特征的同时，改变现有的推理架构来测量人脸质量的成本最小。为了达到
+上述目标，我们选择了幅度，即特征向量方向的独立性质，作为质量评估的指标。MagFace的核心目标不仅是扩大类间距离，而且要保持如图1b所示的类内锥形结构，即模糊
+样本被推离类中心，并被拉到原点。这是通过在训练过程中自适应地降低模糊样本的权重，并在MagFace损失中奖励学习到的特征向量来实现的。综上所述，MagFace在
+两个方面改进了之前的工作:
+\end_layout
+
+\begin_layout Standard
+1.
+ 在人脸识别问题中，MagFace首次探索了与特征向量方向和幅度相关的两个性质的完整集合，而以往的工作往往通过对特征进行归一化而忽略了幅度的重要性。通过广泛的实
+验研究和坚实的数学证明，我们表明，大小可以揭示人脸的质量，并且可以与识别的特征捆绑在一起，而不涉及任何质量标签。
+\end_layout
+
+\begin_layout Standard
+2.
+ MagFace在角度方向上明确地在结构上分布特征(如图1b所示)。通过根据样本的识别硬度动态分配角边缘，MagFace可以防止模型在有噪声和低质量的样本上过拟
+合，并学习更适合识别和聚类目的的结构良好的分布。
+\end_layout
+
+\begin_layout Chapter
+相关的工作
+\end_layout
+
+\begin_layout Section
+人脸识别
+\end_layout
+
+\begin_layout Standard
+近年来，深度卷积人脸识别技术取得了突破性进展。一些成功的系统，如DeepFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Taigman2014"
+literal "false"
+
+\end_inset
+
+，DeepID
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sun2015"
+literal "false"
+
+\end_inset
+
+，FaceNet
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schroff2015"
+literal "false"
+
+\end_inset
+
+在人脸识别和验证方面表现出了令人印象深刻的性能。除了大规模的训练数据和深度网络架构外，CNN的主要进步来自于训练损耗的进化。早期的工作大多依赖于基于度量学习的损
+耗，包括对比损耗
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chopra2005"
+literal "false"
+
+\end_inset
+
+、三重态损耗
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schroff2015"
+literal "false"
+
+\end_inset
+
+、n对损耗
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sohn2016"
+literal "false"
+
+\end_inset
+
+、角损耗
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jian2017"
+literal "false"
+
+\end_inset
+
+等。在大规模数据集上，基于嵌入的训练方法由于人脸三组数的组合爆炸而效率低下。因此，深度人脸识别的研究主要集中在设计更高效和有效的基于分类的损失。Wen等
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wen2016"
+literal "false"
+
+\end_inset
+
+开发了一个中心损失来学习每个身份的中心，以增强类内紧凑性。L2-softmax
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ranjan2017"
+literal "false"
+
+\end_inset
+
+和NormFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2017"
+literal "false"
+
+\end_inset
+
+研究了归一化操作的必要性，在特征和权值上都应用了L2归一化约束。从那时起，一些基于角边缘的损耗，如SphereFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2017"
+literal "false"
+
+\end_inset
+
+，AM-softmax
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2018"
+literal "false"
+
+\end_inset
+
+，SV-AM-Softmax
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2018a"
+literal "false"
+
+\end_inset
+
+，CosFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2018b"
+literal "false"
+
+\end_inset
+
+，ArcFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deng2018"
+literal "false"
+
+\end_inset
+
+，逐渐将各种基准测试的性能提高到新的水平。最近，AdaptiveFace 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2019"
+literal "false"
+
+\end_inset
+
+，AdaCos
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2019"
+literal "false"
+
+\end_inset
+
+和FairLoss
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2019a"
+literal "false"
+
+\end_inset
+
+引入了自适应边际策略，以自动调优超参数，并在训练期间生成更有效的监督。与我们的方法相比，所有这些工作都倾向于通过归一化特征向量来抑制量级对损失的影响
+\end_layout
+
+\begin_layout Section
+面部质量评估
+\end_layout
+
+\begin_layout Standard
+人脸图像质量是实现高性能人脸识别系统[4]的重要因素。传统的方法，如ISO/IEC 19794-5标准
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jtc/Sc2008"
+literal "false"
+
+\end_inset
+
+，ICAO 9303标准，Brisque 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sun2014"
+literal "false"
+
+\end_inset
+
+， Niqe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mittal2013"
+literal "false"
+
+\end_inset
+
+和Piqe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Venkatanath2015"
+literal "false"
+
+\end_inset
+
+，从基于图像的方面(例如，失真，照明和遮挡)或基于主题的测量(例如，附件)描述质量。基于学习的方法，如FaceQNet
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HernandezOrtega2019"
+literal "false"
+
+\end_inset
+
+和Best-Rowden
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BestRowden2018"
+literal "false"
+
+\end_inset
+
+，通过在人类评估和基于相似的标签上训练的网络回归质量。然而，这些质量标签容易出错，因为人类可能不知道识别系统的最佳特征，因此不能考虑所有适当的因素。近年来，提出
+了几种基于不确定性的方法，利用特征的不确定性来表达人脸质量。SER-FIQ
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Terhorst2020"
+literal "false"
+
+\end_inset
+
+将图像多次转发到有dropout的网络中，通过提取特征的变化来测量人脸质量。基于信心感知的人脸识别方法提出将每张人脸图像在潜在空间中表示为高斯分布，并学习特征值
+中的不确定性。虽然这些方法像我们一样以无监督的方式工作，但它们需要额外的计算成本或网络块，这使得它们在传统人脸系统中的使用变得复杂。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/2.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ArcFace和MagFace优化的特征空间(未归一化)的几何解释。(a) ArcFace优化的两类分布，w和w'是类中心，它们的决策边界B和B'由加性裕度m分
+隔。圈1、2、3代表w类的三种质量递减样本。(b) MagFace引入m(ai)，根据特征大小动态调整边界，最终得到一个新的可行区域。(c) g(ai)和m(a
+i)的影响。(d) MagFace的最终特征分布。彩色观看效果最好。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+人脸聚类
+\end_layout
+
+\begin_layout Standard
+人脸聚类利用未标记的数据将它们聚成伪类。传统的聚类方法通常以无监督的方式工作，例如K-means
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lloyd1982"
+literal "false"
+
+\end_inset
+
+。DBSCAN
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ester1996"
+literal "false"
+
+\end_inset
+
+和分级集群。近年来提出了几种基于图卷积网络(GCN)的监督聚类方法。例如，LGCN
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2019"
+literal "false"
+
+\end_inset
+
+执行推理并推断子图中对之间链接的可能性。Yang et al.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yang2020"
+literal "false"
+
+\end_inset
+
+设计了两个图卷积网络，命名为GCN-V和GCN-E，分别用于估计顶点的置信度和边的连通性。我们的目标不是开发聚类方法，而是改进用于聚类的特征分布结构。
+\end_layout
+
+\begin_layout Chapter
+方法论
+\end_layout
+
+\begin_layout Standard
+在本节中，我们首先回顾ArcFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deng2018a"
+literal "false"
+
+\end_inset
+
+的定义，它是人脸识别中最常用的损失之一。在对ArcFace进行分析的基础上，推导出目标并证明了MagFace的关键特性。最后，从特征量级的角度对softmax、
+ArcFace和MagFace进行了比较。
+\end_layout
+
+\begin_layout Section
+Arcface重审
+\end_layout
+
+\begin_layout Standard
+训练损失在人脸表征学习中起着重要作用。在各种选择中(参见
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Du2020"
+literal "false"
+
+\end_inset
+
+最近的调查)，ArcFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deng2018a"
+literal "false"
+
+\end_inset
+
+可能是在学术界和工业界应用中最广泛采用的，因为它易于实现，并且在许多基准测试中具有最先进的性能。假设我们有N个人脸样本
+\begin_inset Formula $\{f_{i},y_{i}\}_{i=1}^{N}$
+\end_inset
+
+的N个身份的训练批次，其中
+\begin_inset Formula $f_{i}\in\mathbb{R}^{d}$
+\end_inset
+
+表示从神经网络的最后一个完全连接层计算的d维嵌入，
+\begin_inset Formula $y_{i}=1,\cdots,n$
+\end_inset
+
+是其相关的类标签。ArcFace和其他变体通过优化超球面流形上的特征嵌入来改善传统的softmax损失，其中学习的人脸表示更具鉴别性。将fi与第j类中心
+\begin_inset Formula $w_{j}\in\mathbb{R}^{d}\mathop{\mathrm{as}}w_{j}^{T}f_{i}=\|w_{j}\|\|f_{i}\|$
+\end_inset
+
+ ArcFace的目标可以表述为
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $L=-\frac{1}{N}\sum_{i=1}^{N}\log\frac{e^{s\cos(\theta_{y_{i}}+m)}}{e^{s\cos(\theta_{y_{i}}+m)}+\sum_{j\neq y_{i}}e^{s\cos\theta_{j}}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+其中m > 0表示附加角边缘，s为缩放参数。
+\end_layout
+
+\begin_layout Standard
+尽管ArcFace在加强类内紧凑性和类间差异方面表现出色，但它使用的角边缘惩罚m是质量不确定的，并且在无约束场景下，类内分布的结果结构可能是任意的。例如，让我们
+考虑图2a所示的场景，其中我们有由圆大小表示的三个质量级别的同一类人脸图像:半径越大，特征表示越不确定，人脸识别就越困难。因为ArcFace使用统一的边距m，一
+个类中的每个图像共享相同的决策边界，即B: cos(θ + m) = cos(θ')相对于相邻类。三种样本都可以停留在可行区域(图2a的阴影区域)的任意位置，不
+会受到角边缘的任何惩罚。这导致了不稳定的类内分布，例如，高质量的人脸(类型1)停留在边界B，而低质量的人脸(类型2和3)更接近中心w。这种不稳定性会损害野外识别
+的性能以及其他面部应用，如人脸聚类。此外，硬样本和噪声样本很难停留在可行区域内，模型可能会对它们过拟合，从而导致样本权重过大。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/4.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+特征大小的可视化和识别难度。在MS1M-V2上训练模型，使用上一次迭代的512个样本进行可视化。对于Softmax，我们使用负损失来显示硬度，而对于ArcFac
+e和MagFace，我们使用θ的余弦值(特征与其类中心之间的角度)。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Magface
+\end_layout
+
+\begin_layout Standard
+基于上述分析，之前基于余弦相似度的人脸识别损失在固定的边界m之外缺乏更细粒度的约束，这导致类内结构不稳定，特别是在无约束的情况下(如图2a)，每个受试者的人脸变
+异性很大。为了解决上述问题，本节提出了MagFace，这是一种将质量度量编码到人脸表示中的新框架。与之前的工作不同，我们要求额外的不确定性项，我们通过优化幅度a
+i = fi来追求极简设计，而不对每个特征fi进行标准化。我们的设计有两个主要优势:1)我们可以继续使用基于余弦的度量，这已经被大多数现有的推理系统广泛采用;2
+)通过同时强化其方向和大小，习得的人脸表征对野外人脸的可变性更具鲁棒性。据我们所知，这是第一个将特征大小统一为人脸识别质量指标的工作。
+\end_layout
+
+\begin_layout Standard
+在定义损失之前，让我们首先介绍两个与ai相关的辅助函数，大小感知角边缘m(ai)和正则器g(ai)。m(ai)的设计遵循一个自然的直觉:对于高质量的样本xi，它
+们应该集中在簇中心w周围的一个小区域，具有较高的确定性。通过假设大小和质量之间存在正相关关系，因此，如果xi的大小ai很大，我们就会在m(ai)方面对xi进行更
+多的惩罚。为了更好地理解，图2b可视化了对应不同幅度值的边缘m(ai)。与ArcFace(图2a)相比，由m(ai)定义的可行区域相对于类中心w的特征大小有一个
+缩小的边界。因此，该边界将低质量样本(图2c中的圈2和圈3)拉到被惩罚风险较低的原点。然而，对于图2c中的圆1这样的高质量样本，仅由m(ai)形成的结构是不稳定
+的，因为它们在可行区域内有较大的自由度。因此，我们引入正则化g(ai)来奖励具有较大幅度的样本。将g(ai)设计为关于ai的单调递减凸函数，将每个样本推向可行域
+边界，将高质量样本(圆1)拖向类中心w，如图2d所示。简而言之，MagFace扩展了ArcFace (Eq.
+ 1)，使用幅度感知边缘和正则化器，通过优化来提高类间样本的多样性和类内样本的相似性:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $L_{Mag}=\frac{1}{N}\sum_{i=1}^{N}L_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $\begin{aligned}\\
+ & L_{i} & =-\log\frac{e^{s\cos(\theta_{y_{i}}+m(a_{i}))}}{e^{s\cos(\theta_{y_{i}}+m(a_{i}))}+\sum_{j\neq y_{i}}e^{s\cos\theta_{j}}}+\lambda_{g}g(a_{i})
+\end{aligned}
+$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+超参数λg被用来权衡分类损失和正则化损失。
+\end_layout
+
+\begin_layout Standard
+MagFace的设计不仅遵循直观动机，而且有理论保证。假设模ai有界于[la, ua]，其中m(ai)为严格增凸函数，g(ai)为严格减凸函数，λg足够大，我们
+可以证明(具体要求和证明见补充)在优化Li / ai时，MagFace损失的以下两个性质始终成立:
+\end_layout
+
+\begin_layout Standard
+收敛的性质。对于ai属于[la, ua]， Li是一个严格凸函数，它有唯一的最优解ai*。
+\end_layout
+
+\begin_layout Standard
+单调性。最优ai*是随着到其类中心的余弦距离减小和到其他类的余弦距离增大而单调增加的。
+\end_layout
+
+\begin_layout Standard
+对于ai，算法的收敛性保证了算法的唯一最优解和快速收敛。特征量的单调性表明了识别的难度，因此可以作为人脸质量的度量标准。
+\end_layout
+
+\begin_layout Section
+特征幅度分析
+\end_layout
+
+\begin_layout Standard
+为了更好地理解MagFace损失的影响，我们在广泛使用的MS1M-V2
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deng2018a"
+literal "false"
+
+\end_inset
+
+数据集上进行了实验，并对收敛时的训练样例研究了特征幅度与其与类中心相似度之间的关系，如图3所示。
+\end_layout
+
+\begin_layout Standard
+Softmax。经典的基于softmax的损失是关于深度人脸识别的先驱工作的目标。从图3a中观察到，在没有明确的量级限制的情况下，每个样本的负损失值几乎与其量级
+无关。如所指出的，softmax倾向于创建径向特征分布，因为softmax损失作为max算子的软版本，特征大小的缩放不影响其类的赋值。为了消除这种影响，建议使用
+标准化特征将有益于该任务。
+\end_layout
+
+\begin_layout Standard
+ArcFace。当m(ai) = m, g(ai) = 0时，ArcFace可视为MagFace的特例。如图3b所示，cos(θ)与类中心相似度较大的高质量样本
+在幅度上变化较大。这一证据呼应了我们在ArcFace中由固定角边缘定义的不稳定结构上的动机，以获得简单的样本。另一方面，对于难以识别的低质量样本(cos(θ)较
+小)，固定的角裕度决定了幅值需要足够大才能拟合在可行区域内(图2a)。因此，图3b中虚线所示的特征幅度w.r.t.的面部质量有一个递减的下限。
+\end_layout
+
+\begin_layout Standard
+MagFace。与ArcFace相比，我们的MagFace根据其大小优化了自适应边缘和正则化特征。在此损失下，从图3c可以清楚地观察到，特征幅值与其与类中心的余
+弦相似度之间存在很强的相关性。右上角的例子是质量最好的例子。当量值变小时，示例就会更偏离类中心。这种分布有力地支持了这样一个事实，即MagFace学习到的特征幅
+度是衡量面部质量的一个很好的指标。
+\end_layout
+
+\begin_layout Chapter
+实验
+\end_layout
+
+\begin_layout Standard
+在本节中，我们将研究提出的MagFace在三个重要的人脸任务上:人脸识别、质量评估和人脸聚类。补充部分的C节介绍了边缘分布与识别性能之间关系的烧蚀研究。
+\end_layout
+
+\begin_layout Section
+人脸识别
+\end_layout
+
+\begin_layout Standard
+数据集。原始的MS-Celeb-1M数据集
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Guo2016"
+literal "false"
+
+\end_inset
+
+包含大约1000万张100,000个身份的图像。然而，它包含了大量的噪声人脸图像。相反，我们使用MS1M-V2 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deng2018a"
+literal "false"
+
+\end_inset
+
+ (5.8M张图像，85k个身份)作为我们的训练数据集。我们采用LFW
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Huang2008"
+literal "false"
+
+\end_inset
+
+、CFPFP
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sengupta2016"
+literal "false"
+
+\end_inset
+
+、AgeDB-30
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Moschoglou2017"
+literal "false"
+
+\end_inset
+
+、CALFW
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zheng2017"
+literal "false"
+
+\end_inset
+
+、CPLFW
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zheng2018"
+literal "false"
+
+\end_inset
+
+、IJBB
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Whitelam2017"
+literal "false"
+
+\end_inset
+
+、IJB-C
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Maze2018"
+literal "false"
+
+\end_inset
+
+作为评测基准。根据ArcFace中的设置，所有图像都对齐到112×112。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/7.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+基线。我们重新实现了最先进的基线，包括Softmax, SV-AM-Softmax
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2018c"
+literal "false"
+
+\end_inset
+
+，SphereFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu2017a"
+literal "false"
+
+\end_inset
+
+，CosFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2018b"
+literal "false"
+
+\end_inset
+
+，ArcFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Deng2018a"
+literal "false"
+
+\end_inset
+
+。骨干设备为ResNet100。我们为每个模型使用推荐的超参数，例如，ArcFace的s = 64, m = 0.5。
+\end_layout
+
+\begin_layout Standard
+训练。我们用随机梯度下降法在81080tis上训练模型。学习率从0.1开始初始化，在10、18、22个epoch除以10，在第25个epoch停止训练。权重衰减设
+置为5e-4，动量为0.9。我们只通过随机水平翻转来增加训练样本。对于MagFace，我们将大小的上界和下界固定为la = 10, ua = 110。取M
+ (ai)为线性函数，取g(ai)为双曲线。m(ai)、g(ai)和λg的详细定义请参见附录B2节。最后，我们的平均裕度以及其他超参数都与ArcFace一致。
+\end_layout
+
+\begin_layout Standard
+LFW、CFP-FP、AgeDB-30、CALFW和CPLFW的结果。我们直接使用ArcFace采用的对齐图像和协议，并在表1中展示我们的结果。我们注意到性能几
+乎饱和。ArcFace在LFW、CFP-FP和CPLFW上分别提高了0.03%、0.14%、0.54%，在AgeDB-30和CALFW上分别下降了0.12%、0.22%。
+MagFace获得了整体最好的结果，在五个基准测试中分别超过ArcFace 0.02%， 0.06%， 0.12%， 0.19%和0.15%。
+\end_layout
+
+\begin_layout Standard
+IJB-B/IJB-C检测结果。IJB-B数据集包含1845个主题，21.8K静态图像和来自7011个视频的55K帧。作为IJB-B的扩展，IJB-C数据集涵盖约
+3,500个身份，共31,334张图像和117,542个无约束视频帧。在1:1验证中，IJBB的阳性/阴性匹配数为10k/8M, IJB-C为19k/15M。我
+们报告FAR=1e-6、1e-5和1e-4的tar，如表2所示。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/8.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+从IJB-C数据集采样的100k张图像的平均人脸的可视化。每个平均脸对应于一组基于MagFace学习的特征的大小级别的脸。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/9.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+在困难基准上的V验证精度(%)。“*”为引用原论文的结果。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+我们实现的ArcFace与原始论文相当，例如，我们在FAR=1e-4处的tar与作者在IJB-B和IJB-C上的差异分别为−0.11%和+0.14%。与基线相比，我
+们的MagFace在除IJB-B上的FAR=1e-6外的所有FAR标准中仍然是顶级的，因为TAR在FP数量很小时对噪声非常敏感。与CosFace相比，MagFa
+ce在TAR@FAR=1e-6、1e-5、1e-4上的增益分别为0.50%、0.63%、0.32%，在IJB-C上的增益分别为1.30%、0.99%、0.25%。IJB-B
+和IJB-C分别比ArcFace提高了2.23%、1.38%、0.24%和3.61%、0.98%、0.07%。这一结果证明了MagFace在更具挑战性的基准测试中的优势。值
+得一提的是，当一个身份存在多张图像时，可以通过按幅度加权的特征聚合来进一步提高平均嵌入。例如，在FAR=1e-6时，MagFace+优于MagFace1.41%/
+0.98%， FAR=1e-5时优于MagFace 0.48%/0.41%， FAR=1e-4时优于MagFace 0.18%/0.16%。
+\end_layout
+
+\begin_layout Section
+面部质量评估
+\end_layout
+
+\begin_layout Standard
+在这一部分中，我们研究了表2中提到的预训练MagFace模型的定性和定量性能，以进行质量评估。
+\end_layout
+
+\begin_layout Standard
+平均面的可视化。我们首先从IJB-C数据库中抽取10万张图像，并根据特征幅度将其分为8组。我们在图4中可视化每组的平均面孔。可以看出，当幅度增加时，相应的平均面
+揭示了更多的细节。这是因为高质量的面孔更倾向于正面和独特。这意味着MagFace特征的大小是一个很好的质量指标。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/10.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+不同数据集上的幅度分布。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+数据集的样本分布。图5绘制了不同基准相对于MagFace幅度的样本直方图。我们观察到LFW是噪声最小的一个，其中大多数样本都是大的。由于年龄变化较大，与LFW相
+比，AGEDB-30的分布略有左移。对于CFP-FP，在28和34左右有两个震级峰，分别对应于正面和侧面。鉴于面部质量的巨大差异，我们可以得出结论，IJB-C比
+其他基准更具挑战性。对于a相似于15星等的图像(更多的例子可以在补充中找到)，没有人脸或非常嘈杂的人脸可以观察。当特征幅值从20增加到40时，面部有明显的变化趋
+势，从侧面，模糊和遮挡，到更正面和更有特色。总的来说，这个数字使我们相信MagFace是一个有效的工具来排名人脸图像根据他们的质量。
+\end_layout
+
+\begin_layout Standard
+基线。我们选择了三种类型的六个基线进行定量质量评价。Brisque
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sun2014"
+literal "false"
+
+\end_inset
+
+，Niqe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mittal2013"
+literal "false"
+
+\end_inset
+
+和Piqe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Venkatanath2015"
+literal "false"
+
+\end_inset
+
+是基于图像的质量指标。FaceQNet
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HernandezOrtega2019"
+literal "false"
+
+\end_inset
+
+和SER-FIQ
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Terhorst2020"
+literal "false"
+
+\end_inset
+
+是基于人脸的。对于FaceQNet，我们采用了作者发布的模型。对于SER-FIQ，我们使用了论文中产生最佳性能的“同模型”版本。按照作者的设置，我们设置m=10
+0将每个图像转发100次，其中退出在推理中处于活动状态。作为相关工作，我们重新实现了最近的DUL
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chang2020"
+literal "false"
+
+\end_inset
+
+方法，该方法可以估计人脸特征的不确定性。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/11.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+使用两种评估模型(ArcFace和MagFace)预测的人脸质量值的人脸验证性能。该曲线显示了在假不匹配率(FNMR)方面拒绝低质量人脸图像的有效性。彩色观看效
+果最好。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+评价指标。根据之前的工作，我们通过误差-拒绝曲线评估LFW/CFPFP/AgeDB的质量评估，其中不考虑预测质量最低的图像，并在剩余图像上计算错误率。当验证误差
+不断减小，而未考虑图像的比例不断增加时，error - versus-reject曲线表示良好的质量估计。为了计算用于验证的特征，我们采用ArcFace*以及表
+2中的MagFace模型。
+\end_layout
+
+\begin_layout Standard
+人脸验证结果。图6显示了不同质量方法在假匹配率(FMR)阈值为0.001时报告的假不匹配率(FNMR)的误差-拒收曲线。总的来说，我们有两个高水平的观察结果。1)
+ CFP-FP和AgeDB-30上的曲线比LFW上的曲线平滑得多。这是因为CFP-FP和AgeDB-30由姿势和年龄变化更大的面孔组成。有效地删除低质量的人脸可
+以在这两个基准测试中更有利于验证性能。2)无论从ArcFace(左列)还是MagFace(右列)计算特征，MagFace幅值对应的曲线在不同基准上始终是最低的。
+这表明MagFace量级的性能在数据集和面部特征上都很好地泛化。然后我们分析了每种方法的质量性能。1)基于图像的质量指标(Brisque 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Sun2014"
+literal "false"
+
+\end_inset
+
+， Niqe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mittal2013"
+literal "false"
+
+\end_inset
+
+， Piqe
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Venkatanath2015"
+literal "false"
+
+\end_inset
+
+)在大多数情况下会导致相对较高的误差，仅凭图像质量不适合进行广义的人脸质量估计。面部的因素(如姿势、遮挡和表情)和模型偏差没有被这些算法覆盖，但可能在面部质量评
+估中发挥重要作用。2)基于人脸的方法(FaceQNet
+\begin_inset CommandInset citation
+LatexCommand cite
+key "HernandezOrtega2019"
+literal "false"
+
+\end_inset
+
+和SER-FIQ
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Terhorst2020"
+literal "false"
+
+\end_inset
+
+)在大多数情况下优于其他基线。特别是，SER-FIQ在验证错误率方面比FaceQNet更有效。这是因为SER-FIQ构建在已部署的识别模型之上，因此其预测更适合
+验证任务。然而，SEQFIQ的计算代价是二次的w.r.t.。相反，计算幅度的开销可以忽略，这使得所提出的MagFace在许多实时场景中更加实用。此外，MagFace的
+训练不需要对人脸质量进行明确的标注，不仅耗时，而且容易出错。3)最后，不确定度方法(DUL)在CFP-FP上表现较好，但在AgeDB-30上，随着未考虑图像比例
+的增加，验证误差较大。这可能说明DUL中数据方差的高斯假设过于简化，导致模型不能很好地泛化到不同类型的质量因子。
+\end_layout
+
+\begin_layout Section
+人脸聚类
+\end_layout
+
+\begin_layout Standard
+在本节中，我们进行了关于人脸聚类的实验，以进一步研究MagFace学习的特征表示的结构。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/12.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+来自IJB-B-1845的500个样本的MagFace星等的可视化w.r.t.它们作为类中心的置信度。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+基线。我们通过将MagFace和ArcFace的特征与各种聚类方法相结合，比较了它们的性能。为了公平比较，我们在训练期间将两个模型的超参数约束为一致(例如，s=
+64，平均裕度0.5)。评价采用四种聚类方法:K-means
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lloyd1982"
+literal "false"
+
+\end_inset
+
+、AHC
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Jain1988"
+literal "false"
+
+\end_inset
+
+、DBSCAN
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ester1996"
+literal "false"
+
+\end_inset
+
+和L-GCN
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2019"
+literal "false"
+
+\end_inset
+
+。对于非确定性算法(K-means和AHC)，我们报告了10次运行的平均结果。对于L-GCN，我们在CASIAWebFace
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yi2014"
+literal "false"
+
+\end_inset
+
+(来自10k个人的0.5M图像)上训练模型，并遵循论文
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wang2019"
+literal "false"
+
+\end_inset
+
+中的推荐设置。
+\end_layout
+
+\begin_layout Standard
+基准。我们采用IJB-B数据集作为基准，因为它包含7个子任务的聚类协议，这些子任务的地面真相身份数量不同。之后，我们评估三个最大的子任务，其中身份数分别为512
+、1024和1845，样本数分别为18,171、36,575和68,195。标准化互信息（NMI）和BCubed F测度
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Amigo2009"
+literal "false"
+
+\end_inset
+
+被用作评估度量。
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 外文翻译figures/13.pdf
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+聚类基准的f -得分(%)和NMI(%)。
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+结果。表3总结了聚类结果。我们可以观察到，从Kmeans到L-GCN的更强的聚类方法可以提高整体的聚类性能。对于集群和协议的任何组合，MagFace在F-sco
+re和NMI指标方面总是比ArcFace获得更好的性能。这种一致性的优势说明MagFace特征更适合于聚类。注意，我们为聚类保留了相同的超参数。使用MagFac
+e的改进必须来自于它更好的类内特征分布，在类中心周围的高质量样本更有可能被分离到不同的类中。
+\end_layout
+
+\begin_layout Standard
+我们进一步探讨了特征量与类中心置信度之间的关系。根据
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Yang2020"
+literal "false"
+
+\end_inset
+
+中提到的思想，每个样本作为类中心的置信度是根据人脸特征定义的邻居结构来估计的。局部连接密集且纯的样本具有较高的置信度，而连接稀疏或位于多个聚类边界的样本置信度较
+低。从图7不难看出，在IJB-B-1845基准上，MagFace星等与类中心置信度呈正相关。这一结果反映了MagFace特征表现出预期的类内结构，即高质量样本分
+布在类中心附近，而低质量样本则远离类中心。
+\end_layout
+
+\begin_layout Chapter
+总结
+\end_layout
+
+\begin_layout Standard
+在本文中，我们提出了MagFace来学习统一的特征来进行人脸识别和质量评估。通过将模糊样本从类中心推离，MagFace改善了以前基于边缘的人脸识别工作的类内特征
+分布。充分的理论和实验结果表明，MagFace可以同时获取输入人脸图像的质量。作为一个通用框架，MagFace可以潜在地扩展到其他分类任务，如细粒度物体识别，人
+员再识别。此外，所提出的探索特征大小的原则为估计其他对象的质量铺平了道路，例如，reid中的人的身体或活动分类中的动作片段。
+\end_layout
+
+\begin_layout 参考文献
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "refs"
+options "zjutcls/gbt7714-2005"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

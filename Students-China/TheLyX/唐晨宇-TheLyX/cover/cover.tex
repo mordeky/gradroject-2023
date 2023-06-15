@@ -1,0 +1,83 @@
+ % !Mode:: "TeX:UTF-8"
+
+\input{cover/作者信息与论文题目.tex}
+% \newcommand{\theTitleLabel}{论文题目}
+
+\thispagestyle{empty}
+\pdfbookmark[-1]{\zjuttitlec}{zjutthesiscover}
+% \phantomsection \label{zjutthesiscover}
+
+\begin{center}
+% \vspace{15mm}
+\includegraphics[scale=0.9]{cover/logo}
+\par
+
+\vspace{10mm}
+\songti\yihao{本科毕业论文（设计）}
+\par
+
+\ifzjutTranslation
+	\vspace{5mm}
+	\songti\yihao{外文翻译及原稿}
+	\par
+\fi
+
+\ifzjutLiteratureReview
+	\vspace{5mm}
+	\songti\yihao{文献综述}
+	\par
+\fi
+
+\ifzjutOpeningReport
+	\vspace{5mm}
+	\songti\yihao{开题报告}
+	\par
+\fi
+
+
+% \begin{center}
+% 	% \onehalfspacing
+% 	% \renewcommand{\arraystretch}{2}
+% 	\hspace{\titleLeftSpace}{\songti\xiaoer{\theTitleLabel}}\hspace{2mm}
+% 	\begin{minipage}[t]{\titleUlineLength}
+% 		% \setuldepth{30}
+% 		% \onehalfspacing
+% 		\linespread{1.1}{\songti\xiaoer\myul\theTitleContent}
+% 	\end{minipage}
+% \end{center}
+
+\ifzjutThesis
+	\vspace{16mm}
+	\includegraphics[scale=1.5]{cover/论文题目}
+	\newcommand{\myarraystretch}{.75}
+	\vspace{25mm}
+\else
+	\ifzjutTranslation
+		\vspace{10mm}
+		\includegraphics[scale=1.5]{cover/译文题目}
+		\newcommand{\myarraystretch}{.6}
+		\vspace{15mm}
+	\else
+		\vspace{10mm}
+		\includegraphics[scale=1.5]{cover/论文题目}
+		\newcommand{\myarraystretch}{.6}
+		\vspace{15mm}
+	\fi
+\fi
+
+\setlength{\arrayrulewidth}{1pt}
+{\songti\sihao\textbf{
+	\renewcommand{\arraystretch}{\myarraystretch}
+	\begin{tabular}{rc}
+		学\qquad 院: \coveruline{\zjutCollege}\\
+		专\qquad 业: \coveruline{\zjutMajor}\\
+		班\qquad 级: \coveruline{\zjutClass}\\
+		学\qquad 号: \coveruline{\zjutAuthorID}\\
+		学生姓名: \coveruline{\zjutAuthorName}\\
+		指导老师: \coveruline{\zjutMentor}\\
+		提交日期: \coveruline{\zjutSubmittedDate}				
+	\end{tabular}
+}
+}
+%\bf\songti\zihao{-4}
+\end{center}
